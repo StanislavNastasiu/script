@@ -103,7 +103,7 @@ function getJAVAV(){
     Write-Host "Java version attuale: $JavaVer"
     Write-Host "Java path attuale: $JavaPath"
 
-    pause
+    Pause
     Clear-Host
 
     if(([string]::IsNullOrEmpty($JavaVer))-or $JavaVer -ne "8.0.2210.11"){
@@ -126,7 +126,7 @@ function getJAVAV(){
     Write-Host "Java version: $JavaVer"
     Write-Host "Java path: $JavaPath"
 
-    pause
+    Pause
     Clear-Host
 
 
@@ -161,7 +161,7 @@ function backup($source,$dest){
 
     #region BACKUP
     Write-Output ""
-    Write-Output "$TAB_CHR Backup cartella: "$source"...."
+    Write-Output ("Backup cartella: "+$source+"....")
     Write-Log -Level Info ("Backup cartella "+"$source")
     #Copying folder
 
@@ -175,19 +175,19 @@ function backup($source,$dest){
 
        robocopy $source $dest /e /NFL /NDL /NJH /NJS /nc /ns /np /MT:32
        Write-Output ""
-       Write-Output "$TAB_CHR Backup completato"
+       Write-Output "Backup completato"
        Write-Log -Level Info "Backup completato"
     }
     catch{
         Clear-Host
         Write-Host "Impossibile fare il backup..." -ForegroundColor Red
         Write-Log -Level Error "Impossibile fare il backup"
-        pause
+        Pause
         break
         Clear-Host
     }
     finally{
-        Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green
+        Write-Host "FINITO" -ForegroundColor Black -BackgroundColor Green
     }
     #endregion
 }
@@ -195,7 +195,7 @@ function update($source,$dest){
 
     #region CASSE UPDATE
     #esegue le operazioni di aggiornamento cassa
-    Write-Host "$TAB_CHR Aggiornamento cartella: "$dest" ..."  -ForegroundColor White -BackgroundColor Blue
+    Write-Host ("Aggiornamento cartella: "+$dest+" ...")  -ForegroundColor White -BackgroundColor Blue
     Write-Log -Level Info ("Aggiornamento cartella: "+"$dest")
     Write-Output ""
 
@@ -210,15 +210,15 @@ function update($source,$dest){
     }
     catch{
         Clear-Host
-        Write-Host "Impossibile aggiornare "$dest" ..." -ForegroundColor Red
+        Write-Host ("Impossibile aggiornare "+$dest+" ...") -ForegroundColor Red
         Write-Log -Level Error ("Impossibile aggiornare: "+"$dest")
-        pause
+        Pause
         break
         Clear-Host
     }
     finally{
      
-        Write-Host "$TAB_CHR Trasferimento file terminato"  -ForegroundColor White -BackgroundColor Blue
+        Write-Host "Trasferimento file terminato"  -ForegroundColor White -BackgroundColor Blue
         Write-Log -Level Info "Trasferimento file terminato"
     }
     #endregion
@@ -237,7 +237,7 @@ function getPOS([string]$array_POS){
         Clear-Host
         Write-Host "Server orange non raggiungibile, controllare i parametri" -ForegroundColor Red
         Write-Log -Level Error "Server orange non raggiungibile, controllare i parametri"
-        pause
+        Pause
         break
         Clear-Host
     }
@@ -260,7 +260,7 @@ function getStoreCode(){
         Write-Host "Server orange non raggiungibile, controllare i parametri" -ForegroundColor Red
         Write-Log -Level Error "Server orange non raggiungibile, controllare i parametri"
 
-        pause
+        Pause
         break
         Clear-Host
     }
@@ -268,18 +268,11 @@ function getStoreCode(){
         Push-Location -Path $currentDir
     }
 }
-function restartService(){
-    $POS = Read-Host 'Inserire nome cassa [POSxx]'
-    Invoke-Command -Computer $POS -Credential $Cred -ScriptBlock {
-        Get-Service -Name "XPaySocketTunnel" -ErrorAction SilentlyContinue |
-        Restart-Service
-    }
-}
 function restore([string]$ipPOS){
     
     #region RESTORE BACKUP
     Write-Output ""
-    Write-Output "$TAB_CHR Ripristino backup della cassa: $ipPOS"
+    Write-Output ("Ripristino backup della cassa: $ipPOS")
     $ipPOSX="\\$ipPOS"+"\c$"
     $dest="X:\Orange\ClientPOS"
     #Copying folder
@@ -295,17 +288,17 @@ function restore([string]$ipPOS){
         Clear-Host
         Write-Host "Impossibile ripristinare il backup..." -ForegroundColor Red
 
-        pause
+        Pause
         break
         Clear-Host
     }
     finally{
-        Write-Host "$TAB_CHR Ripristino in corso..."
+        Write-Host "Ripristino in corso..."
         robocopy $source $dest /e /NFL /NDL /NJH /NJS /nc /ns /np /MT:32
         Get-PSDrive X | Remove-PSDrive
         Write-Output ""
-        Write-Output "$TAB_CHR Ripristino completato"
-        Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green
+        Write-Output "Ripristino completato"
+        Write-Host "FINITO" -ForegroundColor Black -BackgroundColor Green
     }
     #endregion
 }
@@ -341,25 +334,27 @@ function menu(){
 
     $tipoOperazione = Read-Host 'Inserire la funzione da eseguire'
     Clear-Host
+
+    #Recupero informazioni DB OrangeServer
     $totalPOS = 0
     $RecordPOS=getPOS($array_POS)
     foreach($client in $RecordPOS){
         $totalPOS++
         Write-Log -Level Info ("Casse selezionate: "+$client.description)
     }
+
     #verifica che la tipologia di cassa sia un valore INTERO
     if(IsNumeric($tipoOperazione))
     {
         #crea credenziali di accesso alla cartella remota
         $Cred = New-Object System.Management.Automation.PsCredential($Global:pos_username,$Global:pos_password)
-        #region Recupero informazioni DB OrangeServer
-        #[string]$array_POS=("'001',","'002',","'011',","'012'")
+        
 
         switch ($tipoOperazione)
         {
             1 
             {
-                #region PASSO 1 - BCK ORANGE ADMIN
+                #BCK ORANGE ADMIN
                     Write-Log -Level Info "Inzio operazione 1 - BCK Orange Admin"
                     #path alla cartella Orange Admin
                     $uncPathOrangeAdmin = "C:\Orange\Admin"
@@ -374,27 +369,23 @@ function menu(){
                     ServiceStopper('MSSQL$SQLEXPRESS')
                     backup $pathDBAdmin $backDB
                     ServiceStarter('MSSQL$SQLEXPRESS')
-                    pause
+                    Pause
                     Clear-Host
                     Write-Log -Level Info "Fine operazione 1 - BCK Orange Admin"
                     menu
-
-                #endregion
             }       
             2 
             {
                 Write-Log -Level Info "Inizio operazione 2 - BCK ClientPOS"
                 Write-Host "Numero casse da fare il backup: $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
-                pause
+                Pause
                 Clear-Host
-                #endregion
                 $currPos=1
                 foreach ($ip in $RecordPOS) 
                 {
                     Write-Host "Backup cassa $currPos di $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
                     Write-Log -Level Info ("Backup cassa $currPos di $totalPOS")
                     Write-Log -Level Info ("CASSA: "+$ip.ipaddress)
-                    #region CASSE SET PARAMS
                     #path remoto alla cassa
                     $uncPathPOS = "\\" + $ip.ipaddress + "\c$"
                     #path remoto alla cartella Orange
@@ -419,28 +410,24 @@ function menu(){
                         Clear-Host
                         Write-Host "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)" -ForegroundColor Red
                         Write-Log -Level Error "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)"
-                        pause
+                        Pause
                         Clear-Host
                         break   
                     }
-                    pause
-                    #region CASSE PASSO 1 - BACKUP ClientPOS
+                    Pause
+                    #BACKUP ClientPOS
 
-                        #path remoto alla cartella ClientPOS
-                        $uncPathClientPos = "J:\Orange\ClientPOS"
-                        #percorso completo alla cartella di backup, composta da "bck_ClientPOS_yyyyMMdd"
-                        $backupFolderClientPOS ="J:\Orange\bck_ClientPOS_"+$today
-                        Write-Host "BACKUP ClientPOS" -ForegroundColor Black -BackgroundColor Yellow
-                        backup $uncPathClientPOS $backupFolderClientPOS
-                        pause
-                        Clear-Host
-                        $currPos++
+                    #path remoto alla cartella ClientPOS
+                    $uncPathClientPos = "J:\Orange\ClientPOS"
+                    #percorso completo alla cartella di backup, composta da "bck_ClientPOS_yyyyMMdd"
+                    $backupFolderClientPOS ="J:\Orange\bck_ClientPOS_"+$today
+                    Write-Host "BACKUP ClientPOS" -ForegroundColor Black -BackgroundColor Yellow
+                    backup $uncPathClientPOS $backupFolderClientPOS
+                    Pause
+                    Clear-Host
+                    $currPos++
                     #rimuove l'unita' J, per poter mappare la successiva cassa
-                    #remove-psdrive J non funziona sempre, sostituito con:
                     Get-PSDrive J | Remove-PSDrive
-                    #net use J: /delete
-
-                #endregion
                 }
                 Write-Log -Level Info "Fine operazione 2 - BCK ClientPOS"
                 menu
@@ -449,13 +436,11 @@ function menu(){
             {
                 Write-Log -Level Info "Inizio operazione 3 - BCK AeviPay"
                 Write-Host "Numero casse da aggiornare: $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
-                pause
+                Pause
                 Clear-Host
-                #endregion 
                 $currPos=1  
                 foreach ($ip in $RecordPOS) 
                 {
-                    #region CASSE SET PARAMS
                     #path remoto alla cassa
                     Write-Host "Aggiornamento cassa $currPos di $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
                     Write-Log -Level Info ("Aggiornamento cassa $currPos di $totalPOS")
@@ -481,28 +466,24 @@ function menu(){
                         Clear-Host
                         Write-Host "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)" -ForegroundColor Red
                         Write-Log -Level Error "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)"
-                        pause
+                        Pause
                         break
                         Clear-Host
                     }
-                    pause
-                    #region CASSE PASSO 1 - BACKUP AeviPay
+                    Pause
+                    #BACKUP AeviPay
 
-                        #path remoto alla cartella AeviPay
-                        $uncPathAevi = "J:\AeviPay"
-                        #percorso completo alla cartella di backup, composta da "bck_AeviPay_yyyyMMdd"
-                        $backupFolderAevi ="J:\bck_AeviPay_"+$today
-                        Write-Host "BACKUP AEVIPAY" -ForegroundColor Black -BackgroundColor Yellow
-                        backup $uncPathAevi $backupFolderAevi
-                        pause
-                        Clear-Host
-                        $currPos++
+                    #path remoto alla cartella AeviPay
+                    $uncPathAevi = "J:\AeviPay"
+                    #percorso completo alla cartella di backup, composta da "bck_AeviPay_yyyyMMdd"
+                    $backupFolderAevi ="J:\bck_AeviPay_"+$today
+                    Write-Host "BACKUP AEVIPAY" -ForegroundColor Black -BackgroundColor Yellow
+                    backup $uncPathAevi $backupFolderAevi
+                    Pause
+                    Clear-Host
+                    $currPos++
                     #rimuove l'unita' J, per poter mappare la successiva cassa
-                    #remove-psdrive J non funziona sempre, sostituito con:
                     Get-PSDrive J | Remove-PSDrive
-                    #net use J: /delete
-
-                    #endregion
                 }
                 Write-Log -Level Info "Fine operazione 3 - BCK AeviPay"
                 menu
@@ -511,16 +492,14 @@ function menu(){
             {
                 Write-Log -Level Info "Inizio operazione 4 - UPDATE ClientPOS"
                 Write-Host "Numero casse da aggiornare: $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
-                pause
+                Pause
                 Clear-Host
-                #endregion
                 $currPos=1
                 foreach ($ip in $RecordPOS) 
                 {
                     Write-Host "Aggiornamento cassa $currPos di $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
                     Write-Log -Level Info ("Aggiornamento cassa $currPos di $totalPOS")
                     Write-Log -Level Info ("CASSA: "+$ip.ipaddress)
-                    #region CASSE SET PARAMS
                     #path remoto alla cassa
                     $uncPathPOS = "\\" + $ip.ipaddress + "\c$"
                     #path remoto alla cartella Orange
@@ -546,22 +525,20 @@ function menu(){
                         Clear-Host
                         Write-Host "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)" -ForegroundColor Red
                         Write-Log -Level Error "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)"
-                        pause
+                        Pause
                         break
                         Clear-Host
                     }
-                    pause
-                    #region CASSE PASSO 2 - UPDATE ClientPOS
+                    Pause
+                    #UPDATE ClientPOS
 
-                        #esegue le operazioni di aggiornamento cassa
-                        $sourceClientPOS= "$currentDir\Orange"
-                        update $sourceClientPOS $uncPathOrange
-                        pause
-                        Clear-Host
+                    #esegue le operazioni di aggiornamento cassa
+                    $sourceClientPOS= "$currentDir\Orange"
+                    update $sourceClientPOS $uncPathOrange
+                    Pause
+                    Clear-Host
 
-                    #endregion
-
-                    #region MODIFICA CLIENTCONFIGURATION
+                    #MODIFICA CLIENTCONFIGURATION
                     Write-Host "Aggiornamento clientConfiguration.config"  -ForegroundColor White -BackgroundColor Blue
                     Write-Log -Level Info "Aggiornamento clientConfiguration.config"
                     Write-Output ""
@@ -589,7 +566,7 @@ function menu(){
                         Clear-Host
                         Write-Host "Impossibile modificare il file clientConfiguration..." -ForegroundColor Red
                         Write-Log -Level Error "Impossibile modificare il file clientConfiguration..."
-                        pause
+                        Pause
                         break
                         Clear-Host     
                     }
@@ -600,10 +577,9 @@ function menu(){
                         Write-Host "File clientConfiguration.config salvato..." -ForegroundColor Green
                         Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green                  
                     }
-                    pause
-                    #endregion
+                    Pause
 
-                    #region CASSE PASSO 3 - MODIFICA ENGINE
+                    #MODIFICA ENGINE
                     Write-Host "Aggiornamento engine.config"  -ForegroundColor White -BackgroundColor Blue
                     Write-Log -Level Info "Aggiornamento engine.config"
                     Write-Output ""
@@ -633,7 +609,7 @@ function menu(){
                         Clear-Host
                         Write-Host "Impossibile modificare il file engine..." -ForegroundColor Red
                         Write-Log -Level Error "Impossibile modificare il file engine"
-                        pause
+                        Pause
                         break
                         Clear-Host
                     }
@@ -644,15 +620,11 @@ function menu(){
                         Write-Log -Level Info "File engine.config salvato"
                         Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green                    
                     }
-                    pause
+                    Pause
                     Clear-Host
                     $currPos++
                     #rimuove l'unita' J, per poter mappare la successiva cassa
-                    #remove-psdrive J non funziona sempre, sostituito con:
                     Get-PSDrive J | Remove-PSDrive
-                    #net use J: /delete
-
-                    #endregion
                 }
                 Write-Log -Level Info "Fine operazione 4 - UPDATE ClientPOS"
                 menu
@@ -661,15 +633,13 @@ function menu(){
             {
                 Write-Log -Level Info "Inizio operazione 5 - UPDATE AeviPay"
                 Write-Host "Numero casse da aggiornare: $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
-                pause
+                Pause
                 Clear-Host
-                #endregion
                 $currPos=1
                 foreach ($ip in $RecordPOS) 
                 {
                     Write-Host "Aggiornamento cassa $currPos di $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
                     Write-Log -Level Info ("Aggiornamento cassa $currPos di $totalPOS")
-                    #region CASSE SET PARAMS
                     #path remoto alla cassa
                     $uncPathPOS = "\\" + $ip.ipaddress + "\c$"
                     $ipPOS="\\"+$ip.ipaddress
@@ -695,646 +665,133 @@ function menu(){
                         Clear-Host
                         Write-Host "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)" -ForegroundColor Red
                         Write-Log -Level Error "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)"
-                        pause
+                        Pause
                         Clear-Host
                         break
                     }
-                    pause
-                    #region CASSE PASSO 2 - UPDATE AeviPay
+                    Pause
+                    #UPDATE AeviPay
 
-                        #esegue le operazioni di aggiornamento cassa
-                        Write-Output "$TAB_CHR Passo $currStep di $steps"
-                        $sourceAevi= "$currentDir\Aevipay"
-                        update $sourceAevi $uncPathAevi
-                        pause
+                    #esegue le operazioni di aggiornamento cassa
+                    Write-Output "$TAB_CHR Passo $currStep di $steps"
+                    $sourceAevi= "$currentDir\Aevipay"
+                    update $sourceAevi $uncPathAevi
+                    Pause
 
-                    #endregion
-                    #region CASSE PASSO 3 - MODIFICA XPaySocketTunnelService
-                        Write-Host "Aggiornamento XPaySocketTunnelService.exe.config"  -ForegroundColor White -BackgroundColor Blue
-                        Write-Log -Level Info "Aggiornamento XPaySocketTunnelService.exe.config"
+                    #MODIFICA XPaySocketTunnelService
+                    Write-Host "Aggiornamento XPaySocketTunnelService.exe.config"  -ForegroundColor White -BackgroundColor Blue
+                    Write-Log -Level Info "Aggiornamento XPaySocketTunnelService.exe.config"
                         Write-Output ""
-                        try{
-                            #percorso completo al file XPaySocketTunnelService
-                            $AeviPayXml = [xml](Get-Content $uncPathAevi"\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe.config")
-                            $last = [string]$ip.ipaddress
-                            $address="192.168.1"+$StoreCod.Substring(2)+".1"+$last.Substring($last.Length-2)
-                            Write-Host ("Indirizzo terminale Aevipay:"+ $address) -ForegroundColor White -BackgroundColor DarkRed
-                            Write-Log -Level Info ("Indirizzo terminale Aevipay:"+ $address)
+                    try{
+                        #percorso completo al file XPaySocketTunnelService
+                        $AeviPayXml = [xml](Get-Content $uncPathAevi"\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe.config")
+                        $last = [string]$ip.ipaddress
+                        $address="192.168.1"+$StoreCod.Substring(2)+".1"+$last.Substring($last.Length-2)
+                        Write-Host ("Indirizzo terminale Aevipay:"+ $address) -ForegroundColor White -BackgroundColor DarkRed
+                        Write-Log -Level Info ("Indirizzo terminale Aevipay:"+ $address)
 
-                            $Channel = $AeviPayXml.configuration.XPaySocketTunnelConfig.Channels.Channel.Item(0)
-                            $Channel.SetAttribute('TargetIpAddr',$address)
-                        }
-                        catch{
-                            Clear-Host
-                            Write-Host "Impossibile modificare il file XPaySocketTunnelService.exe.config..." -ForegroundColor Red
-                            Write-Log -Level Error "Impossibile modificare il file XPaySocketTunnelService.exe.config"
-                            pause
-                            break
-                            Clear-Host     
-                        }
-                        finally{
+                        $Channel = $AeviPayXml.configuration.XPaySocketTunnelConfig.Channels.Channel.Item(0)
+                        $Channel.SetAttribute('TargetIpAddr',$address)
+                    }
+                    catch{
+                        Clear-Host
+                        Write-Host "Impossibile modificare il file XPaySocketTunnelService.exe.config..." -ForegroundColor Red
+                        Write-Log -Level Error "Impossibile modificare il file XPaySocketTunnelService.exe.config"
+                        Pause
+                        break
+                        Clear-Host     
+                    }
+                    finally{
 
-                            $AeviPayXml.Save($uncPathAevi+"\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe.config")
+                        $AeviPayXml.Save($uncPathAevi+"\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe.config")
     
-                            Write-Host "File XPaySocketTunnelService.exe.config salvato..." -ForegroundColor Green
-                            Write-Log -Level Info "File XPaySocketTunnelService.exe.config salvato"
+                        Write-Host "File XPaySocketTunnelService.exe.config salvato..." -ForegroundColor Green
+                        Write-Log -Level Info "File XPaySocketTunnelService.exe.config salvato"
 
-                            try{
-                                .\PsExec.exe $ipPOS -h -i -d -u $Global:pos_username -p $Global:pos_password -w "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\" cmd /c "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\InstallService.bat"
-                                Write-Log -Level Info "Installato il servizio AeviPay"
-                                .\PsExec.exe $ipPOS -h -i -d -u $Global:pos_username -p $Global:pos_password -w "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\" cmd /c "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\RestartService.bat"
-                                Write-Log -Level Info "Riavviato il servizio AeviPay"
-                            }
+                        try{
+                            .\PsExec.exe $ipPOS -h -i -d -u $Global:pos_username -p $Global:pos_password -w "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\" cmd /c "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\InstallService.bat"
+                            Write-Log -Level Info "Installato il servizio AeviPay"
+                            .\PsExec.exe $ipPOS -h -i -d -u $Global:pos_username -p $Global:pos_password -w "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\" cmd /c "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\RestartService.bat"
+                            Write-Log -Level Info "Riavviato il servizio AeviPay"
+                        }
 
-                            catch{
+                        catch{
                                 Write-Host "Errore nel installare il servizio. Eseguire installazione manualmente" -ForegroundColor Red
                                 Write-Log -Level Error "Errore nel installare il servizio. Eseguire installazione manualmente"
-                            }
-
-                            Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green                        
                         }
-                        pause
-                        Clear-Host
+
+                        Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green                        
+                    }
+                    Pause
+                    Clear-Host
                     $currPos++
                     #rimuove l'unita' J, per poter mappare la successiva cassa
-                    #remove-psdrive J non funziona sempre, sostituito con:
                     Get-PSDrive J | Remove-PSDrive
-                    #net use J: /delete
-
-                    #endregion
                 }
                 Write-Log -Level Info "Fine operazione 5 - UPDATE AeviPay"
                 menu
             }
             6
-            {   Write-Log -Level Info "Inizio operazione 6 - Query"
-                #region PASSO 3 - AGGIORNAMENTO DB ORANGE
-                    Write-Host "Esecuzione QUERY" -ForegroundColor White -BackgroundColor Blue
-                    Write-Log -Level Info "Esecuzione QUERY"
-                    Write-Output ""
-                    $dbname = "ONESTORE_$StoreCod"
-                    try{
-                        Invoke-Sqlcmd -InputFile "$currentDir\SQL\scriptOrange.sql" -ServerInstance $Global:sqlserver -Database "OrangeServer" -Username $Global:sqluser -Password $Global:sqlpassword -Verbose
-                        Invoke-Sqlcmd -InputFile "$currentDir\SQL\scriptOne.sql" -ServerInstance $Global:sqlserver -Database $dbname -Username $Global:sqluser -Password $Global:sqlpassword -Verbose
-                       
-                        Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green
-                        Write-Host "Aggiornamento DB eseguito con successo" -ForegroundColor Green
-                        Write-Log -Level Info "Aggiornamento DB eseguito con successo"
-                        $currStep++
-                        }
-                    catch{
+            {   
+                Write-Log -Level Info "Inizio operazione 6 - Query"
+                #ESECUZIONE
+                Write-Host "Esecuzione QUERY" -ForegroundColor White -BackgroundColor Blue
+                Write-Log -Level Info "Esecuzione QUERY"
+                Write-Output ""
+                $dbname = "ONESTORE_$StoreCod"
+                try{
 
-                        Clear-Host
-                        Write-Host "Impossibile eseguire la query" -ForegroundColor Red
-                        Write-Log -Level Error "Impossibile eseguire la query"
-                        pause
-                        break
-                        Clear-Host
-                         }
-                   finally{
-                        Push-Location -Path $currentDir
-                        pause
-                        Clear-Host
-                        Write-Log -Level Info "Fine operazione 6 - Query"
-                        menu
-                   }                        
-                #endregion
+                    Invoke-Sqlcmd -InputFile "$currentDir\SQL\scriptOrange.sql" -ServerInstance $Global:sqlserver -Database "OrangeServer" -Username $Global:sqluser -Password $Global:sqlpassword -Verbose
+                    Invoke-Sqlcmd -InputFile "$currentDir\SQL\scriptOne.sql" -ServerInstance $Global:sqlserver -Database $dbname -Username $Global:sqluser -Password $Global:sqlpassword -Verbose
+                   
+                    Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green
+                    Write-Host "Aggiornamento DB eseguito con successo" -ForegroundColor Green
+                    Write-Log -Level Info "Aggiornamento DB eseguito con successo"
+                    $currStep++
+                }
+                catch{
+
+                    Clear-Host
+                    Write-Host "Impossibile eseguire la query" -ForegroundColor Red
+                    Write-Log -Level Error "Impossibile eseguire la query"
+                    Pause
+                    break
+                    Clear-Host
+                }
+                finally{
+
+                    Push-Location -Path $currentDir
+                    Pause
+                    Clear-Host
+                    Write-Log -Level Info "Fine operazione 6 - Query"
+                    menu
+                }                        
             }
             7
             {
-            Write-Log -Level Warn "Cancellato disco di rete J"
-            net use J: /delete
-            Clear-Host
-            menu
+                Write-Log -Level Warn "Cancellato disco di rete J"
+                net use J: /delete
+                Clear-Host
+                menu
             }
-            <# 8
-            {
-                [int] $steps = 7
-                Write-Log -Level Info "Inizio operazione 7 - SCRIPT COMPLETO[PAUSE]"
-                Write-Output "La procedura è composta di $steps passaggi"
-                Write-Output "ATTENDERE IL COMPLETAMENTO"
-                Write-Output ""
-                pause
-                Clear-Host
-                
-                Write-Host "Numero casse da aggiornare: $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
-                pause
-                Clear-Host
-                #endregion
-                $currPos=1
-                #scorre tutte le casse e crea l'unita virtuale J che mappa la cartella c:\orange\ della cassa
-                foreach ($ip in $RecordPOS) 
-                {    
-                    $currStep=1
-                    Write-Host "Aggiornamento cassa $currPos di $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
-                    #region CASSE SET PARAMS
-                    #path remoto alla cassa
-                    $uncPathPOS = "\\" + $ip.ipaddress + "\c$"
-                    $ipPOS="\\"+$ip.ipaddress
-                    #path remoto alla cartella Orange
-                    $uncPathOrange = "J:\Orange"
-
-                    if(-not(TestConnection($ip.ipaddress))){
-                        Clear-Host
-                        Write-Host "Cassa non ragiungibile, verrà saltata" -ForegroundColor White -BackgroundColor Red
-                        Write-Log -Level Error ("Cassa "+$ip.ipaddress+" non ragiungibile, verrà saltata")
-                        Pause
-                        Clear-Host
-                        continue
-                    }
-
-                    try{
-
-                        New-PSDrive -name J -Root $uncPathPOS -Credential $cred -PSProvider filesystem -Persist
-                        Write-Host ("Creato collegamento con la cassa: "+$ip.description) -ForegroundColor Black -BackgroundColor Green
-                    }
-                    catch{
-
-                        Clear-Host
-                        Write-Host "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)" -ForegroundColor Red
-                        pause
-                        break
-                        Clear-Host
-                    }
-                    pause
-                    Clear-Host
-                    #endregion
-
-                    #region CASSE PASSO 1 - BACKUP ClientPOS
-                    #path remoto alla cartella ClientPOS
-                    $uncPathClientPos = "J:\Orange\ClientPOS"
-                    #percorso completo alla cartella di backup, composta da "bck_ClientPOS_yyyyMMdd"
-                    $backupFolderClientPOS ="J:\Orange\bck_ClientPOS_"+$today
-
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "BACKUP CLIENTPOS" -ForegroundColor White -BackgroundColor DarkRed
-                    backup $uncPathClientPOS $backupFolderClientPOS
-                    pause
-                    $currStep++
-                    Clear-Host
-                    #endregion
-
-
-                    #region CASSE PASSO 1 - BACKUP AeviPay
-                    #path remoto alla cartella AeviPay
-                    $uncPathAevi = "J:\AeviPay"
-                    #percorso completo alla cartella di backup, composta da "bck_AeviPay_yyyyMMdd"
-                    $backupFolderAevi ="J:\bck_AeviPay_"+$today
-
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "BACKUP AEVIPAY" -ForegroundColor White -BackgroundColor DarkRed
-                    backup $uncPathAevi $backupFolderAevi
-                    pause
-                    $currStep++
-                    Clear-Host
-                    #endregion
-
-                    #region CASSE PASSO 2 - UPDATE ClientPOS
-                    #esegue le operazioni di aggiornamento cassa
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "UPDATE CLIENTPOS" -ForegroundColor White -BackgroundColor DarkRed
-                    $sourceClientPOS= "$currentDir\Orange"
-
-                    update $sourceClientPOS $uncPathOrange
-                    pause
-                    $currStep++
-                    Clear-Host
-                    #endregion
-
-                    #region CASSE PASSO 2 - UPDATE AeviPay
-                    #esegue le operazioni di aggiornamento cassa
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "UPDATE AEVIPAY" -ForegroundColor White -BackgroundColor DarkRed
-                    $sourceAevi= "$currentDir\Aevipay"
-                    update $sourceAevi $uncPathAevi
-                    pause
-                    $currStep++
-                    Clear-Host
-                    #endregion
-
-                    #region CASSE PASSO 3 - MODIFICA CLIENTCONFIGURATION
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "Aggiornamento clientConfiguration.config"  -ForegroundColor White -BackgroundColor Blue
-                    Write-Output ""
-                    try{
-                        #percorso completo al file clientConfiguration
-                        $xml = [xml](Get-Content $uncPathClientPos"\clientConfiguration.config")
-
-                        $Dictionary = @{
-                            WorkstationCode    = $ip[2]
-                            WorkstationName     = 'Client '+$ip[2]
-                            StoreCode = $StoreCod
-                            ServerAddress = ( Get-WmiObject Win32_NetworkAdapterConfiguration -ComputerName $env:COMPUTERNAME | Where-Object { $_.IPaddress -ne $null } ).IPAddress[0]
-                        }
-
-                        foreach($key in $Dictionary.Keys)
-                        {
-                            Write-Host "Ricerca della chiave: '$key' in XML" -ForegroundColor Gray
-                            # Use XPath to find the appropriate node
-                            if(($addKey = $xml.SelectSingleNode("//clientConfiguration/add[@key = '$key']")))
-                            {
-                                Write-Host "Trovata chiave: '$key' nel XML, aggiornamento del valore a: $($Dictionary[$key])" -ForegroundColor Yellow
-                                $addKey.SetAttribute('value',$Dictionary[$key])
-                            }
-                        }
-    
-                    }
-                    catch{
-                        Clear-Host
-                        Write-Host "Impossibile modificare il file clientConfiguration..." -ForegroundColor Red
-
-                        pause
-                        break
-                        Clear-Host     
-                    }
-                    finally{
-                        
-                        $xml.Save($uncPathClientPos+"\clientConfiguration.config")
-                        Write-Host "File clientConfiguration.config salvato..." -ForegroundColor Green
-                        Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green
-                        $currStep++
-                    }
-                    pause
-                    #endregion
-
-                    #region CASSE PASSO 3 - MODIFICA ENGINE
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "Aggiornamento engine.config"  -ForegroundColor White -BackgroundColor Blue
-                    Write-Output ""
-                    try{
-                        #percorso completo al file engine
-                        $engine = [xml](Get-Content $uncPathClientPos"\engine.config")
-                        $CorpCode='009900'+$StoreCod
-                        $TillNum=$StoreCod+$ip[2]
-
-                        $ns = New-Object System.Xml.XmlNamespaceManager($engine.NameTable)
-                        $ns.AddNamespace("ns", $engine.DocumentElement.NamespaceURI)
-                        $object = $engine.SelectSingleNode("//ns:object[@name='TM.BuonoChiaro']", $ns)
-                        foreach($name in $object.property){
-                                if($name.name -eq "CorporateCode"){
-                                    $name.SetAttribute('value',$CorpCode)
-                                    Write-Host "Aggiornato CorporateCode: "$CorpCode -ForegroundColor Yellow
-                                }
-                                if($name.name -eq "TillNumber"){
-                                    $name.SetAttribute('value',$TillNum)
-                                    Write-Host "Aggiornato TillNumber: "$TillNum -ForegroundColor Yellow
-                                }
-                        }
-
-                    }
-                    catch{
-                        Clear-Host
-                        Write-Host "Impossibile modificare il file engine..." -ForegroundColor Red
-
-                        pause
-                        break
-                        Clear-Host
-                    }
-                    finally{
-                        
-                        $engine.Save($uncPathClientPos+"\engine.config")
-                        Write-Host "File engine.config salvato..." -ForegroundColor Green
-                        Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green
-                        $currStep++
-                    }
-                    pause
-                    Clear-Host
-                    #endregion
-
-                    #region CASSE PASSO 3 - MODIFICA XPaySocketTunnelService
-                        Write-Host "Aggiornamento XPaySocketTunnelService.exe.config"  -ForegroundColor White -BackgroundColor Blue
-                        Write-Output ""
-                        try{
-                            #percorso completo al file XPaySocketTunnelService
-                            $AeviPayXml = [xml](Get-Content $uncPathAevi"\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe.config")
-                            $last = [string]$ip.ipaddress
-                            $address="192.168.1"+$StoreCod.Substring(2)+".1"+$last.Substring($last.Length-2)
-                            Write-Host ("Indirizzo terminale Aevipay:"+ $address) -ForegroundColor White -BackgroundColor DarkRed
-
-                            $Channel = $AeviPayXml.configuration.XPaySocketTunnelConfig.Channels.Channel.Item(0)
-                            $Channel.SetAttribute('TargetIpAddr',$address)
-                        }
-                        catch{
-                            Clear-Host
-                            Write-Host "Impossibile modificare il file XPaySocketTunnelService.exe.config..." -ForegroundColor Red
-
-                            pause
-                            break
-                            Clear-Host     
-                        }
-                        finally{
-
-                            $AeviPayXml.Save($uncPathAevi+"\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe.config")
-    
-                            Write-Host "File XPaySocketTunnelService.exe.config salvato..." -ForegroundColor Green
-
-                            try{
-                                .\PsExec.exe $ipPOS -h -i -u $Global:pos_username -p $Global:pos_password -w "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\" cmd /c "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\InstallService.bat"
-                                .\PsExec.exe $ipPOS -h -i -u $Global:pos_username -p $Global:pos_password -w "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\" cmd /c "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\RestartService.bat"
-                                }
-
-                            catch{
-                            Write-Host "Errore nel installare il servizio. Eseguire installazione manualmente" -ForegroundColor Red
-                            }
-
-                            Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green
-                            $currStep++                        
-                        }
-                    pause
-                    Clear-Host
-                    #endregion
-
-                    #rimuove l'unita' J, per poter mappare la successiva cassa
-                    #remove-psdrive J non funziona sempre, sostituito con:
-                    Get-PSDrive J | Remove-PSDrive
-                    #net use J: /delete
-                }
-
-                Write-Host "FINITO" -ForegroundColor Black -BackgroundColor Green
-
-                #endregion
-
-                Write-Output ""
-                Write-Output ""
-                Write-Host "PROCEDURA DI AGGIORNAMENTO COMPLETATA" -ForegroundColor Green -BackgroundColor Black
-
-                pause
-                Clear-Host
-                Write-Log -Level Info "Fine operazione 7 - SCRIPT COMPLETO[PAUSE]"
-                menu
-                #endregion     
-            } #>
-           <#  9
-            {
-                [int] $steps = 7
-
-                Write-Output "La procedura è composta di $steps passaggi"
-                Write-Host "ATTENZIONE UNA VOLTA PARTITO NON SI FERMA" -ForegroundColor White -BackgroundColor DarkRed
-                Write-Host "Viene fermato automaticamente in caso di errori" -ForegroundColor Yellow
-                Write-Output "ATTENDERE IL COMPLETAMENTO"
-                Write-Output ""
-                pause
-                Clear-Host
-                
-
-                Write-Host "Numero casse da aggiornare: $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
-                Clear-Host
-                #endregion
-                $currPos=1
-                #scorre tutte le casse e crea l'unita virtuale J che mappa la cartella c:\orange\ della cassa
-                foreach ($ip in $RecordPOS) 
-                {    
-                    $currStep=1
-                    Write-Host "Aggiornamento cassa $currPos di $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
-                    #region CASSE SET PARAMS
-                    #path remoto alla cassa
-                    $uncPathPOS = "\\" + $ip.ipaddress + "\c$"
-                    $ipPOS="\\"+$ip.ipaddress
-                    #path remoto alla cartella Orange
-                    $uncPathOrange = "J:\Orange"
-
-                    if(-not(TestConnection($ip.ipaddress))){
-                        Clear-Host
-                        Write-Host "Cassa non ragiungibile, verrà saltata" -ForegroundColor White -BackgroundColor Red
-                        Write-Log -Level Error ("Cassa "+$ip.ipaddress+" non ragiungibile, verrà saltata")
-                        Pause
-                        Clear-Host
-                        continue
-                    }
-
-                    try{
-
-                        New-PSDrive -name J -Root $uncPathPOS -Credential $cred -PSProvider filesystem -Persist
-                        Write-Host ("Creato collegamento con la cassa: "+$ip.description) -ForegroundColor Black -BackgroundColor Green
-                    }
-                    catch{
-                        Clear-Host
-                        Write-Host "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)" -ForegroundColor Red
-
-                        pause
-                        break
-                        Clear-Host
-                    }
-                    Clear-Host
-                    #endregion
-
-                    #region CASSE PASSO 1 - BACKUP ClientPOS
-                    #path remoto alla cartella ClientPOS
-                    $uncPathClientPos = "J:\Orange\ClientPOS"
-                    #percorso completo alla cartella di backup, composta da "bck_ClientPOS_yyyyMMdd"
-                    $backupFolderClientPOS ="J:\Orange\bck_ClientPOS_"+$today
-
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "BACKUP CLIENTPOS" -ForegroundColor White -BackgroundColor DarkRed
-                    backup $uncPathClientPOS $backupFolderClientPOS
-                    $currStep++
-                    Clear-Host
-                    #endregion
-
-
-                    #region CASSE PASSO 1 - BACKUP AeviPay
-                    #path remoto alla cartella AeviPay
-                    $uncPathAevi = "J:\AeviPay"
-                    #percorso completo alla cartella di backup, composta da "bck_AeviPay_yyyyMMdd"
-                    $backupFolderAevi ="J:\bck_AeviPay_"+$today
-
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "BACKUP AEVIPAY" -ForegroundColor White -BackgroundColor DarkRed
-                    backup $uncPathAevi $backupFolderAevi
-                    $currStep++
-                    Clear-Host
-                    #endregion
-
-                    #region CASSE PASSO 2 - UPDATE ClientPOS
-                    #esegue le operazioni di aggiornamento cassa
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "UPDATE CLIENTPOS" -ForegroundColor White -BackgroundColor DarkRed
-                    $sourceClientPOS= "$currentDir\Orange"
-                    update $sourceClientPOS $uncPathOrange
-                    $currStep++
-                    Clear-Host
-                    #endregion
-
-                    #region CASSE PASSO 2 - UPDATE AeviPay
-                    #esegue le operazioni di aggiornamento cassa
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "UPDATE AEVIPAY" -ForegroundColor White -BackgroundColor DarkRed
-                    $sourceAevi= "$currentDir\Aevipay"
-                    update $sourceAevi $uncPathAevi
-                    $currStep++
-                    Clear-Host
-                    #endregion
-
-                    #region CASSE PASSO 3 - MODIFICA CLIENTCONFIGURATION
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "Aggiornamento clientConfiguration.config"  -ForegroundColor White -BackgroundColor Blue
-                    Write-Output ""
-                    try{
-                        #percorso completo al file clientConfiguration
-                        $xml = [xml](Get-Content $uncPathClientPos"\clientConfiguration.config")
-
-                        $Dictionary = @{
-                            WorkstationCode    = $ip.code
-                            WorkstationName     = 'Client '+$ip.code
-                            StoreCode = $StoreCod
-                            ServerAddress  = ( Get-WmiObject Win32_NetworkAdapterConfiguration -ComputerName $env:COMPUTERNAME | Where-Object { $_.IPaddress -ne $null } ).IPAddress[0]
-                        }
-
-                        foreach($key in $Dictionary.Keys)
-                        {
-                            Write-Host "Ricerca della chiave: '$key' in XML" -ForegroundColor Gray
-                            # Use XPath to find the appropriate node
-                            if(($addKey = $xml.SelectSingleNode("//clientConfiguration/add[@key = '$key']")))
-                            {
-                                Write-Host "Trovata chiave: '$key' nel XML, aggiornamento del valore a: $($Dictionary[$key])" -ForegroundColor Yellow
-                                $addKey.SetAttribute('value',$Dictionary[$key])
-                            }
-                        }
-    
-                    }
-                    catch{
-                        Clear-Host
-                        Write-Host "Impossibile modificare il file clientConfiguration..." -ForegroundColor Red
-
-                        pause
-                        break
-                        Clear-Host     
-                    }
-                    finally{
-                        
-                        $xml.Save($uncPathClientPos+"\clientConfiguration.config")
-                        Write-Host "File clientConfiguration.config salvato..." -ForegroundColor Green
-                        Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green
-                        $currStep++
-                    }
-                    #endregion
-
-                    #region CASSE PASSO 3 - MODIFICA ENGINE
-                    Write-Output "$TAB_CHR Passo $currStep di $steps"
-                    Write-Host "Aggiornamento engine.config"  -ForegroundColor White -BackgroundColor Blue
-                    Write-Output ""
-                    try{
-                        #percorso completo al file engine
-                        $engine = [xml](Get-Content $uncPathClientPos"\engine.config")
-                        $CorpCode=$Global:CorporateCodePrefix+$StoreCod
-                        $TillNum=$StoreCod+$ip.code
-
-                        $ns = New-Object System.Xml.XmlNamespaceManager($engine.NameTable)
-                        $ns.AddNamespace("ns", $engine.DocumentElement.NamespaceURI)
-                        $object = $engine.SelectSingleNode("//ns:object[@name='TM.BuonoChiaro']", $ns)
-                        foreach($name in $object.property){
-                                if($name.name -eq "CorporateCode"){
-                                    $name.SetAttribute('value',$CorpCode)
-                                    Write-Host "Aggiornato CorporateCode: "$CorpCode -ForegroundColor Yellow
-                                }
-                                if($name.name -eq "TillNumber"){
-                                    $name.SetAttribute('value',$TillNum)
-                                    Write-Host "Aggiornato TillNumber: "$TillNum -ForegroundColor Yellow
-                                }
-                        }
-
-                    }
-                    catch{
-                        Clear-Host
-                        Write-Host "Impossibile modificare il file engine..." -ForegroundColor Red
-
-                        pause
-                        break
-                        Clear-Host
-                    }
-                    finally{
-                        
-                        $engine.Save($uncPathClientPos+"\engine.config")
-                        Write-Host "File engine.config salvato..." -ForegroundColor Green
-                        Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green
-                        $currStep++
-                    }
-                    Clear-Host
-                    #endregion
-
-                    #region CASSE PASSO 3 - MODIFICA XPaySocketTunnelService
-                        Write-Host "Aggiornamento XPaySocketTunnelService.exe.config"  -ForegroundColor White -BackgroundColor Blue
-                        Write-Output ""
-                        try{
-                            #percorso completo al file XPaySocketTunnelService
-                            $AeviPayXml = [xml](Get-Content $uncPathAevi"\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe.config")
-                            $last = [string]$ip.ipaddress
-                            $address="192.168.1"+$StoreCod.Substring(2)+".1"+$last.Substring($last.Length-2)
-                            Write-Host ("Indirizzo terminale Aevipay:"+ $address) -ForegroundColor White -BackgroundColor DarkRed
-
-                            $Channel = $AeviPayXml.configuration.XPaySocketTunnelConfig.Channels.Channel.Item(0)
-                            $Channel.SetAttribute('TargetIpAddr',$address)
-                        }
-                        catch{
-                            Clear-Host
-                            Write-Host "Impossibile modificare il file XPaySocketTunnelService.exe.config..." -ForegroundColor Red
-
-                            pause
-                            break
-                            Clear-Host     
-                        }
-                        finally{
-
-                            $AeviPayXml.Save($uncPathAevi+"\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe.config")
-    
-                            Write-Host "File XPaySocketTunnelService.exe.config salvato..." -ForegroundColor Green
-
-                            try{
-                                .\PsExec.exe $ipPOS -h -i -d -u $Global:pos_username -p $Global:pos_password -w "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\" cmd /c "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\InstallService.bat"
-                                .\PsExec.exe $ipPOS -h -i -d -u $Global:pos_username -p $Global:pos_password -w "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\" cmd /c "C:\aevipay\X.Pay_Service_LAN\Service_1.0.4.12\RestartService.bat"
-                                }
-
-                            catch{
-                            Write-Host "Errore nel installare il servizio. Eseguire installazione manualmente" -ForegroundColor Red
-                            }
-
-                            Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green
-                            $currStep++                        
-                        }
-                    Clear-Host
-                    #endregion
-
-                    #rimuove l'unita' J, per poter mappare la successiva cassa
-                    #remove-psdrive J non funziona sempre, sostituito con:
-                    Get-PSDrive J | Remove-PSDrive
-                    #net use J: /delete
-                }
-
-                Write-Host "FINITO" -ForegroundColor Black -BackgroundColor Green
-
-                #endregion
-
-                Write-Output ""
-                Write-Output ""
-                Write-Host "PROCEDURA DI AGGIORNAMENTO COMPLETATA" -ForegroundColor Green -BackgroundColor Black
-
-                pause
-                Clear-Host
-                menu
-                #endregion     
-            } #>
             10 
             {
-                #region Restore Backup
+                #Restore Backup
 
-                    Write-Host "Restore BACKUP" -ForegroundColor Black -BackgroundColor Yellow
-                    #indirizzo POS
-                    $ipPOS = Read-Host 'Inserire indirizzo ip postazione'
-                    Write-Host "Ripristino BACKUP" -ForegroundColor Black -BackgroundColor Yellow
-                    restore($ipPOS)
-                    pause
-                    Clear-Host
-                    menu
-
-                 #endregion
-
+                Write-Host "Restore BACKUP" -ForegroundColor Black -BackgroundColor Yellow
+                #indirizzo POS
+                $ipPOS = Read-Host 'Inserire indirizzo ip postazione'
+                Write-Host "Ripristino BACKUP" -ForegroundColor Black -BackgroundColor Yellow
+                restore($ipPOS)
+                Pause
+                Clear-Host
+                menu
             }
             11
             {
                 Write-Host "Numero casse selezionate: $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
-                pause
+                Pause
                 Clear-Host
-                #endregion
                 $currPos=1
                 foreach ($ip in $RecordPOS) 
                 {
@@ -1363,51 +820,37 @@ function menu(){
                         Clear-Host
                         Write-Host "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)" -ForegroundColor Red
                         Write-Log -Level Error "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)"
-                        pause
+                        Pause
                         Clear-Host
                         break
                     }
-                    pause
+                    Pause
 
-
-                    
-                 #region install OPOS RTONE
-                    Write-Host "Installazione driver RT-ONE e RT-TOOLS" -ForegroundColor Black -BackgroundColor Yellow
-                    Write-Log -Level Info "Installazione driver RT-ONE e RT-TOOLS"
-                    Write-Log -Level Info ("CASSA: "+$ip.ipaddress)           
-                    $ipPOS ="\\"+$ip.ipaddress
-                    $sourceDriver= "$currentDir\Driver"
-                    $dest="J:\Temp\OPOS"
-                    update $sourceDriver $dest
-
-                    .\PsExec.exe $ipPOS -i -s -d -u $Global:pos_username -p $Global:pos_password cmd /c "C:\Temp\OPOS\OPOS\Opos_RTOne_1.3.19_setup.exe /silent"
-
-                    Start-Sleep -Seconds 5
-
-                    .\PsExec.exe $ipPOS -i -s -d -u $Global:pos_username -p $Global:pos_password cmd /c "taskkill /IM cmd.exe /f "
-
-                    .\PsExec.exe $ipPOS -i -s -d -u $Global:pos_username -p $Global:pos_password cmd /c "taskkill /IM OPOSConfigurator_x86.exe /f "
-                    Write-Log -Level Info "Installato driver"
-
-                    .\PsExec.exe $ipPOS -i -s -u $Global:pos_username -p $Global:pos_password regedit.exe /s "C:\Temp\OPOS\OPOS\RTONE.reg"
-                    Write-Log -Level Info "Applicato chiavi di registro"
-
-                    .\PsExec.exe $ipPOS -i -s -d -u $Global:pos_username -p $Global:pos_password cmd /c "C:\Temp\OPOS\OPOS\Register.bat"
-					
-                    .\PsExec.exe $ipPOS -i -s -d -u $Global:pos_username -p $Global:pos_password cmd /c "C:\Temp\OPOS\RT-Tools.msi /quiet"
-                    Write-Log -Level Info "Installato RT-TOOLS"
-
-                    Write-Host "FINITO" -ForegroundColor Black -BackgroundColor Green
-                 #endregion
+                   #install OPOS RTONE
+                   Write-Host "Installazione driver RT-ONE e RT-TOOLS" -ForegroundColor Black -BackgroundColor Yellow
+                   Write-Log -Level Info "Installazione driver RT-ONE e RT-TOOLS"
+                   Write-Log -Level Info ("CASSA: "+$ip.ipaddress)           
+                   $ipPOS ="\\"+$ip.ipaddress
+                   $sourceDriver= "$currentDir\Driver"
+                   $dest="J:\Temp\OPOS"
+                   update $sourceDriver $dest   
+                   .\PsExec.exe $ipPOS -i -s -d -u $Global:pos_username -p $Global:pos_password cmd /c "C:\Temp\OPOS\OPOS\Opos_RTOne_1.3.19_setup.exe /silent"   
+                   Start-Sleep -Seconds 5   
+                   .\PsExec.exe $ipPOS -i -s -d -u $Global:pos_username -p $Global:pos_password cmd /c "taskkill /IM cmd.exe /f "   
+                   .\PsExec.exe $ipPOS -i -s -d -u $Global:pos_username -p $Global:pos_password cmd /c "taskkill /IM OPOSConfigurator_x86.exe /f "
+                   Write-Log -Level Info "Installato driver"   
+                   .\PsExec.exe $ipPOS -i -s -u $Global:pos_username -p $Global:pos_password regedit.exe /s "C:\Temp\OPOS\OPOS\RTONE.reg"
+                   Write-Log -Level Info "Applicato chiavi di registro"   
+                   .\PsExec.exe $ipPOS -i -s -d -u $Global:pos_username -p $Global:pos_password cmd /c "C:\Temp\OPOS\OPOS\Register.bat"
+				   
+                   .\PsExec.exe $ipPOS -i -s -d -u $Global:pos_username -p $Global:pos_password cmd /c "C:\Temp\OPOS\RT-Tools.msi /quiet"
+                   Write-Log -Level Info "Installato RT-TOOLS"   
+                   Write-Host "FINITO" -ForegroundColor Black -BackgroundColor Green
 
                     $currPos++
                     #rimuove l'unita' J, per poter mappare la successiva cassa
-                    #remove-psdrive J non funziona sempre, sostituito con:
                     Get-PSDrive J | Remove-PSDrive
-                    #net use J: /delete
                     Clear-Host
-
-                #endregion
                 }
                 Clear-Host
                 menu
@@ -1416,16 +859,14 @@ function menu(){
             {
                 Write-Log -Level Info "Inizio opzione 12 - Cambio MF/RT"
                 Write-Host "Numero casse da aggiornare: $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
-                pause
+                Pause
                 Clear-Host
-                #endregion
                 $currPos=1
                 foreach ($ip in $RecordPOS) 
                 {
                     Write-Host "Aggiornamento cassa $currPos di $totalPOS" -ForegroundColor Black -BackgroundColor Yellow
                     Write-Log -Level Info ("Aggiornamento cassa $currPos di $totalPOS")
                     Write-Log -Level Info ("CASSA: "+$ip.ipaddress)
-                    #region CASSE SET PARAMS
                     #path remoto alla cassa
                     $uncPathPOS = "\\" + $ip.ipaddress + "\c$"
                     #path remoto alla cartella Orange
@@ -1451,23 +892,23 @@ function menu(){
                         Clear-Host
                         Write-Host "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)" -ForegroundColor Red
                         Write-Log -Level Error "Impossibile creare il disco di rete J, controllare i parametri e che il disco non sia gia' presente (scollegarlo nel caso)"
-                        pause
+                        Pause
                         Clear-Host
                         break
                     }
-                    pause
+                    Pause
 
-                 #region CASSE - MODIFICA devices
+                    #MODIFICA devices
                     Write-Host "Aggiornamento devices.config"  -ForegroundColor White -BackgroundColor Blue
                     Write-Log -Level Info "Aggiornamento devices.config"
                     Write-Output ""
                     try{
-                        #percorso completo al file engine
-                        [xml]$engine = [xml](Get-Content $uncPathClientPos"\devices.config")
+                        #percorso completo al file device
+                        [xml]$device = [xml](Get-Content $uncPathClientPos"\devices.config")
 
-                        $ns = New-Object System.Xml.XmlNamespaceManager($engine.NameTable)
-                        $ns.AddNamespace("ns", $engine.DocumentElement.NamespaceURI)
-                        $object = $engine.SelectSingleNode("//ns:object[@name='FiscalPrinterDevice']", $ns)
+                        $ns = New-Object System.Xml.XmlNamespaceManager($device.NameTable)
+                        $ns.AddNamespace("ns", $device.DocumentElement.NamespaceURI)
+                        $object = $device.SelectSingleNode("//ns:object[@name='FiscalPrinterDevice']", $ns)
                         $object.InsertAfter()
                         foreach($name in $object.property){
                                 if($name.name -eq "SendVat"){
@@ -1491,29 +932,24 @@ function menu(){
                         }
                     }
                     catch{
-                        #Clear-Host
                         Write-Host "Impossibile modificare il file devices..." -ForegroundColor Red
                         Write-Log -Level Error "Impossibile modificare il file devices..."
-                        pause
+                        Pause
                         break
                         Clear-Host
                     }
                     finally{
                     
-                        $engine.Save($uncPathClientPos+"\devices.config")
+                        $device.Save($uncPathClientPos+"\devices.config")
                         Write-Host "File devices.config salvato..." -ForegroundColor Green
                         Write-Log -Level Info "File devices.config salvato"
                         Write-Host "$TAB_CHR FINITO" -ForegroundColor Black -BackgroundColor Green                    
                     }
-                    pause
+                    Pause
                     Clear-Host
                     $currPos++
                     #rimuove l'unita' J, per poter mappare la successiva cassa
-                    #remove-psdrive J non funziona sempre, sostituito con:
                     Get-PSDrive J | Remove-PSDrive
-                    #net use J: /delete
-
-                    #endregion
                 }
                 Write-Log -Level Info "Fine opzione 12 - Cambio MF/RT"
                 menu
