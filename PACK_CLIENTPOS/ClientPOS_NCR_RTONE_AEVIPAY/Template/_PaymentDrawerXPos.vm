@@ -1,0 +1,525 @@
+<report>
+  <row align="center" style="normal" size="doubleheight"><text style="normal" size="normal">LETTURA Cassetto semplificato</text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Operatore      : $userDrawer.UserCode.PadRight(4) <![CDATA[$turn.Turn.UserDescription.PadLeft(18)]]></text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Data Apertura  : $userDrawer.OpenDate.ToString().PadLeft(22)</text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Data Operazione: $data.ToString().PadLeft(22)</text></row>
+
+  #foreach( $currency in $userDrawer.CurrencyList)
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">_______________________________________</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"></text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Codice Valuta      : $currency.CurrencyCode.PadLeft(18)</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Descrizione Valuta : $currency.Description.PadLeft(18)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"></text>
+  </row>
+
+  $currency.PaymentList.Sort()
+
+  #set($TypeA1 = "")
+  #set($OpenA1 = 0)
+  #set($InNetA1 = 0)
+  #set($OutNetA1 = 0)
+  #set($InCashA1 = 0)
+  #set($CloseA1 = 0)
+
+  #set($TypeA2 = "")
+  #set($OpenA2 = 0)
+  #set($InNetA2 = 0)
+  #set($OutNetA2 = 0)
+  #set($InCashA2 = 0)
+  #set($CloseA2 = 0)
+
+  #set($TypeA3 = "")
+  #set($OpenA3 = 0)
+  #set($InNetA3 = 0)
+  #set($OutNetA3 = 0)
+  #set($InCashA3 = 0)
+  #set($CloseA3 = 0)
+
+  #set($TypeA4 = "")
+  #set($OpenA4 = 0)
+  #set($InNetA4 = 0)
+  #set($OutNetA4 = 0)
+  #set($InCashA4 = 0)
+  #set($CloseA4 = 0)
+
+  #set($TypeA5 = "")
+  #set($OpenA5 = 0)
+  #set($InNetA5 = 0)
+  #set($OutNetA5 = 0)
+  #set($InCashA5 = 0)
+  #set($CloseA5 = 0)
+
+  #set($TypeA6 = "")
+  #set($OpenA6 = 0)
+  #set($InNetA6 = 0)
+  #set($OutNetA6 = 0)
+  #set($InCashA6 = 0)
+  #set($CloseA6 = 0)
+
+  #set($TypeA7 = "")
+  #set($OpenA7 = 0)
+  #set($InNetA7 = 0)
+  #set($OutNetA7 = 0)
+  #set($InCashA7 = 0)
+  #set($CloseA7 = 0)
+
+  #set($TypeA8 = "")
+  #set($OpenA8 = 0)
+  #set($InNetA8 = 0)
+  #set($OutNetA8 = 0)
+  #set($InCashA8 = 0)
+  #set($CloseA8 = 0)
+
+  #set($TypeA9 = "")
+  #set($OpenA9 = 0)
+  #set($InNetA9 = 0)
+  #set($OutNetA9 = 0)
+  #set($InCashA9 = 0)
+  #set($CloseA9 = 0)
+
+  #set($TypeA10 = "")
+  #set($OpenA10 = 0)
+  #set($InNetA10 = 0)
+  #set($OutNetA10 = 0)
+  #set($InCashA10 = 0)
+  #set($CloseA10 = 0)
+
+  #set($OpenAGC = 0)
+  #set($InNetAGC = 0)
+  #set($OutNetAGC = 0)
+  #set($InCashAGC = 0)
+  #set($CloseAGC = 0)
+  
+  #foreach( $payment in $currency.PaymentList)
+    #if ($payment.Type == "1")
+      #set($TypeA1 = $payment.TypeDescription)
+      #set($OpenA1 = $OpenA1 + $payment.OpenAmount)
+      #set($InNetA1 = $InNetA1 + $payment.InNetAmount)
+      #set($OutNetA1 = $OutNetA1 + $payment.OutNetAmount)
+      #set($InCashA1 = $InCashA1 + $payment.InCashAmount)
+      #set($CloseA1 = $CloseA1 + $payment.CloseAmount)
+    #elseif($payment.Type == "2")
+      #set($TypeA2 = $payment.TypeDescription)
+      #set($OpenA2 = $OpenA2 + $payment.OpenAmount)
+      #set($InNetA2 = $InNetA2 + $payment.InNetAmount)
+      #set($OutNetA2 = $OutNetA2 + $payment.OutNetAmount)
+      #set($InCashA2 = $InCashA2 + $payment.InCashAmount)
+      #set($CloseA2 = $CloseA2 + $payment.CloseAmount)
+    #elseif($payment.Type == "3")
+      #set($TypeA3 = $payment.TypeDescription)
+      #set($OpenA3 = $OpenA3 + $payment.OpenAmount)
+      #set($InNetA3 = $InNetA3 + $payment.InNetAmount)
+      #set($OutNetA3 = $OutNetA3 + $payment.OutNetAmount)
+      #set($InCashA3 = $InCashA3 + $payment.InCashAmount)
+      #set($CloseA3 = $CloseA3 + $payment.CloseAmount)
+    #elseif($payment.Type == "4")
+      #set($TypeA4 = $payment.TypeDescription)
+      #set($OpenA4 = $OpenA4 + $payment.OpenAmount)
+      #set($InNetA4 = $InNetA4 + $payment.InNetAmount)
+      #set($OutNetA4 = $OutNetA4 + $payment.OutNetAmount)
+      #set($InCashA4 = $InCashA4 + $payment.InCashAmount)
+      #set($CloseA4 = $CloseA4 + $payment.CloseAmount)
+    #elseif($payment.Type == "5")
+      #set($TypeA5 = $payment.TypeDescription)
+      #set($OpenA5 = $OpenA5 + $payment.OpenAmount)
+      #set($InNetA5 = $InNetA5 + $payment.InNetAmount)
+      #set($OutNetA5 = $OutNetA5 + $payment.OutNetAmount)
+      #set($InCashA5 = $InCashA5 + $payment.InCashAmount)
+      #set($CloseA5 = $CloseA5 + $payment.CloseAmount)
+    #elseif($payment.Type == "6")
+      #set($TypeA6 = $payment.TypeDescription)
+      #set($OpenA6 = $OpenA6 + $payment.OpenAmount)
+      #set($InNetA6 = $InNetA6 + $payment.InNetAmount)
+      #set($OutNetA6 = $OutNetA6 + $payment.OutNetAmount)
+      #set($InCashA6 = $InCashA6 + $payment.InCashAmount)
+      #set($CloseA6 = $CloseA6 + $payment.CloseAmount)
+    #elseif($payment.Type == "7")
+      #set($TypeA7 = $payment.TypeDescription)
+      #set($OpenA7 = $OpenA7 + $payment.OpenAmount)
+      #set($InNetA7 = $InNetA7 + $payment.InNetAmount)
+      #set($OutNetA7 = $OutNetA7 + $payment.OutNetAmount)
+      #set($InCashA7 = $InCashA7 + $payment.InCashAmount)
+      #set($CloseA7 = $CloseA7 + $payment.CloseAmount)
+    #elseif($payment.Type == "8")
+      #set($TypeA8 = $payment.TypeDescription)
+      #set($OpenA8 = $OpenA8 + $payment.OpenAmount)
+      #set($InNetA8 = $InNetA8 + $payment.InNetAmount)
+      #set($OutNetA8 = $OutNetA8 + $payment.OutNetAmount)
+      #set($InCashA8 = $InCashA8 + $payment.InCashAmount)
+      #set($CloseA8 = $CloseA8 + $payment.CloseAmount)
+    #elseif($payment.Type == "9")
+      #set($TypeA9 = $payment.TypeDescription)
+      #set($OpenA9 = $OpenA9 + $payment.OpenAmount)
+      #set($InNetA9 = $InNetA9 + $payment.InNetAmount)
+      #set($OutNetA9 = $OutNetA9 + $payment.OutNetAmount)
+      #set($InCashA9 = $InCashA9 + $payment.InCashAmount)
+      #set($CloseA9 = $CloseA9 + $payment.CloseAmount)
+    #elseif($payment.Type == "10")
+      #set($TypeA10 = $payment.TypeDescription)
+      #set($OpenA10 = $OpenA10 + $payment.OpenAmount)
+      #set($InNetA10 = $InNetA10 + $payment.InNetAmount)
+      #set($OutNetA10 = $OutNetA10 + $payment.OutNetAmount)
+      #set($InCashA10 = $InCashA10 + $payment.InCashAmount)
+      #set($CloseA10 = $CloseA10 + $payment.CloseAmount)
+    #end
+    #set($OpenAGC = $OpenAGC + $payment.OpenAmount)
+    #set($InNetAGC = $InNetAGC + $payment.InNetAmount)
+    #set($OutNetAGC = $OutNetAGC + $payment.OutNetAmount)
+    #set($InCashAGC = $InCashAGC + $payment.InCashAmount)
+    #set($CloseAGC = $CloseAGC + $payment.CloseAmount)
+  #end
+
+  #if ($TypeA1 != "")
+    #set($InNet = $InNetA1 - $InCashA1)
+    #set($Vers = $OpenA1 + $InCashA1)
+    #set($Diff = $Vers + $InNet - $OutNetA1 - $CloseA1)
+    <row align="left" style="italic" size="normal">
+      <text style="normal" size="normal">$TypeA1</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Fondo cassa   : $OpenA1.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Versamenti    : $Vers.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Importo       : $InNet.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Prelievi      : $OutNetA1.ToString('0.00').PadLeft(21) -</text>
+    </row>    
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Dichiarazione : $CloseA1.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Squadratura   : $Diff.ToString('0.00').PadLeft(21)</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal"></text>
+    </row>
+  #end
+  #if ($TypeA2 != "")
+    #set($InNet = $InNetA2 - $InCashA2)
+    #set($Vers = $OpenA2 + $InCashA2)
+    #set($Diff = $Vers + $InNet - $OutNetA2 - $CloseA2)
+    <row align="left" style="italic" size="normal">
+      <text style="normal" size="normal">$TypeA2</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Fondo cassa   : $OpenA2.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Versamenti    : $Vers.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Importo       : $InNet.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Prelievi      : $OutNetA2.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Dichiarazione : $CloseA2.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Squadratura   : $Diff.ToString('0.00').PadLeft(21)</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal"></text>
+    </row>
+  #end
+  #if ($TypeA3 != "")
+    #set($InNet = $InNetA3 - $InCashA3)
+    #set($Vers = $OpenA3 + $InCashA3)
+    #set($Diff = $Vers + $InNet - $OutNetA3 - $CloseA3)
+    <row align="left" style="italic" size="normal">
+      <text style="normal" size="normal">$TypeA3</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Fondo cassa   : $OpenA3.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Versamenti    : $Vers.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Importo       : $InNet.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Prelievi      : $OutNetA3.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Dichiarazione : $CloseA3.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Squadratura   : $Diff.ToString('0.00').PadLeft(21)</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal"></text>
+    </row>
+  #end
+  #if ($TypeA4 != "")
+    #set($InNet = $InNetA4 - $InCashA4)
+    #set($Vers = $OpenA4 + $InCashA4)
+    #set($Diff = $Vers + $InNet - $OutNetA4 - $CloseA4)
+    <row align="left" style="italic" size="normal">
+      <text style="normal" size="normal">$TypeA4</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Fondo cassa   : $OpenA4.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Versamenti    : $Vers.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Importo       : $InNet.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Prelievi      : $OutNetA4.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Dichiarazione : $CloseA4.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Squadratura   : $Diff.ToString('0.00').PadLeft(21)</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal"></text>
+    </row>
+  #end
+  #if ($TypeA5 != "")
+    #set($InNet = $InNetA5 - $InCashA5)
+    #set($Vers = $OpenA5 + $InCashA5)
+    #set($Diff = $Vers + $InNet - $OutNetA5 - $CloseA5)
+    <row align="left" style="italic" size="normal">
+      <text style="normal" size="normal">$TypeA5</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Fondo cassa   : $OpenA5.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Versamenti    : $Vers.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Importo       : $InNet.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Prelievi      : $OutNetA5.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Dichiarazione : $CloseA5.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Squadratura   : $Diff.ToString('0.00').PadLeft(21)</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal"></text>
+    </row>
+  #end
+  #if ($TypeA6 != "")
+    #set($InNet = $InNetA6 - $InCashA6)
+    #set($Vers = $OpenA6 + $InCashA6)
+    #set($Diff = $Vers + $InNet - $OutNetA6 - $CloseA6)
+    <row align="left" style="italic" size="normal">
+      <text style="normal" size="normal">$TypeA6</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Fondo cassa   : $OpenA6.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Versamenti    : $Vers.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Importo       : $InNet.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Prelievi      : $OutNetA6.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Dichiarazione : $CloseA6.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Squadratura   : $Diff.ToString('0.00').PadLeft(21)</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal"></text>
+    </row>
+  #end
+  #if ($TypeA7 != "")
+    #set($InNet = $InNetA7 - $InCashA7)
+    #set($Vers = $OpenA7 + $InCashA7)
+    #set($Diff = $Vers + $InNet - $OutNetA7 - $CloseA7)
+    <row align="left" style="italic" size="normal">
+      <text style="normal" size="normal">$TypeA7</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Fondo cassa   : $OpenA7.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Versamenti    : $Vers.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Importo       : $InNet.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Prelievi      : $OutNetA7.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Dichiarazione : $CloseA7.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Squadratura   : $Diff.ToString('0.00').PadLeft(21)</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal"></text>
+    </row>
+  #end
+  #if ($TypeA8 != "")
+    #set($InNet = $InNetA8 - $InCashA8)
+    #set($Vers = $OpenA8 + $InCashA8)
+    #set($Diff = $Vers + $InNet - $OutNetA8 - $CloseA8)
+    <row align="left" style="italic" size="normal">
+      <text style="normal" size="normal">$TypeA8</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Fondo cassa   : $OpenA8.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Versamenti    : $Vers.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Importo       : $InNet.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Prelievi      : $OutNetA8.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Dichiarazione : $CloseA8.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Squadratura   : $Diff.ToString('0.00').PadLeft(21)</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal"></text>
+    </row>
+  #end
+  #if ($TypeA9 != "")
+    #set($InNet = $InNetA9 - $InCashA9)
+    #set($Vers = $OpenA9 + $InCashA9)
+    #set($Diff = $Vers + $InNet - $OutNetA9 - $CloseA9)
+    <row align="left" style="italic" size="normal">
+      <text style="normal" size="normal">$TypeA9</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Fondo cassa   : $OpenA9.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Versamenti    : $Vers.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Importo       : $InNet.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Prelievi      : $OutNetA9.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Dichiarazione : $CloseA9.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Squadratura   : $Diff.ToString('0.00').PadLeft(21)</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal"></text>
+    </row>
+  #end
+  #if ($TypeA10 != "")
+    #set($InNet = $InNetA10 - $InCashA10)
+    #set($Vers = $OpenA10 + $InCashA10)
+    #set($Diff = $Vers + $InNet - $OutNetA10 - $CloseA10)
+    <row align="left" style="italic" size="normal">
+      <text style="normal" size="normal">$TypeA10</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Fondo cassa   : $OpenA10.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Versamenti    : $Vers.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Importo       : $InNet.ToString('0.00').PadLeft(21) +</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Prelievi      : $OutNetA10.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Dichiarazione : $CloseA10.ToString('0.00').PadLeft(21) -</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Squadratura   : $Diff.ToString('0.00').PadLeft(21)</text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal"></text>
+    </row>
+  #end
+  
+    
+  <row align="left" style="bold" size="doubleheight">
+    <text style="normal" size="normal">Totale complessivo valuta $currency.Description</text>
+  </row>
+
+  #set($InNetGC = $InNetAGC - $InCashAGC)
+  #set($VersGC = $OpenAGC + $InCashAGC)
+  #set($DiffGC = $VersGC + $InNetGC - $OutNetAGC - $CloseAGC)
+
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Fondo cassa   : $OpenAGC.ToString('0.00').PadLeft(21) +</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Versamenti    : $VersGC.ToString('0.00').PadLeft(21) +</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Importo       : $InNetGC.ToString('0.00').PadLeft(21) +</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Prelievi      : $OutNetAGC.ToString('0.00').PadLeft(21) -</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Dichiarazione : $CloseAGC.ToString('0.00').PadLeft(21) -</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Squadratura   : $DiffGC.ToString('0.00').PadLeft(21)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"></text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">_______________________________________</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Storni        : $dTDCancelVoidCounter.ToString('0.00').PadLeft(10) $dTDCancelVoidAmount.ToString('0.00').PadLeft(12)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Resi          : $dTDRefundsCounter.ToString('0.00').PadLeft(10) $dTDRefundsAmount.ToString('0.00').PadLeft(12)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Annullati     : $abortedDocumentsCounter.ToString().PadLeft(10) $abortedDocumentsAmount.ToString('0.00').PadLeft(12)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Sconti Art    : $dTDItemAdjValueDiscountsAmount.ToString('0.00').PadLeft(23)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Sconti Tot    : $dTDSubtotalAdjValueDiscountsAmount.ToString('0.00').PadLeft(23)</text>
+  </row>
+  #end
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+  <row align="center" style="normal" size="normal"><text style="normal" size="normal">***************************************</text></row>
+</report>

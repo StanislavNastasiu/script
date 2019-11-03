@@ -1,0 +1,471 @@
+<report>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$ResSaleInvoice N. $document.Header.Number.PadLeft(3)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">DATA: $document.Header.BusinessDate.ToString("dd-MM-yy")</text>
+  </row>
+
+  #if ($ReferredNumber)
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">Rif.SC.FISC. N. $ReferredNumber.PadLeft(3)</text>
+    </row>
+  #else
+    #if ($document.Header.CauseCode)
+      <row align="left" style="normal" size="normal">
+        <text style="normal" size="normal">Rif.SC.FISC. N. $document.Header.CauseCode.PadLeft(3)</text>
+      </row>
+    #end
+  #end
+
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">DATA: $document.Header.BusinessDate.ToString("dd-MM-yy")</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$ResPosId: $document.Header.WorkstationCode.PadRight(7)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$ResCashierId: $document.Creation.UserCode </text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">-----------------------------</text>
+  </row>
+
+
+
+  ##--> INTESTATARIO FATTURA
+  #if ($document.Interlocutor.Person.IsGiuridical)
+
+    #if ($document.Interlocutor.Person.BusinessName)
+      <row align="left" style="normal" size="normal">
+        <text style="normal" size="normal"><![CDATA[$document.Interlocutor.Person.BusinessName.PadRight(30)]]></text>
+      </row>
+    #else
+      <row align="left" style="normal" size="normal">
+        <text style="normal" size="normal">*</text>
+       </row>
+      <row align="left" style="normal" size="normal">
+          <text style="normal" size="normal">*</text>
+      </row>
+       <row align="left" style="normal" size="normal">
+          <text style="normal" size="normal">______________________________</text>
+       </row>
+  #end
+
+  #else
+  #set ($person="")
+  #if ($document.Interlocutor.Person.Title)
+  #set ($person = "$document.Interlocutor.Person.Title")
+  #end
+
+  #if ($document.Interlocutor.Person.LastName)
+  #set ($person = "$person $document.Interlocutor.Person.LastName")
+  #end
+
+  #if ($document.Interlocutor.Person.FirstName)
+  #set ($person = "$person $document.Interlocutor.Person.FirstName")
+  #end
+
+  #if ($person="")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">______________________________</text>
+  </row>
+
+  #else
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$person</text>
+  </row>
+  #end
+
+  #end
+
+
+
+
+  #set ($indirizzo="")
+
+  #if ($document.Interlocutor.Person.PrimaryAddress.Address1)
+  #set ($indirizzo="$indirizzo $document.Interlocutor.Person.PrimaryAddress.Address1")
+  #end
+
+  #if ($indirizzo="")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">______________________________</text>
+  </row>
+  #else
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$indirizzo]]></text>
+  </row>
+  #end
+
+  
+
+  #set ($city = "")
+  #if ($document.Interlocutor.Person.PrimaryAddress.PostalCode)
+  #set ($city="$document.Interlocutor.Person.PrimaryAddress.PostalCode")
+  #end
+
+  #if ($document.Interlocutor.Person.PrimaryAddress.City)
+  #set ($city="$city $document.Interlocutor.Person.PrimaryAddress.City")
+  #end
+
+  #if ($document.Interlocutor.Person.PrimaryAddress.Province)
+  #set ($city="$city $document.Interlocutor.Person.PrimaryAddress.Province")
+  #end
+
+  #if ($city="")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">______________________________</text>
+  </row>
+
+  #else
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$city]]></text>
+  </row>
+
+  #end
+
+
+  #if ($document.Interlocutor.Person.VatNumber)
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">P.IVA   : $document.Interlocutor.Person.VatNumber</text>
+  </row>
+  #end
+  #if ($document.Interlocutor.Person.FiscalCode)
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Cod.Fis.: $document.Interlocutor.Person.FiscalCode</text>
+  </row>
+  #end
+
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">-----------------------------</text>
+  </row>
+
+  #if($document.Interlocutor.Person.OtherAddresses)
+  #if($document.Interlocutor.Person.OtherAddresses.Count>0)
+
+  #set($otherAdd = $document.Interlocutor.Person.OtherAddresses.get_Item(0))
+  #if ($otherAdd.Description)
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$otherAdd.Description.PadRight(30)]]></text>
+  </row>
+
+  #else
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">______________________________</text>
+  </row>
+
+  #end
+
+  #if ($otherAdd.Address1)
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$otherAdd.Address1.PadRight(30)]]></text>
+  </row>
+
+  #else
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">______________________________</text>
+  </row>
+
+  #end
+
+
+  #set ($city_2="")
+  #if ($otherAdd.PostalCode)
+  #set ($city_2="$document.Interlocutor.Person.PrimaryAddress.PostalCode")
+  #end
+
+  #if ($otherAdd.City)
+  #set ($city_2="$city_2 $otherAdd.City")
+  #end
+
+  #if ($otherAdd.Province)
+  #set ($city_2="$city_2 $otherAdd.Province")
+  #end
+
+
+
+
+  #if ($city_2="")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">*</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">______________________________</text>
+  </row>
+
+  #else
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$city_2]]></text>
+  </row>
+  #end
+
+
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">-----------------------------</text>
+  </row>
+  #end
+  #end
+
+  #foreach ($row in $headerList)
+  #if ($row.ToString() != "")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$row.ToString()</text>
+  </row>
+  #end
+  #end
+  #if ($headerList.Count > 0)
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  #end
+
+  #foreach ($row in $beforeList)
+  #if ($row.ToString() != "")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$row.ToString()</text>
+  </row>
+  #end
+  #end
+  #if ($beforeList.Count > 0)
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  #end
+
+  <row align="right" style="normal" size="normal">
+    <text style="normal" size="normal">EURO  </text>
+  </row>
+  #foreach($det in $document.Details)
+  #set($Description = $det.PosDescription)
+  #if ($showDescription == "LongDescription")
+  #set($Description = $det.Description)
+  #end
+  #if($det.GetType().ToString() == "Orange.Core.Data.Document.ItemDocumentDetail")
+  #if($det.FiscalQuantity < 0)
+                     <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$ResRefund]]></text>
+  </row>
+  #end
+  #if(($det.FiscalQuantity != -1) && ($det.FiscalQuantity != 1))
+  <row align="right" style="normal" size="normal">
+    <text style="normal" size="normal">$det.FiscalQuantity.ToString('0.#####').PadLeft(3)x $det.Price.ToString('0.00').PadLeft(15)     </text>
+  </row>
+  #end
+  #if (($showItemTare) && ($det.SaleType == "Scale"))
+  #if ($det.TareWeight != 0)
+  #set( $TareDescr = "$Description Tr: $det.TareWeight.ToString('0') g" )
+  #else
+  #set( $TareDescr = "$Description" )
+  #end
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$TareDescr.PadRight(30)]]>$det.FiscalAmount.ToString('0.00').PadLeft(10)</text>
+  </row>
+  #else
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$Description.PadRight(30)]]>$det.FiscalAmount.ToString('0.00').PadLeft(10)</text>
+  </row>
+  #end
+  #if ($showItemCode == "SaleCode")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$beginningLineDescription$det.SaleCode</text>
+  </row>
+  #elseif ($showItemCode == "ItemCode")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$beginningLineDescription$det.ItemCode</text>
+  </row>
+  #end
+  #elseif($det.GetType().ToString() == "Orange.Core.Data.Document.AdjustmentDocumentDetail")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$Description.PadRight(30)]]>$det.FiscalAmount.ToString("0.00;-0.00; ").PadLeft(10)</text>
+  </row>
+  #if ($showItemCode == "SaleCode")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$beginningLineDescription$det.SaleCode</text>
+  </row>
+  #elseif ($showItemCode == "ItemCode")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$beginningLineDescription$det.ItemCode</text>
+  </row>
+  #end
+  #elseif($det.GetType().ToString() == "Orange.Core.Data.Document.ItemBookingDocumentDetail")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$Description]]></text>
+  </row>
+  <row align="right" style="normal" size="normal">
+    <text style="normal" size="normal">$det.FiscalQuantity.ToString('0.#####').PadLeft(3)x $ResReservation.PadLeft(15)     </text>
+  </row>
+  #elseif($det.GetType().ToString() == "Orange.Core.Data.Document.NoteDocumentDetail")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$beginningLineDescription<![CDATA[$Description]]></text>
+  </row>
+  #elseif($det.GetType().ToString() == "Orange.Core.Data.Document.SubtotalDocumentDetail")
+  <row align="right" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$Description.PadRight(30)]]>$det.Subtotal.ToString('0.00').PadLeft(10)</text>
+  </row>
+  #elseif($det.GetType().ToString() == "Orange.Core.Data.Document.CouponDocumentDetail")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"><![CDATA[$Description]]></text>
+  </row>
+  #elseif($det.GetType().ToString() == "Orange.Core.Data.Document.ScaleDocumentDetail")
+  #if ($showScaleHeader)
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$beginningLineDescription<![CDATA[$Description]]></text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$beginningLineDescription<![CDATA[$det.ReadedCode]]> n.r. $det.NumberOfRows.ToString('0')</text>
+  </row>
+    #end
+    #elseif($det.GetType().ToString() == "Orange.Core.Data.Document.SelfDocumentDetail")
+    #if ($showScaleHeader)
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">$beginningLineDescription<![CDATA[$Description]]></text>
+    </row>
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">$beginningLineDescription<![CDATA[$det.ReadedCode]]> n.r. $det.NumberOfRows.ToString('0')</text>
+    </row>
+    #end
+    #elseif($det.GetType().ToString() == "Orange.Core.Data.Document.AssemblyDocumentDetail")
+    <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$beginningLineDescription$det.Quantity.ToString('0.#####').PadLeft(3)x<![CDATA[$Description.PadLeft(15)]]></text>
+  </row>
+  #end
+
+  ##((ItemDocumentDetail)doc.Details[0]).SerialBatch[0].Code
+  #if($det.SerialBatch)
+  #set($SerialBatch = $det.SerialBatch)
+  #foreach ($row in $SerialBatch)
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$row.Code</text>
+  </row>
+  #end
+  #end
+
+  #end
+
+  <row align="left" style="normal" size="doubleheight">
+    <text style="normal" size="doublesize">$ResTotalReceipt.PadRight(30)$document.Amount.TotalAmount.ToString('0.00').PadLeft(10)</text>
+  </row>
+  #foreach($pay in $document.Payments)
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$pay.Description.PadRight(30)$pay.Amount.ToString('0.00').PadLeft(10)</text>
+  </row>
+  #end
+  <row align="right" style="bold" size="normal">
+    <text style="normal" size="normal">$ResRest.PadRight(30)$document.Rest.ToString('0.00').PadLeft(10)</text>
+  </row>
+  <row align="right" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  #if ($printItemNumber)
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$ResPiecesCounter: $document.UpperDocument.Productivity.GetProductivityCounter("PiecesCounter").ToString('0')</text>
+  </row>
+  #end
+  #if ($beforeList.Count > 0)
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  #end
+  #foreach ($row in $beforeList)
+  #if ($row.ToString() != "")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$row.ToString()</text>
+  </row>
+  #end
+  #end
+
+
+  ##------------  PARSING esterno
+  #parse($taxDetails)
+  ##-----------------------------
+
+
+  ##------------  PARSING esterno
+  ##-- parse($customerTemplate)
+  ##-----------------------------
+
+
+  ##------------  PARSING esterno
+  ##-- parse($promotionsReportGroupTemplate)
+  ##-----------------------------
+
+
+  #foreach ($row in $afterList)
+  #if ($row.ToString() != "")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$row.ToString()</text>
+  </row>
+  #end
+  #end
+  #foreach ($row in $TrailerLines)
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">$row.ToString()</text>
+  </row>
+  #end
+  <row align="right" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">$ResShopId: $document.Header.StoreCode.PadRight(7) $ResPosId: $document.Header.WorkstationCode.PadRight(7) $ResCashierId: $document.Creation.UserCode</text>
+  </row>
+  #if ($footerList.Count > 0)
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  #end
+  #foreach ($row in $footerList)
+  #if ($row.ToString() != "")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$row.ToString()</text>
+  </row>
+  #end
+  #end
+  #if ($barcode && $barcode!= "")
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row>
+    <barcode position="50" width="2" height="100" hri="down" hrifont="font0" codetype="CODE39">$barcode</barcode>
+  </row>
+  #end
+</report>

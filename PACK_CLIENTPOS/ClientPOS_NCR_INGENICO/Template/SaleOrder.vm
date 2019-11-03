@@ -1,0 +1,41 @@
+<report>
+	<row align="center" style="normal" size="normal">
+		<text style="normal" size="normal">Prenotazione Premi</text>
+	</row>
+
+	<row align="center" style="normal" size="normal">
+		<text style="normal" size="normal"></text>
+	</row>
+	<row align="left" style="normal" size="normal">
+		#if($loanUser && $loanUser.Username!="")
+		<text style="normal" size="normal">OPERATORE: $loanUser.Username</text>
+		#else
+		<text style="normal" size="normal">OPERATORE: $user.Username</text>
+		#end
+	</row>
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Codice Cliente: <![CDATA[$document.Interlocutor.ReadedCode]]></text>
+	</row>
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Data: $document.Header.BusinessDate</text>
+	</row>
+	#foreach($det in $document.Details)
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">----------------------------------------</text>
+	</row>
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Codice Articolo: $det.ItemCode</text>
+	</row>
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Descrizione: <![CDATA[$det.PosDescription]]></text>
+	</row>
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Quant.: $det.StockQuantity</text>
+	</row>
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Contributo: $det.Price.ToString('0.00')</text>
+	</row>
+	#end
+
+</report>
+

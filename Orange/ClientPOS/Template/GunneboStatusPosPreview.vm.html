@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Gunnebo SafePay Status</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <link rel="stylesheet" type="text/css" href="$styleSheet">
+      </head>
+  <body>
+    <table>
+      <tr class="odd3">
+        <td width="365" height="62" class="tit">Gunnebo SafePay Status</td>
+      </tr>      
+      <tr class="odd">
+        <td colspan="2">Data Operazione: $data</td>
+      </tr>
+    </table>
+		<table class="1">
+		    <tr class="odd1">
+				<td height="10"></td>
+		    </tr>
+		</table>
+		<table>
+		    <tr class="odd">
+    			<td class="tit2" colspan="2" align="left">Gunnebo SafePay Status</td>
+		    </tr>
+			<tr>
+					<td width="300" align="left"><b>Bit</b></td>
+					<td width="188" align="right"><b>Status</b></td>				
+		    </tr>
+			#foreach($key in $gunneboStatus.Keys)
+		    <tr>
+    			<td width="300" align="left">$key</td>
+		        <td width="188" align="right">$gunneboStatus.get_Item($key)</td>		
+		    </tr>			
+			#end
+		
+		</table>
+
+
+    <table class="1">
+      <tr class="odd1">
+        <td height="10"></td>
+      </tr>
+    </table>
+    
+    <table class="1">
+      <tr class="odd2">
+        <td><BR>2M Servizi srl<BR></td>
+      </tr>
+    </table>
+  </body>
+</html>

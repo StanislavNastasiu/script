@@ -1,0 +1,95 @@
+<Buttons>
+  <Button>
+    <Text>Torta Nocciolata</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Torta Fragola</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Torta Frutti Rossi</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Torta Mela</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Torta Mirtillo</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Torta Pera</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Torta Rabarbaro</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Flan Vaniglia</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Flan Cioccolato</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Flan Cocco</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Fetta Flan Vaniglia</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Fetta Flan Cioccolato</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Fetta Flan Cocco</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+</Buttons>

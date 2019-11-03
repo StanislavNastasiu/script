@@ -1,0 +1,35 @@
+<Buttons>
+	<Button>
+		<Text>Paga con Gift</Text>
+		<Commands>
+      <Command>[giftcardemvservice]</Command>
+      <Command>ClosePanelBoard('PannelloGift')[func][gui]</Command>
+    </Commands>
+	</Button>
+	<Button>
+		<Text>Verifica Saldo</Text>
+		<Commands>
+			<Command>[giftcardemvquery]</Command>
+      <Command>ClosePanelBoard('PannelloGift')[func][gui]</Command>
+    </Commands>
+	</Button>
+  <!--<Button>
+    <Text></Text>
+    <Commands>
+      <Command></Command>
+    </Commands>
+  </Button>
+	<Button>
+		<Text>Annullo: Importo</Text>
+		<Commands>
+			<Command>[giftcardpayamount]</Command>
+		</Commands>
+	</Button>
+  <Button>
+    <Text>Annullo: Tx. Id</Text>
+    <Commands>
+      <Command>[giftcardemvcancel]</Command>
+      <Command>ClosePanelBoard('PannelloGift')[func][gui]</Command>
+    </Commands>
+  </Button> -->
+</Buttons>

@@ -1,0 +1,95 @@
+	
+#if($interlocutor)
+
+	#if ($thereAreBeforeMsg) 
+	    <row align="left" style="normal" size="normal">
+			<text style="normal" size="normal">----------------------------------------</text>
+	    </row>
+		#set ($printedSeparator = true);
+	#else
+	    <row align="left" style="normal" size="normal">
+			<text style="normal" size="normal"> </text>
+	    </row>
+	#end
+	#if($interlocutor.ReadedCode!="")
+		<row align="left" style="normal" size="normal">
+			<text style="normal" size="normal">$resCardCode: $interlocutor.ReadedCode</text>
+		</row>
+	#end
+	#if ($interlocutor.Code && $interlocutor.Code!="" && $interlocutor.Code!=$CustomerCode && (!$printedSeparator))
+		#if ($thereAreBeforeMsg)
+			<row align="left" style="normal" size="normal">
+				<text style="normal" size="normal">----------------------------------------</text>
+			</row>
+			#set ($printedSeparator = true);
+		#end
+	    <row align="left" style="normal" size="normal">
+			##<text style="normal" size="normal">$resCustomerCode: $interlocutor.Code</text>
+	    </row>
+
+		## --> nome e cognome  (commentato per default)
+		#if ($interlocutor.FidelityCustomer && $interlocutor.FidelityCustomer.Code!="")
+			#if ($interlocutor.FidelityCustomer.Surname != "")
+				##<row align="left" style="normal" size="normal">
+					##<text style="normal" size="normal">$interlocutor.FidelityCustomer.Surname</text>
+				##</row>
+			#end
+		#end
+
+	#end
+
+	##--> CODICE FIDELITY CUSTOMER
+	#if ($interlocutor.FidelityCustomer && $interlocutor.FidelityCustomer.Code!="" && (!$printedSeparator))
+	    #if ($thereAreBeforeMsg)
+			<row align="left" style="normal" size="normal">
+				<text style="normal" size="normal">----------------------------------------</text>
+			</row>
+			#set ($printedSeparator = true);
+	    #end
+	    <row align="left" style="normal" size="normal">
+			<text style="normal" size="normal">$resFidelityCustomerCode: $interlocutor.FidelityCustomer.Code</text>
+	    </row>
+	#end
+
+	##--> CODICE FISCALE.
+	#if ($interlocutor.FiscalCode && $interlocutor.FiscalCode!="" && (!$printedSeparator))
+		#if ($thereAreBeforeMsg)
+			<row align="left" style="normal" size="normal">
+				<text style="normal" size="normal">----------------------------------------</text>
+			</row>
+			#set ($printedSeparator = true);
+		#end
+	    <row align="left" style="normal" size="normal">
+			<text style="normal" size="normal">$resCFCode: $interlocutor.FiscalCode</text>
+	    </row>
+	#end
+
+	##--> CASTELLETTO CREDITO
+	#if ($interlocutor.FidelityCustomer && $interlocutor.FidelityCustomer.Code!="")
+		#if ($interlocutor.FidelityCustomer.HasCredit)
+
+			<row align="left" style="normal" size="normal">
+				<text style="normal" size="normal">-------------------------</text>
+			</row>	
+			<row align="left" style="normal" size="normal">
+				<text style="normal" size="normal">Riepilogo Credito</text>
+			</row>
+			<row align="left" style="normal" size="normal">
+				<text style="normal" size="normal"></text>
+			</row>
+		
+			<row align="left" style="normal" size="normal">
+				<text style="normal" size="normal">Saldo iniziale Euro $interlocutor.FidelityCustomerInitialBalance.ToString('0.00').PadRight(10)</text>
+			</row>
+			<row align="left" style="normal" size="normal">
+				<text style="normal" size="normal">Saldo finale Euro $interlocutor.FidelityCustomerCurrentBalance.ToString('0.00').PadRight(12)</text>
+			</row>
+
+			<row align="left" style="normal" size="normal">
+				<text style="normal" size="normal">-------------------------</text>
+			</row>	
+		
+		#end
+	#end
+
+#end

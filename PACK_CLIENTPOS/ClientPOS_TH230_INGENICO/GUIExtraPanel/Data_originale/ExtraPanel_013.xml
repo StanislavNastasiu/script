@@ -1,0 +1,215 @@
+<Buttons>
+  <Button>
+    <Text>Acqua 50 cl</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Acqua Bicchiere</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Coca Cola</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Coca Cola Zero</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Aranciata Amara</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Fanta</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Sprite</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Lemonsoda</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Schweppes</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Schweppes Lemon</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Campari</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Crodino</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Gingerino</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>San Bitter</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Ace</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Albicocca</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Ananas</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mirtillo</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Pera</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Pesca</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Lipton</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Lipton Pesca</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Bio Limone Zenzero</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Bio Pesca Fiori Sambuco</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Bio Melograno</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Bio Menta Lemongrass</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Bio Liquirizia Finocchio</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Spremuta Arancia</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Spremuta Melograno</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+</Buttons>

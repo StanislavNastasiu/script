@@ -1,0 +1,476 @@
+<Buttons>
+  <Button>
+    <Text>KRAPFEN VUOTO</Text>
+    <Commands>
+      <Command>101[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>KRAPFEN CREMA</Text>
+    <Commands>
+      <Command>102[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>KRAPFEN LAMPONI</Text>
+    <Commands>
+      <Command>103[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>KRAPFEN CIOCCOLATO</Text>
+    <Commands>
+      <Command>104[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>MINI BEIGNET VUOTO</Text>
+    <Commands>
+      <Command>105[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>MINI BEIGNET FRUTTI </Text>
+    <Commands>
+      <Command>106[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>MINI BEIGNET CIOCCOLATO</Text>
+    <Commands>
+      <Command>107[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>MINI BEIGNET MELA</Text>
+    <Commands>
+      <Command>108[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>MINI BEIGNETS (*6)</Text>
+    <Commands>
+      <Command>110[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>MINI BEIGNET DOZZINA</Text>
+    <ImageFile>
+    </ImageFile>
+    <Commands>
+      <Command>109[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>MUFFIN CIOCCOLATO</Text>
+    <Commands>
+      <Command>111[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>MUFFIN LIMONE</Text>
+    <Commands>
+      <Command>112[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>MUFFIN MIRTILLO</Text>
+    <Commands>
+      <Command>113[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>COOKIES VANIGLIA CIO</Text>
+    <Commands>
+      <Command>114[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>COOKIES CIOCCOLATO</Text>
+    <Commands>
+      <Command>115[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>MOELLEUX</Text>
+    <Commands>
+      <Command>116[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>DELIZIA CIOCCOLATO</Text>
+    <Commands>
+      <Command>117[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>DELI DOPPIO CIOCCO</Text>
+    <Commands>
+      <Command>287[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>PUDDING</Text>
+    <Commands>
+      <Command>99[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>CAKE UVA</Text>
+    <Commands>
+      <Command>121[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>CAKE LIMONE</Text>
+    <Commands>
+      <Command>120[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>CAKE MOELLEUX</Text>
+    <Commands>
+      <Command>118[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>CAKE CIOCCOLATO PEPI</Text>
+    <ImageFile>
+    </ImageFile>
+    <Commands>
+      <Command>119[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>MINI CAKE CIOCCOLATO</Text>
+    <Commands>
+      <Command>125[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>MINI CAKE MOELLEUX</Text>
+    <Commands>
+      <Command>126[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>MINI CAKE LIMONE</Text>
+    <Commands>
+      <Command>127[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>MINI CAKE ARANCIA</Text>
+    <Commands>
+      <Command>128[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>MINI CAKE UVETTA</Text>
+    <Commands>
+      <Command>129[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>MINI CAKE FRUTTA CANDITA</Text>
+    <Commands>
+      <Command>130[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>MINI CAKE DOPPIO CIOCCO</Text>
+    <ImageFile>
+    </ImageFile>
+    <Commands>
+      <Command>288[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>MERINGA XL</Text>
+    <Commands>
+      <Command>132[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>MERINGA TONDA</Text>
+    <Commands>
+      <Command>133[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>GOCCE DI MERINGA</Text>
+    <Commands>
+      <Command>134[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>SACRESTANO</Text>
+    <Commands>
+      <Command>137[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>MACARON</Text>
+    <Commands>
+      <Command>138[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>SACCHETTO MACARONS</Text>
+    <Commands>
+      <Command>139[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+</Buttons>

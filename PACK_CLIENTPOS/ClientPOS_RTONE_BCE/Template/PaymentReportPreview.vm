@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Rapporto Pagamenti</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <link rel="stylesheet" type="text/css" href="$styleSheet">
+      </head>
+  <body>
+    <table>
+      <tr>
+        <td width="365" height="40" class="tit">Rapporto Pagamenti</td>
+      </tr>
+      <tr class="odd">
+        <td height="20" class="tit2" colspan="2">Periodo rapporto: $dataDal.ToString('dd/MM/yyyy') - $dataAl.ToString('dd/MM/yyyy')</td>
+      </tr>
+      <tr class="odd">
+        <td colspan="2">#if ($chainCode) Catena: $chainCode - $chainDescription  #end</td>
+      </tr>
+      <tr class="odd">
+        <td height="15" colspan="2">#if ($store.Code) Negozio: $store.Code - $store.Description  #end</td>
+      </tr>
+      <tr class="odd"> 
+        <td height="15" colspan="2">Data Rapporto: $data.ToString('dd/MM/yyyy')</td>
+      </tr>
+    </table>
+    #foreach($detail in $list)
+	    <table class="1">
+	      <tr class="odd1">
+	        <td height="15"></td>
+	      </tr>
+	    </table>
+	    <table>
+	      <tr>
+	        #if($detail.WorkstationCode && $detail.WorkstationCode != "")
+				<td width="365" height="30" class="tit3">Postazione: $detail.WorkstationCode - $detail.WorkstationDescription</td>
+	        #end
+	        #if($detail.UserCode && $detail.UserCode != "")
+				<td width="365" height="30" class="tit3">Operatore: $detail.UserCode - $detail.UserDescription</td>
+	        #end
+	      </tr>
+	    </table>
+		## Calcolo il complessivo di tutte le forme di pagamento
+	    #set($TotalPaymentAmount = 0)
+		#set($TotalToccateDocuments = 0)
+		#set($TotalBattutePayments = 0)
+		#set($TotalGrossPaymentAmount = 0)
+		#set($TotalPaymentRest = 0)
+		#set($TotalToccateDocs = 0)
+		
+		#set($gotRest=false)
+	    #foreach($Payment in $detail.Details)
+		 	#if($Payment.Code && $Payment.Code != "")
+				#if($Payment.IsRest)
+					#set($gotRest=true)
+					#set($TotalPaymentAmount = $TotalPaymentAmount - $Payment.amount)
+					#set($TotalPaymentRest = $TotalPaymentRest + $Payment.amount)
+					#set($TotalToccateDocuments = $TotalToccateDocuments + $Payment.NumberOfDocuments)
+					#set($TotalToccateDocs = $TotalToccateDocs + $Payment.NumberOfPayments)
+				#else
+					#set($TotalPaymentAmount = $TotalPaymentAmount + $Payment.amount)
+					#set($TotalBattutePayments = $TotalBattutePayments + $Payment.NumberOfPayments)
+					#set($TotalGrossPaymentAmount = $TotalGrossPaymentAmount + $Payment.amount)
+				#end
+			#end
+	    #end
+	    <table >
+			<tr class="Odd">
+				<!--<th width="100" align="left">Codice</th>-->
+				<th width="100" align="left" rowspan="2">Pagamento</th>
+				<th width="200" align="center" colspan="2">Battute</th>
+				<th width="200" align="center" colspan="2">Toccate</th>
+				<th width="100" align="right" colspan="3">Ammontare</th>
+			</tr>
+			<tr class="Pag">
+				<!--<th width="100" align="left">Codice</th>-->
+				<!-- <th width="100" align="left"></th> -->
+				<th width="100" align="right">Q.tà</th>
+				<th width="100" align="right">%</th>
+				<th width="100" align="right">Q.tà</th>
+				<th width="100" align="right">%</th>
+				<th width="100" align="right">Totale</th>
+				<th width="100" align="right">Val.&nbsp;medio</th>
+				<th width="100" align="right">%</th>
+			</tr>
+			#set($divisore=true)
+			#set($SubTotaleResto = 0)
+			#set($SubTotale = 0)
+			#set($SubTot = 0)
+			#foreach($Payment in $detail.Details)
+				#if($TotalPaymentAmount>0)
+					#set($PercentageIncidenceLigth = 100 * ($Payment.amount / ($TotalPaymentAmount) ))
+				#end
+				#if($TotalGrossPaymentAmount>0)
+					#set($PercentageIncidence = 100 * ($Payment.amount / $TotalGrossPaymentAmount ))
+				#end
+				## la variabile $UNO è usata solo per eseguire la divisione decimale tra 2 interi, altrimenti esegue divisione intera tra interi
+				#set($UNO=0)
+				#if($Payment.amount>0)
+					#set($UNO = $Payment.amount / $Payment.amount)
+				#end
+				#if ($TotalBattutePayments>0)
+					#set($BattuteIncidence = (100 * ($UNO * $Payment.NumberOfPayments )) / $TotalBattutePayments )
+				#end
+				#if($TotalToccateDocuments>0)
+					#set($ToccateIncidence = (100 * ($UNO * $Payment.NumberOfDocuments)) / $TotalToccateDocuments )
+				#else
+					#set($ToccateIncidence = 0)
+				#end
+				#if($Payment.NumberOfDocuments>0)
+					#set($ValMedio = ($Payment.amount / $Payment.NumberOfDocuments ))	
+				#end
+				
+			<!-- 	<tr class="Pag">
+					<td>$Payment.NumberOfDocuments
+					<br>A-$PercentageIncidence  B-$BattuteIncidence  C-$ToccateIncidence</td>
+				</tr>
+				 -->
+				
+					#if($Payment.description != "")
+						<tr class="Pag">
+						<!--<td align="left">$Payment.code</td>-->
+						#if($Payment.IsRest)
+							<td align="left">Resto:<br>$Payment.description.Replace(' ',"&nbsp;")</td>
+							#set($SubTotaleResto = $Payment.amount)
+						#else
+							<td align="left">$Payment.description</td>
+						#end
+						
+					#else
+						<tr class="Pag2">
+						<td align="left" >Totale:<br>$Payment.TypeDescription.Replace(' ',"&nbsp;")</td>
+						#set($SubTotale = $Payment.amount)
+					#end
+					
+					#if($Payment.IsRest)
+
+						<td align="right"></td>
+						<td align="right"></td>
+						<td align="right">$Payment.NumberOfDocuments.ToString('###,###,##0')</td>
+						#set($inct=0)
+						
+						#set($DUE =1)
+						#if ($TotalToccateDocs>0)
+							#if ($Payment.amount>0)
+								#set($DUE = $Payment.amount / $Payment.amount)
+							#end
+							#set($inct =(100 * ($DUE * $Payment.NumberOfDocuments )) / $TotalToccateDocs )
+						#end  
+						<td align="right">$inct.ToString('0.00')&nbsp;%</td>
+						<td align="right">&euro;&nbsp;$Payment.amount.ToString('###,###,##0.00')</td>
+						<td align="right">&euro;&nbsp;$ValMedio.ToString('###,###,##0.00')</td>
+						#set($inct=0)
+						#if ($TotalGrossPaymentAmount>0)
+							#set($inct =(100 * ($DUE * $Payment.amount )) / $TotalGrossPaymentAmount )
+						#end
+						<td align="right">$inct.ToString('0.00')&nbsp;%</td>
+						
+						
+						#set($gotRest=true)
+						
+					#else
+						<td align="right">$Payment.numberOfPayments.ToString('###,###,##0')</td>
+						<td align="right">$BattuteIncidence.ToString('0.00')&nbsp;%</td>
+						<td align="right">$Payment.NumberOfDocuments.ToString('###,###,##0')</td>
+						<td align="right">$ToccateIncidence.ToString('0.00')&nbsp;%</td>
+						<td align="right">&euro;&nbsp;$Payment.amount.ToString('###,###,##0.00')</td>
+						<td align="right">&euro;&nbsp;$ValMedio.ToString('###,###,##0.00')</td>
+						<td align="right">$PercentageIncidence.ToString('0.00')&nbsp;%</td>
+					#end
+				
+				</tr>
+				
+				#if($Payment.description == "")
+
+					#set($SubTot = ($SubTotale+ (-1)*$SubTotaleResto))
+					#set($ValMedioNetto = 0)	
+					#if($gotRest)
+					
+						#if($TotalPaymentAmount >0)
+							#set($PercentageIncidenceLigth = 100 * ($SubTot / $TotalPaymentAmount ))
+						#end
+						<tr class="Pag2">
+							<td align="left">Netto $Payment.TypeDescription.Replace(' ',"&nbsp;"):</td>
+							<td ></td>
+							<td align="right"></td>
+							<td align="right"></td>
+							<td align="right"></td>
+							<td align="right">&euro;&nbsp; $SubTot.ToString('###,###,##0.00')</td> 
+							#if($Payment.NumberOfDocuments>0)
+								#set($ValMedioNetto = ($SubTot / $Payment.NumberOfDocuments ))	
+							#end
+							<td align="right">&euro;&nbsp;$ValMedioNetto.ToString('###,###,##0.00')</td>
+							<td align="right">$PercentageIncidenceLigth.ToString('0.00')&nbsp;%</td>
+						</tr>
+						#set($gotRest=false)
+					#else
+						#if($TotalPaymentAmount >0)
+							#set($PercentageIncidenceLigth = 100 * ($SubTotale / $TotalPaymentAmount ))
+						#end
+						<tr class="Pag2">
+							<td align="left">Netto $Payment.TypeDescription.Replace(' ',"&nbsp;"):</td>
+							<td ></td>
+							<td align="right"></td>
+							<td align="right"></td>
+							<td align="right"></td>
+							<td align="right">&euro;&nbsp; $SubTotale.ToString('###,###,##0.00')</td> 
+							#if($Payment.NumberOfDocuments>0)
+								#set($ValMedioNetto = ($SubTotale / $Payment.NumberOfDocuments ))	
+							#end
+							<td align="right">&euro;&nbsp;$ValMedioNetto.ToString('###,###,##0.00')</td>
+							<td align="right">$PercentageIncidenceLigth.ToString('0.00')&nbsp;%</td>
+						</tr>
+  				    #end
+
+						#set($divisore=false)
+						<tr height="2px" ><td colspan="8"></td></tr>
+				#end
+	      #end
+	      <tr class="Pag2">
+	        <td align="right">TOTALE:</td>
+			<td align="right">$TotalBattutePayments.ToString('###,###,##0')</td>
+			<td align="right">100 %</td>
+			<td align="right">$TotalToccateDocs.ToString('###,###,##0')</td>
+			<td align="right"></td>
+	        <td align="right">&euro;&nbsp;$TotalGrossPaymentAmount.ToString('###,###,##0.00')</td>
+	        <td align="right"></td>
+	        <td align="right">100 %</td>
+	      </tr>
+		  
+		  <tr class="Pag2">
+	        <td align="right">TOTALE Netto:</td>
+			<td align="right"></td>
+			<td align="right"></td>
+			<td align="right"></td>
+			<td align="right"></td>
+	        <td align="right">&euro;&nbsp;$TotalPaymentAmount.ToString('###,###,##0.00')</td>
+	        <td align="right"></td>
+	        <td align="right">100 %</td>
+	      </tr>
+	    </table>
+    #end
+    <table class="1">
+      <tr class="odd2">
+        <td>2M Servizi srl</td>
+      </tr>
+    </table>
+  </body>
+</html>

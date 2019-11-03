@@ -1,0 +1,272 @@
+<Buttons>
+  <Button>
+    <Text>Krapfen Vuoto</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Krapfen Crema</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Krapfen Lamponi</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Krapfen Cioccolato</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Mini Bignè Vuoto</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mini Bignè Frutti Rossi</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mini Bignè Cioccolato</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mini Bignè Mela</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mini Bignè Dozzina</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mini Bignè *6</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Muffin Vaniglia</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Muffin Limone</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Muffin Mirtillo</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Cookies Vaniglia</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Cookies Limone</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Moelleaux</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Delizia Cioccolato</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Cake Moelleaux</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Cake Cioccolato Pepita</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Cake Limone</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Cake Uva</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Fantasia Cioco Nocciole</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mini Fantasia Cioccolato</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Mini Cake Cioccolato</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mini Cake Moelleaux</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mini Cake Limone</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mini Cake Arancia</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mini Cake Uvetta</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mini Cake Frutta Candita</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Meringa XL</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Meringaa Tonda</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Gocce di Meringa</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Spumiglia di Meringa</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Cioccogolosa</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Sacrestano</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Macaron</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Sacchetto Macaron</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+</Buttons>

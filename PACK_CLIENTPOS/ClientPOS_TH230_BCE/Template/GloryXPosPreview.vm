@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>LETTURA Glory</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <link rel="stylesheet" type="text/css" href="$styleSheet">
+      </head>
+  <body>
+    <table>
+      <tr>
+        <td width="365" height="37" class="tit">$reportTitle</td>
+      </tr>      
+      <tr>
+        <td colspan="2">Data Operazione: $data</td>
+      </tr>
+    </table>
+        
+	<table >
+		<tr class="odd1">
+			<td width="404" height="30" class="tit1" align="left">Banconote: </td>		
+		</tr>		
+		<tr class="odd">
+			<td width="404" class="tit2" height="30" align="left">Taglio</td>		
+			<td width="84" class="tit2" height="30" align="left">Pezzi</td>		
+		</tr>		
+	</table>
+
+	#set($cut = 0)
+	#set($index = 0)
+    #foreach($key in $billsInventory.Keys)
+		<table class="1">
+		    <tr class="odd1">
+				<td height="10"></td>
+		    </tr>
+		</table>
+		<table>
+		    <tr>
+				#set($cut = $key / 100)
+				#set($value = $billsInventory.get_Item($key))
+
+				#set($index = $value.IndexOf('|') +1)
+				#set($indexOriginal = $value.IndexOf('|'))
+				
+				#set($pieces = $value.Substring($index))
+				#set($currency = $value.Substring(0, $indexOriginal))
+				<td width="404" align="left">$cut.ToString('0.00') $currency</td>
+		        <td width="84" align="left">$pieces</td>
+		    </tr>
+		</table>
+    #end
+
+	<table class="1">
+		<tr class="odd1">
+			<td height="10"></td>
+		</tr>
+	</table>
+
+	<table >
+		<tr class="odd1">
+			<td width="404" height="30" class="tit1" align="left">Monete: </td>		
+		</tr>		
+		<tr class="odd">
+			<td width="404" class="tit2" height="30" align="left">Taglio</td>		
+			<td width="84" class="tit2" height="30" align="left">Pezzi</td>		
+		</tr>		
+	</table>
+
+	#foreach($key in $coinsInventory.Keys)
+		<table class="1">
+		    <tr class="odd1">
+				<td height="10"></td>
+		    </tr>
+		</table>
+		<table>
+		    <tr>
+				#set($cut = $key / 100)
+				#set($value = $coinsInventory.get_Item($key))
+
+				#set($index = $value.IndexOf('|') +1)
+				#set($indexOriginal = $value.IndexOf('|'))
+				
+				#set($pieces = $value.Substring($index))
+				#set($currency = $value.Substring(0, $indexOriginal))
+				<td width="404" align="left">$cut.ToString('0.00') $currency</td>
+		        <td width="84" align="left">$pieces</td>
+		    </tr>
+		</table>
+    #end
+
+    <table class="1">
+      <tr class="odd1">
+        <td height="10"></td>
+      </tr>
+    </table>
+    
+    <table class="1">
+      <tr class="odd2">
+        <td><BR>2M Servizi srl<BR></td>
+      </tr>
+    </table>
+  </body>
+</html>

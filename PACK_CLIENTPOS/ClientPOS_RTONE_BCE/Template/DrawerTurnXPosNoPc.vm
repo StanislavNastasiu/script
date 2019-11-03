@@ -1,0 +1,9 @@
+
+<ReportList>
+
+	##------------  PARSING esterno
+	#parse("DrawerXPos.vm")
+	#parse("TurnXNoPc.vm")
+	##-----------------------------
+
+</ReportList>

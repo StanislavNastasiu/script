@@ -1,0 +1,329 @@
+body
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+DIV#BoxTotale
+{
+	overflow: hidden;
+	width: 700px;
+	height: 71px;
+	max-height: 71px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+}
+
+DIV#BoxPrincipale
+{
+	position: absolute;
+	top: 2px;
+	left: 4px;
+	width: 695px;
+	height: 68px;
+	overflow: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	font-size: 20pt;
+	font-family: Arial, Sans-Serif;
+	color: #00008b;
+	vertical-align: top;
+}
+
+DIV.Descrizione
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 400px;
+	height: 44;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	text-align:left;
+	vertical-align: top;
+}
+
+DIV.DescrizioneLunga
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 550px;
+	height: 44;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	text-align:left;
+	vertical-align: top;
+}
+
+DIV.Quantita
+{
+	position: absolute;
+	top: 0px;
+	left: 400px;
+	width: 150px;
+	height: 44;
+	margin-top: 7px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	text-align: left;
+	font-size: 16pt;
+	vertical-align: top;
+}
+
+DIV.Importo
+{
+	position: absolute;
+	top: 0px;
+	left: 550px;
+	width: 128px;
+	height: 44;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	text-align: right;
+	vertical-align: top;
+}
+
+DIV.InterrogazioneImporto
+{
+	position: absolute;
+	top: 0px;
+	left: 550px;
+	width: 128px;
+	height: 44;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	text-align: right;
+	vertical-align: top;
+	color: #00CD00;
+}
+
+DIV.InterrogazioneDescrizione
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 550px;
+	height: 44;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	text-align:left;
+	vertical-align: top;
+	color: #00CD00;
+}
+
+DIV.CodiceLottiMatricole
+{
+	position: absolute;
+	top: 44px;
+	left: 0px;
+	width: 678px;
+	height: 24;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	text-align: left;
+	vertical-align: top;
+	font-size: 16pt;
+}
+
+.Eccezione
+{
+	color : Red;
+}
+
+.Warning
+{
+	color : #FFD700;
+}
+
+DIV.CodiceCliente
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 150px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	text-align:left;
+	vertical-align: top;
+}
+
+DIV.NomeCliente
+{
+	position: absolute;
+	top: 0px;
+	left: 150px;
+	width: 518px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	text-align:left;
+	vertical-align: top;
+}
+
+DIV.Prenotazione
+{
+	position: absolute;
+	top: 0px;
+	left: 400px;
+	width: 278px;
+	height: 44;
+	margin-top: 7px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	text-align: left;
+	font-size: 16pt;
+	vertical-align: top;
+}
+
+.Messaggio
+{
+	color : Black;
+}
+
+DIV.CodiceCoupon
+{
+	position: absolute;
+	top: 0px;
+	left: 400px;
+	width: 278px;
+	height: 44;
+	margin-top: 7px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: none;
+	text-align: left;
+	font-size: 16pt;
+	vertical-align: top;
+}

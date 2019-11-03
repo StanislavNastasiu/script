@@ -1,0 +1,161 @@
+<Buttons>
+  <Button>
+    <Text>Caffè</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Caffè Doppio</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Caffè Americano</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Caffè Deca</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Caffè Corretto</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Caffè Shakerato</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Cappuccino</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Cappuccino Deca</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Macchiatone</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Macchiatone Deca</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Caffè Orzo Grande</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Caffè Orzo Piccolo</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Cappuccino Orzo</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Ginseng</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Cappuccino Ginseng</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Cioccolata</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Cioccolata con Panna</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Latte</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Latte Macchiato</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Latte Macchiato Deca</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Spumiglia</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Tè Caldo</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+</Buttons>

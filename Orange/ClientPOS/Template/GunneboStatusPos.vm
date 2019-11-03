@@ -1,0 +1,43 @@
+<report>
+  <row align="center" style="normal" size="doubleheight">
+    <text style="normal" size="normal">Gunnebo SafePay Status</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Inventory date: $data.ToString().PadLeft(22)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+
+  <row align="left" style="normal" size="normal">
+    <text align="left" style="bold" size="normal">Gunnebo SafePay Status</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> Bit                              Valore</text>
+  </row>
+			#foreach($key in $gunneboStatus.Keys)
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">$key.PadLeft(26)  $gunneboStatus.get_Item($key).PadLeft(5)</text>
+  </row>			
+		
+			#end
+
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">----------------------------------------</text>
+  </row>
+
+
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">***************************************</text>
+  </row>
+</report>

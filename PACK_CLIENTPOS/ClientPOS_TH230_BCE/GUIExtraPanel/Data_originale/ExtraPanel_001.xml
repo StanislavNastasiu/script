@@ -1,0 +1,239 @@
+<Buttons>
+  <Button>
+    <Text>Baguette</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Epi</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Rosa F</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Duo</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Petali di Rosa</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Pagnotta F</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Pan Carrè</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Pan Carrè XL</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Pan Bagnat</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Viennois</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Viennous UVA</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Viennous Noci</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Casareccio</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Paiou</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Parigina</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Paiou Noci</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Paiou Uvetta</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Paiou Fichi</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Paiou Sportivo</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Paiou Pomodoro</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Paiou Oliva Verde</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Paiou Peperoni</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Segale</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Integrale</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>7 Cereali</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Segale Limone</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Grainette</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Mais Grande</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text />
+  </Button>
+  <Button>
+    <Text>Ciabatta</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Senza Sale</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text>Love Baguette</Text>
+    <Commands>
+      <Command>XXXX[plu]</Command>
+    </Commands>
+  </Button>
+</Buttons>

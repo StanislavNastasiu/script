@@ -1,0 +1,50 @@
+<report>
+  #set($lgth = $maxLength - 8)
+  #set($lgth2 = $maxLength - 9)
+
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">---------------------------------</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Riepilogo IVA</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal"></text>
+  </row>
+
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Descri.    Aliq.   Impon.  Ammon.</text>
+  </row>
+  #foreach ($TxD in $documentAmount.TaxDetails)
+  #set($aliq = $TxD.Percentage.ToString('##0.##').PadLeft(5))
+  #set($impo = $TxD.TaxableAmount.ToString('##,##0.00').PadLeft(8))
+  #set($amou = $TxD.Amount.ToString('##,##0.00').PadLeft(7))
+
+  #set($dd = $TxD.Description)
+  #if($dd.Length>11)
+  <row align="left" style="bold" size="normal">
+    #if($dd.Length>40)
+    #set($desc = $dd.Substring(0,36))
+    <text style="normal" size="normal">$desc...</text>
+    #else
+    #set($desc = $dd.PadRight(40))
+    <text style="normal" size="normal">$desc</text>
+    #end
+  </row>
+
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">            $aliq $impo $amou</text>
+  </row>
+  #else
+  #set($desc = $TxD.Description.PadRight(8))
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">$desc  $aliq $impo $amou</text>
+  </row>
+  #end
+
+  #end
+
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">---------------------------------</text>
+  </row>
+</report>

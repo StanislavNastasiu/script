@@ -1,0 +1,16 @@
+<!--<row align="center">
+	<image width="0" height="0">C:\Orange\ClientPos\PrinterImages\header.bmp</image>
+</row>-->
+
+<row align="center" style="normal" size="normal">
+  <text><![CDATA[SUPERMERCATI MARTINELLI S.R.L.]]></text>
+</row>
+<row align="center" style="normal" size="normal">
+  <text><![CDATA[Vle D.LAVORO,1,37069 VillaFrancaDi VR]]></text>
+</row>
+<row align="center" style="normal" size="normal">
+  <text>TEL. 045 6305366</text>
+</row>
+<row align="center" style="normal" size="normal">
+  <text>P.IVA 00796350239</text>
+</row>

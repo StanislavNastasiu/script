@@ -1,0 +1,183 @@
+﻿<table border="1" cellspacing="0" cellpadding="0" id="table1" width="645" style="border:0px solid windowtext; padding:0; font-family: Courier New">
+  <tr>
+    <td colspan="2" class="tit4" width="60%" height="100" rowspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; vertical-align:middle;  border-bottom: 1px solid windowtext;" align="center">
+      ##<br/>
+      ##---- INTESTAZIONE NEGOZIO ----
+      <div class="tit3" >
+        #if ($store.CorporateName.BusinessName)
+        $store.CorporateName.BusinessName
+        #end
+      </div>
+      ##<BR/>
+
+      ##---- INDIRIZZO NEGOZIO ----
+      #if ($store.CorporateName.PrimaryAddress.Address1)
+      Sede: $store.CorporateName.PrimaryAddress.Address1 -
+      #end
+      ##<BR/>
+
+      ##---- INDIRIZZO CAP Città Provincia ----
+      #if ($store.CorporateName.PrimaryAddress.PostalCode)
+      $store.CorporateName.PrimaryAddress.PostalCode
+      #end
+      ##<BR/>
+
+      #if ($store.CorporateName.PrimaryAddress.City)
+      $store.CorporateName.PrimaryAddress.City
+      #end
+      #if ($store.CorporateName.PrimaryAddress.Province)
+      ($store.CorporateName.PrimaryAddress.Province)
+      #end
+
+      <BR/>
+      P.IVA
+      #if ($store.CorporateName.VatNumber)
+      $store.CorporateName.VatNumber
+      #end
+
+      <BR/>
+      #if ($store.CorporateName.PrimaryAddress.PhoneNumber1)
+      TEL $store.CorporateName.PrimaryAddress.PhoneNumber1
+      #end
+      <BR/>
+      Esercizio: via Matteotti,5 - 09071 Abbasanta OR
+
+      ##---- FINE INTESTAZIONE NEGOZIO ----
+
+    </td>
+    <td colspan="4" class="tit1" width="49%" height="84">
+      <i>Spett.le</i>
+      <BR/>
+      <BR/>
+
+      <span style="font-size: 11pt; font-style: normal font-size: 11pt vertical-align:center" align="center">
+
+        ##--- INTESTATARIO FATTURA ----
+        #if ($document.Interlocutor.Person.IsGiuridical)
+        #if ($document.Interlocutor.Person.BusinessName)
+        $document.Interlocutor.Person.BusinessName
+        #end
+        #else
+        ##set ($person="")
+        #if ($document.Interlocutor.Person.Title)
+        $document.Interlocutor.Person.Title
+        #end
+
+        #if ($document.Interlocutor.Person.LastName)
+        #if ($document.Interlocutor.Person.LastName != "Customer")
+        $document.Interlocutor.Person.LastName
+        #else
+        &nbsp;
+        #end
+        #end
+
+        #if ($document.Interlocutor.Person.FirstName)
+        #if ($document.Interlocutor.Person.FirstName != "Default")
+        $document.Interlocutor.Person.FirstName
+        #else
+        &nbsp;
+        #end
+        #end
+
+        #end
+
+        <BR/>
+
+        ##---- Indirizzo ----
+        #if ($document.Interlocutor.Person.PrimaryAddress.Address1)
+        $document.Interlocutor.Person.PrimaryAddress.Address1
+        #end
+
+        <BR/>
+
+        #if ($document.Interlocutor.Person.PrimaryAddress.PostalCode)
+        $document.Interlocutor.Person.PrimaryAddress.PostalCode
+        #end
+
+        #if ($document.Interlocutor.Person.PrimaryAddress.City)
+        $document.Interlocutor.Person.PrimaryAddress.City
+        #end
+
+        #if ($document.Interlocutor.Person.PrimaryAddress.Province)
+        $document.Interlocutor.Person.PrimaryAddress.Province
+        #end
+
+        ##---- FINE INTESTATARIO FATTURA ----
+        &nbsp;
+      </span>
+    </td>
+  </tr>
+  <tr>
+    <td class="tit1" colspan="2" width="20%" >Codice Cliente</td>
+    <td class="tit1" colspan="2" width="28%" style="border-left-style: none;" >Cod.Fisc./Part.IVA Cliente</td>
+  </tr>
+  <tr>
+    <td class="data1" colspan="2" width="20%">
+      #if ($document.Interlocutor.Person.LastName != "Customer")
+      $document.Interlocutor.Code
+      #else
+      &nbsp;
+      #end
+    </td>
+    <td class="data1" height="19" colspan="2" width="28%" style="border-left-style: none;">
+	  #set($persona = "")
+      #if ($document.Interlocutor.Person)
+		#if ($document.Interlocutor.Person.IsGiuridical)
+			#if ($document.Interlocutor.Person.VatNumber)
+				#set($persona = $document.Interlocutor.Person.VatNumber)
+			#end
+		#else
+			#if ($document.Interlocutor.Person.FiscalCode)
+				#set($persona = $document.Interlocutor.Person.FiscalCode)
+			#end
+		#end
+		#if ($document.Interlocutor.Person.VatNumber=="" && $document.Interlocutor.Person.FiscalCode=="")
+			#if($document.Interlocutor.FiscalCode != "")
+				#set($persona = "$persona  $document.Interlocutor.FiscalCode")
+			#end
+		#end
+      #else
+		#if($document.Interlocutor.FiscalCode != "")
+			#set($persona = $document.Interlocutor.FiscalCode)
+		#end
+      #end
+	  
+	  #if($persona != "")
+		$persona
+	  #else
+		&nbsp;
+	  #end
+    </td>
+  </tr>
+  
+  <tr>
+    <td colspan="5" rowspan="1" class="data1" style="vertical-align: bottom; border-right-style: none; border-bottom:none; ">
+      <b>
+        <i>Prenotazione Premio</i>
+      </b>&nbsp;$document.Header.Number&nbsp;del&nbsp;$document.Header.BusinessDate.ToString("dd/MM/yyyy")&nbsp;
+    </td>
+	<td colspan="1" rowspan="1" class="data1" style="vertical-align: bottom; border-left-style: none; border-bottom:none; ">
+      &nbsp;
+    </td>
+  </tr>
+##  <tr>
+##    <td colspan="6" rowspan="1" class="data2" style="vertical-align: top; border-top:none;">
+      ##Rif.Scontrino Nr° $document.Header.CauseCode&nbsp;
+##	  &nbsp;
+##    </td>
+##  </tr>
+  <tr>
+    
+	<td colspan="6" rowspan="1" class="data1" style="vertical-align: bottom;">
+      <b>
+        <i>Operatore</i>
+      </b>
+	    #if($loanUser && $loanUser.Username!="")
+			&nbsp;$loanUser.Username &nbsp;
+		#else
+			&nbsp;$user.Username &nbsp;
+		#end
+    </td>
+  </tr>
+
+</table>

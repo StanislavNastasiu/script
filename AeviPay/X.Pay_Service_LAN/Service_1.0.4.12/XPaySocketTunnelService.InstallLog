@@ -1,0 +1,94 @@
+﻿Installazione dell'assembly 'C:\AeviPay\X.Pay Service\Package to DN\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay Service\Package to DN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay Service\Package to DN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installazione del servizio XPaySocketTunnel in corso...
+Installazione di XPaySocketTunnel completata.
+È in corso la creazione dell'origine di EventLog XPaySocketTunnel nel log Application...
+Commit dell'assembly 'C:\AeviPay\X.Pay Service\Package to DN\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay Service\Package to DN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay Service\Package to DN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installazione dell'assembly 'C:\AeviPay\X.Pay_Service\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installazione del servizio XPaySocketTunnel in corso...
+Installazione di XPaySocketTunnel completata.
+È in corso la creazione dell'origine di EventLog XPaySocketTunnel nel log Application...
+Commit dell'assembly 'C:\AeviPay\X.Pay_Service\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installing assembly 'C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installing service XPaySocketTunnel...
+Service XPaySocketTunnel has been successfully installed.
+Creating EventLog source XPaySocketTunnel in log Application...
+Committing assembly 'C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+An exception occurred in the OnCommitted event handler of System.ServiceProcess.ServiceInstaller.
+System.ComponentModel.Win32Exception: Livello di chiamata al sistema non corretto
+An exception occurred during the Commit phase of the installation. This exception will be ignored and installation will continue. However, the application might not function correctly after installation is complete.
+Installazione dell'assembly 'C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installazione del servizio XPaySocketTunnel in corso...
+Installazione di XPaySocketTunnel completata.
+È in corso la creazione dell'origine di EventLog XPaySocketTunnel nel log Application...
+Commit dell'assembly 'C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installazione dell'assembly 'C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installazione del servizio XPaySocketTunnel in corso...
+Installazione di XPaySocketTunnel completata.
+È in corso la creazione dell'origine di EventLog XPaySocketTunnel nel log Application...
+Commit dell'assembly 'C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installazione dell'assembly 'C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installazione del servizio XPaySocketTunnel in corso...
+Installazione di XPaySocketTunnel completata.
+È in corso la creazione dell'origine di EventLog XPaySocketTunnel nel log Application...
+Commit dell'assembly 'C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installazione dell'assembly 'C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog
+Installazione del servizio XPaySocketTunnel in corso...
+Installazione di XPaySocketTunnel completata.
+È in corso la creazione dell'origine di EventLog XPaySocketTunnel nel log Application...
+Commit dell'assembly 'C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe' in corso...
+I parametri interessati sono:
+   logtoconsole = 
+   assemblypath = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.exe
+   logfile = C:\AeviPay\X.Pay_Service_LAN\Service_1.0.4.12\XPaySocketTunnelService.InstallLog

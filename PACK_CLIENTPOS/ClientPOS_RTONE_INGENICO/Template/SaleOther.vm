@@ -1,0 +1,49 @@
+*********************
+Scontrino Non Fiscale
+*********************
+      
+                      EURO
+
+#foreach($det in $document.Details)
+#if($det.GetType().ToString() == "Orange.Core.Data.Document.ItemDocumentDetail")
+#if($det.FiscalQuantity < 0)
+> > > >   R E S O   < < < <
+#end
+$det.Description
+#if(($det.FiscalQuantity < -1) || ($det.FiscalQuantity > 1))
+${det.FiscalQuantity.ToString('0.#####').PadLeft(3)} X $det.Price.ToString('0.00').PadRight(10)$det.FiscalAmount.ToString('0.00').PadLeft(12)
+#else
+$det.FiscalAmount.ToString('0.00').PadLeft(28)
+#end
+#elseif($det.GetType().ToString() == "Orange.Core.Data.Document.AdjustmentDocumentDetail")
+$det.Description
+$det.FiscalAmount.ToString("0.00;-0.00; ").PadLeft(28)
+#elseif($det.GetType().ToString() == "Orange.Core.Data.Document.ItemBookingDocumentDetail")
+$det.Description
+$det.FiscalQuantity.ToString('0.#####').PadLeft(20) X Pren.
+#elseif($det.GetType().ToString() == "Orange.Core.Data.Document.NoteDocumentDetail")
+$det.Description
+#elseif($det.GetType().ToString() == "Orange.Core.Data.Document.SubtotalDocumentDetail")
+$det.Description.PadLeft(28)
+$det.Subtotal.ToString('0.00').PadRight(28)
+#end
+#end
+ 
+TOTALE EURO$document.Amount.TotalAmount.ToString('0.00').PadLeft(17)
+#foreach($pay in $document.Payments)
+$pay.Description
+#if($pay.Quantity.CompareTo($Pos) > 0)
+$pay.Quantity.ToString('0.#####').PadLeft(3) X $pay.Piece.ToString('0.00').PadRight(10)$pay.Amount.ToString('0.00').PadLeft(12)
+#else
+$pay.Amount.ToString('0.00').PadLeft(28)
+#end
+#end
+RESTO$document.Rest.ToString('0.00').PadLeft(23)
+ 
+Numero Articoli : $document.GetNumberOfPieces().ToString('0')
+Negozio: $document.Header.StoreCode
+#if ($document.Header.StoreDescription)
+  $document.Header.StoreDescription
+#end
+Cassa: $document.Header.WorkstationCode
+Operatore: $document.Creation.UserCode

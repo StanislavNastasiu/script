@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Rapporto Vendite per Reparto e Fascia Oraria</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <link rel="stylesheet" type="text/css" href="$styleSheet">
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td width="365" height="40" class="tit">Rapporto Vendite per Reparto e Fascia Oraria</td>
+      </tr>
+      <tr class="odd">
+        <td height="20" class="tit2" colspan="2">Periodo rapporto: $dataDal.ToString('dd/MM/yyyy') - $dataAl.ToString('dd/MM/yyyy')</td>
+      </tr>
+      <tr class="odd">
+        <td colspan="2">#if ($chainCode) Catena: $chainCode - $chainDescription #end</td>
+      </tr>
+      <tr class="odd">
+        <td colspan="2">#if ($store.Code) Negozio: $store.Code - $store.Description #end</td>
+      </tr>
+      <tr class="odd">
+        <td colspan="2">Data Rapporto: $data.ToString('dd/MM/yyyy')</td>
+      </tr>
+    </table>
+	#foreach($detail in $list)
+		<table class="1">
+		  <tr class="odd1">
+			<td height="20"></td>
+		  </tr>
+		</table>
+
+		<table>
+		  <tr>
+			#if($detail.WorkstationCode && $detail.WorkstationCode != "")
+			<td width="365" height="30" class="tit3">Postazione: $detail.WorkstationCode - $detail.WorkstationDescription</td>
+			#end
+			#if($detail.UserCode && $detail.UserCode != "")
+			<td width="365" height="30" class="tit3">Operatore: $detail.UserCode - $detail.UserDescription</td>
+			#end
+		  </tr>
+		</table>
+		 
+		 
+		#set($depH = "")
+		#set($depDesc = "")
+		#set($NumberOfDetails=$detail.Details.Count)
+		
+		#set($TotalFiscalAmount = 0)
+		#set($totalAttendancesAmount = 0)
+		#set($totalItemsCount = 0)
+		#set($totalItemAdj = 0)
+		#set($totalSubtotalAdj = 0)		 
+
+		## solo x testare. $detail.Details.Count
+		#foreach($totalTimeBand in $detail.Details)
+			#if($totalTimeBand.DepBandHierarchy.Contains("|"))
+
+				## a "rottura di reparto......
+				#if($depH != $totalTimeBand.DepartmentHierarchy)
+			
+					## salto "il primo giro"......
+					#if($depH != "")
+							<tr class="Pag2">
+								<td align="right" colspan="1">TOTALE:</td>
+								<td align="right" NOWRAP>$totalAttendancesAmount.ToString('0')</td>
+								<td align="right" NOWRAP>100 %</td>
+								<td align="right" NOWRAP>&euro; $TotalFiscalAmount.ToString('0.00')</td>
+								<td align="right" NOWRAP>100 %</td>
+								#set($Avarage = 0)
+								#if($totalAttendancesAmount != 0)
+									#set($Avarage = $TotalFiscalAmount/$totalAttendancesAmount)
+								#end
+								<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+								<td align="right" NOWRAP>$totalItemsCount.ToString('0')</td>
+								#set($Avarage = 0)
+								#if($totalAttendancesAmount != 0)
+									#set($Avarage = $totalItemsCount/$totalAttendancesAmount)
+								#end
+								<td align="right" NOWRAP>$Avarage.ToString('0.00')</td>
+								#set($Avarage = 0)
+								#if($totalItemsCount != 0)
+									#set($Avarage = $TotalFiscalAmount/$totalItemsCount)
+								#end
+								<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+								
+								##<td align="right" NOWRAP>&euro; $totalItemAdj.ToString('0.00')</td>
+								##set($Avarage = (100 * $totalItemAdj)/$TotalFiscalAmount)
+								##<td align="right" NOWRAP>$Avarage.ToString('0.00') %</td>
+								##set($Avarage = $totalItemAdj/$totalAttendancesAmount)
+								##<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+								##<td align="right" NOWRAP>&euro; $totalSubtotalAdj.ToString('0.00')</td>
+								##set($Avarage = (100 * $totalSubtotalAdj)/$TotalFiscalAmount)
+								##<td align="right" NOWRAP>$Avarage.ToString('0.00') %</td>
+								##set($Avarage = $totalSubtotalAdj/$totalAttendancesAmount)
+								##<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+						
+							</tr>
+							
+							<table class="1">
+							  <tr class="odd1">
+								<td height="10"></td>
+							  </tr>
+							</table>
+						
+						</table>
+					#end
+					## fine primo giro......	
+
+
+					## azzeramento per "rottura" di reparto....
+					#set($depH = $totalTimeBand.DepartmentHierarchy)
+					
+					#set($TotalFiscalAmount = 0)
+					#set($totalAttendancesAmount = 0)
+					#set($totalItemsCount = 0)
+					#set($totalItemAdj = 0)
+					#set($totalSubtotalAdj = 0)
+					
+					## apertura nuovo reparto.................
+					<table>
+					  <tr class="odd">
+						<th align="left" rowspan="1" colspan="9">$totalTimeBand.DepartmentHierarchy: $totalTimeBand.DepartmentDescription</th>
+					  </tr>
+					  <tr class="Tit1">
+						<th align="left" rowspan="2">Fascia Oraria</th>
+						<th align="center" colspan="2">Documenti</th>
+						<th align="center" colspan="3">Ammontare</th>
+						<th align="center" colspan="3">Prodotti</th>
+						<!--<th align="center" colspan="3">Sc. su art.</th>
+						<th align="center" colspan="3">Sc. su doc.</th>-->
+					  </tr>
+					  <tr class="Pag">
+						<th align="right">n°</th>
+						<th align="right">%</th>
+						<th align="right">Venduto</th>
+						<th align="right">Inc. %</th>
+						<th align="right">Scontr. Med.</th>
+						<th align="right">Pz.</th>
+						<th align="right">Med. Pz.</th>
+						<th align="right">Amm. Med.</th>
+						<!--<th width="24" align="right">Sc.</th>
+						<th width="24" align="right">%</th>
+						<th width="24" align="right">Sc.Med.</th>
+						<th width="24" align="right">Sc.</th>
+						<th width="24" align="right">%</th>
+						<th width="24" align="right">Sc.Med.</th>-->
+					  </tr>		
+				
+				#end
+
+				#set($TotalFiscalAmount = $TotalFiscalAmount + $totalTimeBand.FiscalAdjustedAmount)
+				#set($totalAttendancesAmount = $totalAttendancesAmount + $totalTimeBand.AttendancesAmount)
+				#set($totalItemsCount = $totalItemsCount + $totalTimeBand.ItemsCounter)
+				#set($totalItemAdj = $totalItemAdj + $totalTimeBand.ItemAdjustedAmount)
+				#set($totalSubtotalAdj = $totalSubtotalAdj + $totalTimeBand.SubtotalAdjustedAmount)
+
+				#set($PercentageIncidence = 0)
+				#if($TotalFiscalAmount != 0)
+					#set($PercentageIncidence = (100 * $totalTimeBand.FiscalAdjustedAmount) / $TotalFiscalAmount )
+				#end
+
+				<tr class="Pag">
+					<td align="left">$totalTimeBand.BandHierarchyDescription</td>
+
+					<td align="right" NOWRAP>$totalTimeBand.AttendancesAmount.ToString()</td>
+
+					#set($Avarage = 0)
+					#if($totalAttendancesAmount != 0)
+						#set($Avarage = (100 * $totalTimeBand.AttendancesAmount)/$totalAttendancesAmount)
+					#end
+					<td align="right" NOWRAP>$Avarage.ToString('0.00') %</td>
+
+					<td align="right" NOWRAP>&euro; $totalTimeBand.FiscalAdjustedAmount.ToString('0.00')</td>
+
+					<td align="right" NOWRAP>$PercentageIncidence.ToString('0.00') %</td>
+
+					#set($Avarage = 0)
+					#if($totalTimeBand.AttendancesAmount != 0)
+						#set($Avarage = $totalTimeBand.FiscalAdjustedAmount/$totalTimeBand.AttendancesAmount)
+					#end
+					<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+
+				
+					<td align="right" NOWRAP>$totalTimeBand.ItemsCounter.ToString()</td>
+
+					#set($Avarage = 0)
+					#if($totalTimeBand.AttendancesAmount != 0)
+						#set($Avarage = $totalTimeBand.ItemsCounter/$totalTimeBand.AttendancesAmount)
+					#end
+					<td align="right" NOWRAP>$Avarage.ToString('0.00')</td>
+
+					#set($Avarage = 0)
+					#if($totalTimeBand.ItemsCounter != 0)
+						#set($Avarage = $totalTimeBand.FiscalAdjustedAmount/$totalTimeBand.ItemsCounter)
+					#end
+					<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+
+					##<td align="right" NOWRAP>&euro; $totalTimeBand.ItemAdjustedAmount.ToString('0.00')</td>
+					##set($Avarage = (100 * $totalTimeBand.ItemAdjustedAmount)/$totalTimeBand.FiscalAdjustedAmount)
+					##<td align="right" NOWRAP>$Avarage.ToString('0.00') %</td>
+
+					##set($Avarage = $totalTimeBand.ItemAdjustedAmount/$totalTimeBand.AttendancesAmount)
+					##<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+
+					##<td align="right" NOWRAP>&euro; $totalTimeBand.SubtotalAdjustedAmount.ToString('0.00')</td>
+
+					##set($Avarage = (100 * $totalTimeBand.SubtotalAdjustedAmount)/$totalTimeBand.FiscalAdjustedAmount)
+					##<td align="right" NOWRAP>$Avarage.ToString('0.00') %</td>
+
+					##set($Avarage = $totalTimeBand.SubtotalAdjustedAmount/$totalTimeBand.AttendancesAmount)
+					##<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+
+				</tr>				
+
+			
+			#end
+		#end
+		
+		
+		## ultimo in griglia......
+		#if($totalAttendancesAmount==0)
+			<table>
+				<!-- <tr class="odd">
+					<th align="left" rowspan="1" colspan="9">$totalTimeBand.DepartmentHierarchy: $totalTimeBand.DepartmentDescription</th>
+				</tr> -->
+				<tr class="odd">
+					<th align="left" rowspan="2">Fascia Oraria</th>
+					<th align="center" colspan="2">Documenti</th>
+					<th align="center" colspan="3">Ammontare</th>
+					<th align="center" colspan="3">Prodotti</th>
+					<!--<th align="center" colspan="3">Sc. su art.</th>
+					<th align="center" colspan="3">Sc. su doc.</th>-->
+					</tr>
+					<tr class="Pag">
+					<th align="right">n°</th>
+					<th align="right">%</th>
+					<th align="right">Venduto</th>
+					<th align="right">Inc. %</th>
+					<th align="right">Scontr. Med.</th>
+					<th align="right">Pz.</th>
+					<th align="right">Med. Pz.</th>
+					<th align="right">Amm. Med.</th>
+					<!--<th width="24" align="right">Sc.</th>
+					<th width="24" align="right">%</th>
+					<th width="24" align="right">Sc.Med.</th>
+					<th width="24" align="right">Sc.</th>
+					<th width="24" align="right">%</th>
+					<th width="24" align="right">Sc.Med.</th>-->
+				</tr>				
+		#end
+			<tr class="Pag2">
+				<td align="right" colspan="1">TOTALE:</td>
+				<td align="right" NOWRAP>$totalAttendancesAmount.ToString('0')</td>
+				<td align="right" NOWRAP>100 %</td>
+				<td align="right" NOWRAP>&euro; $TotalFiscalAmount.ToString('0.00')</td>
+				<td align="right" NOWRAP>100 %</td>
+				#set($Avarage = 0)
+				#if($totalAttendancesAmount != 0)
+					#set($Avarage = $TotalFiscalAmount/$totalAttendancesAmount)
+				#end
+				<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+				<td align="right" NOWRAP>$totalItemsCount.ToString('0')</td>
+				#set($Avarage = 0)
+				#if($totalAttendancesAmount != 0)
+					#set($Avarage = $totalItemsCount/$totalAttendancesAmount)
+				#end
+				<td align="right" NOWRAP>$Avarage.ToString('0.00')</td>
+				#set($Avarage = 0)
+				#if($totalItemsCount != 0)
+					#set($Avarage = $TotalFiscalAmount/$totalItemsCount)
+				#end
+				<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+
+				##<td align="right" NOWRAP>&euro; $totalItemAdj.ToString('0.00')</td>
+				##set($Avarage = (100 * $totalItemAdj)/$TotalFiscalAmount)
+				##<td align="right" NOWRAP>$Avarage.ToString('0.00') %</td>
+				##set($Avarage = $totalItemAdj/$totalAttendancesAmount)
+				##<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+				##<td align="right" NOWRAP>&euro; $totalSubtotalAdj.ToString('0.00')</td>
+				##set($Avarage = (100 * $totalSubtotalAdj)/$TotalFiscalAmount)
+				##<td align="right" NOWRAP>$Avarage.ToString('0.00') %</td>
+				##set($Avarage = $totalSubtotalAdj/$totalAttendancesAmount)
+				##<td align="right" NOWRAP>&euro; $Avarage.ToString('0.00')</td>
+
+			</tr>		
+		##end
+	#end
+	
+    <table class="1">
+      <tr class="odd2">
+		<td height="25">2M Servizi srl</td>
+      </tr>
+    </table>
+  </body>
+</html>	

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration Model="RTOne">
+  <COM name="comPort" type="String" value="COM1" />
+  <BAUD name="BaudRate" type="String" value="57600" />
+  <CERTPATH name="CertificatePath" type="String" value="c:\" />
+</Configuration>

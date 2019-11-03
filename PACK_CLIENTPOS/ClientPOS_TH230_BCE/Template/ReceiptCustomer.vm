@@ -1,0 +1,12 @@
+<report>
+
+		##------------  PARSING esterno
+		#parse($customerTemplate)
+		##-----------------------------
+
+
+		##------------  PARSING esterno
+		#parse($promotionsReportGroupTemplate)
+		##-----------------------------
+
+</report>

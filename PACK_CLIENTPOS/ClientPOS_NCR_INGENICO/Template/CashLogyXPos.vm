@@ -1,0 +1,53 @@
+<report>
+<row align="center" style="normal" size="doubleheight"><text style="normal" size="normal">$reportTitle</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Data Operazione: $data.ToString().PadLeft(22)</text></row>
+  
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">Banconote:</text></row>
+  #set($Totale = 0)
+  #set($TotaleBanconote = 0)
+  #foreach($key in $billsInventory.Keys)
+ 
+  #set($cut = $key / 100)
+  #set($value = $billsInventory.get_Item($key))
+
+  #set($index = $value.IndexOf('|') +1)
+  #set($indexOriginal = $value.IndexOf('|'))
+
+  #set($pieces = $value.Substring($index))
+  #set($currency = $value.Substring(0, $indexOriginal))
+  #set($Totale = $Totale + $cut * $pieces)
+  #set($TotaleBanconote = $TotaleBanconote + $cut * $pieces)
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Taglio: $cut.ToString('0.00') $currency - Pezzi: $pieces</text></row>
+	<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+#end
+ <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Totale Banconote: $TotaleBanconote.ToString('0.00')</text>
+  </row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">Monete:</text></row>
+  #set($TotaleMonete = 0)
+  #foreach($key in $coinsInventory.Keys)
+
+  #set($cut = $key / 100)
+  #set($value = $coinsInventory.get_Item($key))
+
+  #set($index = $value.IndexOf('|') +1)
+  #set($indexOriginal = $value.IndexOf('|'))
+
+  #set($pieces = $value.Substring($index))
+  #set($currency = $value.Substring(0, $indexOriginal))
+  #set($Totale = $Totale + $cut * $pieces)
+  #set($TotaleMonete = $TotaleMonete + $cut * $pieces)
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Taglio: $cut.ToString('0.00') $currency - Pezzi: $pieces</text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+  #end
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Totale Monete  : $TotaleMonete.ToString('0.00')</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Totale         : $Totale.ToString('0.00')</text>
+  </row>
+<row align="center" style="normal" size="normal"><text style="normal" size="normal">***************************************</text></row>	
+</report>

@@ -1,0 +1,492 @@
+<Buttons>
+  <Button>
+    <Text>TOAST FRANCESE</Text>
+    <Commands>
+      <Command>206[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>TWIST FORMAGGIO</Text>
+    <Commands>
+      <Command>207[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <ImageFile>
+    </ImageFile>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>QUICHE LORRAINE</Text>
+    <Commands>
+      <Command>213[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>QUICHE POMODORO FORM</Text>
+    <Commands>
+      <Command>214[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>QUICHE CARCIOFI GORG</Text>
+    <Commands>
+      <Command>212[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>QUICHE PANCETTA FUNG</Text>
+    <Commands>
+      <Command>211[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>QUICHE SPINACI RICOT</Text>
+    <Commands>
+      <Command>210[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>QUICHE ZUCCHINE PHIL</Text>
+    <Commands>
+      <Command>209[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>QUICHE BROCCOLI BRIE</Text>
+    <Commands>
+      <Command>216[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>QUICHE POLLO CURRY</Text>
+    <ImageFile>
+    </ImageFile>
+    <Commands>
+      <Command>241[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>QUICHE POLLO PEPERON</Text>
+    <ImageFile>
+    </ImageFile>
+    <Commands>
+      <Command>218[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>BAGUETTE COTTO</Text>
+    <Commands>
+      <Command>222[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>BAGUETTE CRUDO</Text>
+    <Commands>
+      <Command>223[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>PARIGINA COTTO</Text>
+    <Commands>
+      <Command>225[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>PARIGINA CRUDO</Text>
+    <Commands>
+      <Command>226[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>CLUB TONNO</Text>
+    <Commands>
+      <Command>227[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>CLUB COTTO</Text>
+    <Commands>
+      <Command>228[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>BAGNAT CAPRESE</Text>
+    <ImageFile>
+    </ImageFile>
+    <Commands>
+      <Command>230[plu]</Command>
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>
+    </Text>
+    <Commands>
+      <Command>[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>VEGETARIANO</Text>
+    <Commands>
+      <Command>233[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>BAGUETTINA FARCITA</Text>
+    <Commands>
+      <Command>224[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>CROISSANT SALATI</Text>
+    <Commands>
+      <Command>231[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>BOUCHEE</Text>
+    <Commands>
+      <Command>229[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+</Buttons>

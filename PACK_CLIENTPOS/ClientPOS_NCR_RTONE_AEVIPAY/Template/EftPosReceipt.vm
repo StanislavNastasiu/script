@@ -1,0 +1,7 @@
+﻿<report>
+#foreach ($row in $afterList)
+#if ($row.ToString() != "")
+	<row align="left" style="normal" size="normal"><text style="normal" size="normal">$row.ToString()</text></row>
+#end
+#end
+</report>

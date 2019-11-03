@@ -1,0 +1,42 @@
+﻿<report>
+  <row align="left" style="bold" size="doubleheight">
+    <text style="normal" size="normal">Contatori Stampante Fiscale</text>
+  </row>
+  <row align="left" style="bold" size="doubleheight">
+    <text style="normal" size="normal">Data Rapporto: $data.ToString("dd-MM-yy") $data.ToString("HH"):$data.ToString("mm")</text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+
+  #foreach($det in $fiscaltotals)
+    #set($Note = $det.Value)
+    #set($Description = $det.Key)
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal"><![CDATA[$Description.PadRight(24)]]><![CDATA[$Note.PadLeft(16)]]></text>
+    </row>
+  #end
+
+
+  <row align="right" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">Store: $store.PadRight(7)    Workstation: $workstation.PadRight(7) </text>
+  </row>
+  #if ($footerList.Count > 0)
+    <row align="center" style="normal" size="normal">
+      <text style="normal" size="normal"> </text>
+    </row>
+  #end
+  #*
+  #foreach ($row in $footerList)
+    #if ($row.ToString() != "")
+    <row align="left" style="normal" size="normal">
+      <text style="normal" size="normal">$row.ToString()</text>
+    </row>
+    #end
+  #end
+  *#
+</report>
+

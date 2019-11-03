@@ -1,0 +1,42 @@
+<report>
+<row align="center" style="normal" size="doubleheight"><text style="normal" size="normal">LETTURA Finanziario POS</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Postazione : $day.ClientCode.PadLeft(5) <![CDATA[$day.ClientName.PadLeft(20)]]></text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Negozio    : $day.StoreCode.PadLeft(5) <![CDATA[$day.StoreName.PadLeft(20)]]></text></row>  
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Catena     : $day.ChainCode.PadLeft(5) <![CDATA[$day.ChainName.PadLeft(20)]]></text></row>
+
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Data Apertura  : $day.OpenDate.ToString().PadLeft(22)</text></row>	
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Data Operazione: $data.ToString().PadLeft(22)</text></row>	
+<row align="center" style="normal" size="normal"><text style="normal" size="normal">_______________________________________</text></row>	
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+#set($TotalCounter = 0)
+#set($TotalFiscalAmount = 0)
+#set($TotalNotPaidAmount = 0)
+#set($TotalTotalAmount = 0)
+#foreach($dv in $day.DocumentValueList)
+	#set($TotalCounter = $TotalCounter + $dv.Counter)
+	#set($TotalFiscalAmount = $TotalFiscalAmount + $dv.FiscalAmount*$dv.AmountMovementType)
+	#set($TotalNotPaidAmount = $TotalNotPaidAmount + $dv.NotPaidAmount*$dv.AmountMovementType)
+	#set($TotalTotalAmount = $TotalTotalAmount + $dv.TotalAmount*$dv.AmountMovementType)
+	<row align="left" style="bold" size="normal"><text style="normal" size="normal">Tipo Documento : $dv.GetIntDocumentType().ToString()</text></row>
+	<row align="left" style="bold" size="normal"><text style="normal" size="normal">$dv.DocumentTypeDescription</text></row>
+	<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+	<row align="left" style="normal" size="normal"><text style="normal" size="normal">Documenti emessi : $dv.Counter.ToString().PadLeft(20)</text></row>
+	<row align="left" style="normal" size="normal"><text style="normal" size="normal">Totale fiscale   : $dv.FiscalAmount.ToString('0.00').PadLeft(20)</text></row>
+	<row align="left" style="normal" size="normal"><text style="normal" size="normal">Non corrisposto  : $dv.NotPaidAmount.ToString('0.00').PadLeft(20)</text></row>
+	<row align="left" style="normal" size="normal"><text style="normal" size="normal">Complessivo      : $dv.TotalAmount.ToString('0.00').PadLeft(20)</text></row>
+	<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+	<row align="center" style="normal" size="normal"><text style="normal" size="normal">_______________________________________</text></row>	
+#end
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">TOTALE COMPLESSIVO</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Documenti emessi : $TotalCounter.ToString().PadLeft(20)</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Totale fiscale   : $TotalFiscalAmount.ToString('0.00').PadLeft(20)</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Non corrisposto  : $TotalNotPaidAmount.ToString('0.00').PadLeft(20)</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Complessivo      : $TotalTotalAmount.ToString('0.00').PadLeft(20)</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+<row align="center" style="normal" size="normal"><text style="normal" size="normal">***************************************</text></row>	
+</report>

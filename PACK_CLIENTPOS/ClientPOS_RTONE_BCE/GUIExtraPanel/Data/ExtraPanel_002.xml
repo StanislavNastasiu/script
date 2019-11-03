@@ -1,0 +1,23 @@
+<Buttons>
+	<Button>
+		<Text>Dollari</Text>
+		<Commands>
+			<Command>[amount]11[payment]</Command>
+			<Command>[document]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Sterline</Text>
+		<Commands>
+			<Command>[amount]12[payment]</Command>
+			<Command>[document]</Command>
+		</Commands>
+	</Button>
+		<Button>
+		<Text>Pesos</Text>
+		<Commands>
+			<Command>[amount]13[payment]</Command>
+			<Command>[document]</Command>
+		</Commands>
+	</Button>
+</Buttons>

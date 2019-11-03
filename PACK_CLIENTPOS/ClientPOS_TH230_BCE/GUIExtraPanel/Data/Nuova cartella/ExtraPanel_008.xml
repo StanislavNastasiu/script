@@ -1,0 +1,399 @@
+<Buttons>
+  <Button>
+    <Text>FETTA TORTA DEL GIOR</Text>
+    <Commands>
+      <Command>97[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>MACARON MANIA</Text>
+    <Commands>
+      <Command>98[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>PUDDING</Text>
+    <Commands>
+      <Command>99[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+</Buttons>

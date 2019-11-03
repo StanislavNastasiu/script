@@ -1,0 +1,111 @@
+	
+	#set($lgth = $maxLength - 8)
+	#set($lgth2 = $maxLength - 9)
+
+	#foreach($SDReport in $promotionsReportGroup)
+
+		##tostring del saledrivereport
+		<row align="left" style="bold" size="normal">
+			<text style="normal" size="normal">$SDReport.Code - $SDReport.Description</text>
+		</row>
+
+		#if ($SDReport.ExtraCardCode)
+			<row align="left" style="bold" size="normal">
+				<text style="normal" size="normal">ExtraCard - $SDReport.ExtraCardCode</text>
+			</row>
+		#end
+
+		$SDReport.Counters.Sort()
+		#set($ch = '.')
+	  
+		#foreach ($CounterReport in $SDReport.Counters)
+		
+			#if ($CounterReport.initialPoints != $System.Decimal.MinValue)
+				#set($initialPoints = $CounterReport.InitialPoints)
+				#set($initialDesc = "$resInitialPoints $CounterReport.CounterName")
+			#else
+				#set($initialPoints = 0)
+				#set($initialDesc = "$resInitialPointsNotAvailable $CounterReport.CounterName")
+			#end
+			#if($favoidmessage && $initialPoints == 0)
+				#set($initialDesc = "$CounterReport.CounterName")
+			#else
+				#set($initialDesc=$initialDesc.PadRight($lgth, $ch.ToCharArray().GetValue(0)))
+			#end
+			#if ($initialDesc.Length>$lgth)
+				#set($initialDesc=$initialDesc.Substring(0, $lgth))
+			#end
+		  
+			#if ($CounterReport.Groups.Count != 0 || $CounterReport.NoGroups.Count != 0)
+
+				#if($favoidmessage && $initialPoints == 0)
+					<row align="left" style="bold" size="normal">
+						<text style="normal" size="normal"> $initialDesc $favoidmessage</text>
+					</row>
+				#else
+					<row align="left" style="bold" size="normal">
+						<text style="normal" size="normal"> $initialDesc $initialPoints.ToString('##,##0.##').PadLeft(5)</text>
+					</row>
+				#end
+
+		
+				$CounterReport.Groups.Sort()
+				#foreach ($LineReport in $CounterReport.Groups)
+					#set($initialDesc=$LineReport.Description)
+					#set($initialDesc=$initialDesc.PadRight($lgth2, $ch.ToCharArray().GetValue(0)))
+					#if ($initialDesc.Length>$lgth)
+						#set($initialDesc=$initialDesc.Substring(0, $lgth2))
+					#end
+
+					<row align="left" style="bold" size="normal">
+						<text style="normal" size="normal"> $initialDesc $LineReport.Quantity.ToString('##,##0.##').PadLeft(5)</text>
+					</row>
+				#end
+			  
+				#foreach ($LineReport in $CounterReport.NoGroups)
+					#set($initialDesc=$LineReport.Description)
+					#set($initialDesc=$initialDesc.PadRight($lgth2, $ch.ToCharArray().GetValue(0)))
+					#if ($initialDesc.Length>$lgth)
+						#set($initialDesc=$initialDesc.Substring(0, $lgth2))
+					#end
+
+					<row align="left" style="bold" size="normal">
+						<text style="normal" size="normal">  $initialDesc $LineReport.Quantity.ToString('##,##0.##').PadLeft(5)</text>
+					</row>
+				#end
+       
+			#end
+			
+			##  --- final Desc
+			#set($finalDesc = "$resFinalPoints $CounterReport.CounterName")
+			#set($finalDesc=$finalDesc.PadRight($lgth, $ch.ToCharArray().GetValue(0)))
+			#if ($finalDesc.Length>$lgth)
+				#set($finalDesc=$finalDesc.Substring(0, $lgth))
+			#end
+			
+			#set($finalPoints = $CounterReport.FinalPoints)
+
+			#if ($SDReport.ExtraCardCode)
+			#else
+				<row align="left" style="bold" size="normal">
+						<text style="normal" size="normal"> $finalDesc $finalPoints.ToString('##,##0.##').PadLeft(5)</text>
+				</row>
+			#end
+
+		#end
+		
+		
+		#foreach ($LineReport in $SDReport.NoCounters)
+
+			#set($initialDesc=$LineReport.Description)
+			#set($initialDesc=$initialDesc.PadRight($lgth2, $ch.ToCharArray().GetValue(0)))
+			#if ($initialDesc.Length>$lgth)
+				#set($initialDesc=$initialDesc.Substring(0, $lgth2))
+			#end
+
+			<row align="left" style="bold" size="normal">
+				<text style="normal" size="normal">  $initialDesc $LineReport.Quantity.ToString('##,##0.##').PadLeft(5)</text>
+			</row>
+		
+		#end
+	#end

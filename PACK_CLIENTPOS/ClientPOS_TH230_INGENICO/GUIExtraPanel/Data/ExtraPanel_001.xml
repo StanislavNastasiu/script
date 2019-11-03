@@ -1,0 +1,92 @@
+<Buttons>
+	<Button>
+		<Text>Borse</Text>
+		<Commands>
+			<Command>[price]9901[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Vuoti</Text>
+		<Commands>
+			<Command>[price]9902[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Cartoleria</Text>
+		<Commands>
+			<Command>[price]9909[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Piccoli elettrod.</Text>
+		<Commands>
+			<Command>[price]9910[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Casalinghi</Text>
+		<Commands>
+			<Command>[price]9911[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Articoli casa</Text>
+		<Commands>
+			<Command>[price]9913[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Piccoli elettrod.</Text>
+		<Commands>
+			<Command>[price]9910[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Casalinghi</Text>
+		<Commands>
+			<Command>[price]9911[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Articoli casa</Text>
+		<Commands>
+			<Command>[price]9913[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Merci varie</Text>
+		<Commands>
+			<Command>[price]9914[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Giocattoli</Text>
+		<Commands>
+			<Command>[price]9915[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Acc. auto e cicli</Text>
+		<Commands>
+			<Command>[price]9919[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Catering</Text>
+		<Commands>
+			<Command>[price]9921[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Rep. 23</Text>
+		<Commands>
+			<Command>[price]9923[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Materiale consumo</Text>
+		<Commands>
+			<Command>[price]9924[plu]</Command>
+		</Commands>
+	</Button>
+</Buttons>

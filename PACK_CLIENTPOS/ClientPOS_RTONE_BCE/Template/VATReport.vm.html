@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="$styleSheet"/>
+  </head>
+  <body>
+    <p class="infoUser">
+      Rapporto IVA<br>
+      <br>
+      #if ($chainCode)
+        Catena: $chainCode - $chainDescription<br>
+      #end
+	  Negozio: $store.Code - $store.Description<br>
+	  Data rapporto : $data.ToString('dd/MM/yyyy')<br>
+      Periodo rapporto: $dataDal.ToString('dd/MM/yyyy') - $dataAl.ToString('dd/MM/yyyy')<br>
+    </p>
+    #set($GlobalTotalGrossAmount = 0)
+	#set($GlobalTotalCalculatedTaxAmount = 0)
+    #foreach($detail in $list)
+      #if($detail.WorkstationCode && $detail.WorkstationCode != "")
+        Postazione: $detail.WorkstationCode -#if ($detail.WorkstationDescription) $detail.WorkstationDescription<br>
+        #end
+      #elseif($detail.UserCode && $detail.UserCode != "")
+        Operatore: $detail.UserCode -#if ($detail.UserDescription) $detail.UserDescription<br>
+        #end
+      #end
+      <table class="TaxReportTable">
+	    <tr>
+		  <th>Codice</th>
+		  <th>Descrizione</th>
+		  <th>Lordo</th>
+		  <th>%</th>
+		  <th>Imposta</th>
+	    </tr>
+        #set($TotalGrossAmount = 0)
+        #set($TotalCalculatedTaxAmount = 0)
+        #foreach($iva in $detail.Details)
+          <tr>
+            #set($GrossAmount = $iva.TaxableAmount + $iva.Amount)
+            #set($CalculatedTaxAmount = ($GrossAmount / (100+$iva.Percentage)) * $iva.Percentage)
+            <td align="left">$iva.Code</td>
+            <td align="left">$iva.Description</td>
+            <td align="right">&euro; $GrossAmount.ToString('0.00')</td>
+            <td align="right">$iva.Percentage.ToString('0.##')</td>
+            <td align="right">&euro; $CalculatedTaxAmount.ToString('0.00')</td>
+          </tr>
+          #set($TotalGrossAmount = $TotalGrossAmount + $GrossAmount)
+          #set($TotalCalculatedTaxAmount = $TotalCalculatedTaxAmount + $CalculatedTaxAmount)
+        #end
+        <tr>
+          <td align="right" colspan="2">
+            <div class="infoUser">TOTALE:</div>
+          </td>
+          <td align="right">&euro; $TotalGrossAmount.ToString('0.00')</td>
+          <td>&nbsp</td>
+          <td align="right">&euro; $TotalCalculatedTaxAmount.ToString('0.00')</td>
+        </tr>
+      </table>
+	  #set($GlobalTotalGrossAmount = $GlobalTotalGrossAmount + $TotalGrossAmount)
+      #set($GlobalTotalCalculatedTaxAmount = $GlobalTotalCalculatedTaxAmount + $TotalCalculatedTaxAmount)
+      <br>
+    #end
+    <table>
+      <tr>
+	    <td align="right" colspan="2">TOTALE COMPLESSIVO:</td>
+		<td align="right">&euro; $GlobalTotalGrossAmount.ToString('0.00')</td>
+		<td>&nbsp</td>
+		<td align="right">&euro; $GlobalTotalCalculatedTaxAmount.ToString('0.00')</td>
+	  </tr>
+	</table>
+  </body>
+</html>

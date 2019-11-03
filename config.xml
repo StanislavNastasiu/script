@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <store>MARTINELLI</store> <!--MARTINELLI | VISOTTO-->
+    <credentials>
+        <user>stan</user> <!-- nome utente postazione cassa-->
+        <password>xxnastasiuxx</password> <!-- password postazione cassa-->
+    </credentials>
+    <SQLServer>
+        <instance>.\sqlexpress</instance> <!-- nome istanza SQL Server Orange-->
+        <user>sa</user> <!-- nome utente sql server-->
+        <password>SqlAdmin</password> <!-- password sql server-->
+    </SQLServer>
+    <Logger>
+        <lever>SilentlyContinue</lever> <!-- livello di dettaglio log-->
+    </Logger>
+</settings>

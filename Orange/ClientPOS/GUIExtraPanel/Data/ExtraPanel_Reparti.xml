@@ -1,0 +1,122 @@
+<Buttons>
+	<Button>
+		<Text>Carne</Text>
+		<Commands>
+			<Command>[price]9901[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Ortofrutta</Text>
+		<Commands>
+			<Command>[price]9902[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text></Text>
+		<Commands>
+			<Command></Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Servito Salumi</Text>
+		<Commands>
+			<Command>[price]9910[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Servito Formaggi</Text>
+		<Commands>
+			<Command>[price]9911[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text></Text>
+		<Commands>
+			<Command></Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Gastronomia</Text>
+		<Commands>
+			<Command>[price]9910[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Pane</Text>
+		<Commands>
+			<Command>[price]9911[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Pasticceria</Text>
+		<Commands>
+			<Command>[price]9914[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Frigo Salumi</Text>
+		<Commands>
+			<Command>[price]9915[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Frigo Formaggi</Text>
+		<Commands>
+			<Command>[price]9919[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text></Text>
+		<Commands>
+			<Command></Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Alimentare 4%</Text>
+		<Commands>
+			<Command>[price]9923[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Alimentare 10%</Text>
+		<Commands>
+			<Command>[price]9924[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Alimentare 22%</Text>
+		<Commands>
+			<Command>[price]9924[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Cura casa, persona, animali</Text>
+		<Commands>
+			<Command>[price]9924[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Surgelati</Text>
+		<Commands>
+			<Command>[price]9924[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text></Text>
+		<Commands>
+			<Command></Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Extra Alimentare</Text>
+		<Commands>
+			<Command>[price]9924[plu]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Libri</Text>
+		<Commands>
+			<Command>[price]9924[plu]</Command>
+		</Commands>
+	</Button>
+</Buttons>

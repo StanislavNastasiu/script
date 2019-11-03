@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Rapporto Vendite per Reparto</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+      <link rel="stylesheet" type="text/css" href="$styleSheet">
+      </head>
+  <body>
+    <table>
+      <tr>
+        <td width="365" height="37" class="tit">Rapporto Vendite per Reparto</td>
+      </tr>
+      <tr class="odd">
+        <td height="26" class="tit2" colspan="2">Periodo rapporto: $dataDal.ToString('dd/MM/yyyy') - $dataAl.ToString('dd/MM/yyyy')</td>
+      </tr>
+      <tr class="odd">
+        <td colspan="2">#if ($chainCode) Catena: $chainCode - $chainDescription #end</td>
+      </tr>
+      <tr class="odd">
+        <td colspan="2">#if ($store.Code) Negozio: $store.Code - $store.Description #end</td>
+      </tr>
+      <tr>
+        <td colspan="2">Data Rapporto: $data.ToString('dd/MM/yyyy')</td>
+      </tr>
+    </table>
+    #foreach($detail in $list)
+    <table class="1">
+      <tr class="odd1">
+        <td height="10"></td>
+      </tr>
+    </table>
+    <table>
+
+      <tr>
+        #if($detail.WorkstationCode && $detail.WorkstationCode != "")
+        <td width="365" height="27" class="tit1">Postazione: $detail.WorkstationCode - $detail.WorkstationDescription</td>
+        #end
+        #if($detail.UserCode && $detail.UserCode != "")
+        <td width="365" height="27" class="tit1">Operatore: $detail.UserCode - $detail.UserDescription</td>
+        #end
+      </tr>
+    </table>
+    #set($TotalFiscalAmount = 0)
+    #set($TotalDocumentEmitted = 0)
+    <table>
+      <tr>
+        <th width="100" align="left">Codice Reparto</th>
+        <th width="100" align="left">Descrizione</th>
+        <th width="100" align="right">Ammontare</th>
+        <th width="100" align="right">Presenze</th>
+        <th width="100" align="right">Inc. %</th>
+      </tr>
+
+      #foreach($totalItem in $detail.Details)
+      #if($totalItem.DepartmentHierarchy == "")
+		#set($TotalFiscalAmount = $totalItem.FiscalAdjustedAmount)
+		#set($TotalDocumentEmitted = $totalItem.AttendancesAmount)
+	  #end
+      #end
+
+      #foreach($totalItem in $detail.Details)
+      #if($totalItem.DepartmentHierarchy != "")
+      <tr>
+        #set($PercentageIncidence = (100 * $totalItem.FiscalAdjustedAmount) / $TotalFiscalAmount )
+        <td align="left">$totalItem.DepartmentHierarchy</td>
+        <td align="left">$totalItem.DepartmentHierarchyDescription</td>
+        <td align="right">&euro; $totalItem.FiscalAdjustedAmount.ToString('0.00')</td>
+        <td align="right">$totalItem.AttendancesAmount.ToString()</td>
+        <td align="right">$PercentageIncidence.ToString('0.00') %</td>
+      </tr>
+      #end
+      #end
+      <tr>
+        <td align="right" colspan="2">TOTALE:</td>
+        <td align="right">&euro; $TotalFiscalAmount.ToString('0.00')</td>
+        <td align="right"></td>
+        <td align="right">100 %</td>
+      </tr>
+    </table>
+    #end
+    <table class="1">
+      <tr class="odd2">
+        <td><br>2M Servizi srl</td>
+      </tr>
+    </table>
+  </body>
+</html>

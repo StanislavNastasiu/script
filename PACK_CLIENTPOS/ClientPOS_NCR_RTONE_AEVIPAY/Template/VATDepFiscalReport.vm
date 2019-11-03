@@ -1,0 +1,81 @@
+<report>
+  <row align="center" style="normal" size="doubleheight"><text style="normal" size="normal">Rapporto IVA per Reparto</text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Catena     : $chainCode.PadLeft(5) <![CDATA[$chainDescription.PadLeft(20)]]></text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Negozio    : $store.Code.PadLeft(5) <![CDATA[$store.Description.PadLeft(20)]]></text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Data rapp. : $data.ToString('dd/MM/yyyy').PadLeft(26)</text></row>	
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+  <row align="left" style="bold" size="normal"><text style="normal" size="normal">Periodo    :    $dataDal.ToString('dd/MM/yyyy') - $dataAl.ToString('dd/MM/yyyy')</text></row>	
+  <row align="center" style="normal" size="normal"><text style="normal" size="normal">_______________________________________</text></row>	
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+  ## PER OGNI POSTAZIONE/OPERATORE
+  #set($GlobalTotalGrossAmount = 0)
+  #set($GlobalTotalCalculatedTaxAmount = 0)
+  #foreach($detail in $list)
+    #if($detail.WorkstationCode && $detail.WorkstationCode != "")
+		  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Postazione : $detail.WorkstationCode.PadLeft(5) <![CDATA[$detail.WorkstationDescription.PadLeft(20)]]></text></row>
+		  <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+    #elseif($detail.UserCode && $detail.UserCode != "")
+		  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Operatore  : $detail.UserCode.PadLeft(5) <![CDATA[$detail.UserDescription.PadLeft(20)]]></text></row>
+		  <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+    #end	
+    ## PER OGNI CODICE REPARTO
+    #set($TotalDepGrossAmount = 0)
+    #set($TotalDepCalculatedTaxAmount = 0)
+    #set($depH = "")
+	  #set($depDesc = "")
+    #set($TotalGrossAmount = 0)
+    #set($TotalCalculatedTaxAmount = 0)
+    #foreach($iva in $detail.Details)
+      #if($depH == "" || $depH != $iva.DepartmentHierarchy)
+    
+        ## se stampare il totale per reparto
+		    #if($depH != "")
+			    #if($depH != $iva.DepartmentHierarchy)            
+            <row align="center" style="normal" size="normal"><text style="normal" size="normal">_______________________________________</text></row>	
+            <row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">TOTALE REPARTO</text></row>		  
+	          <row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">Importo lordo : $TotalDepGrossAmount.ToString('0.00').PadLeft(23)</text></row>		  
+            <row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">Imposta       : $TotalDepCalculatedTaxAmount.ToString('0.00').PadLeft(23)</text></row>		  
+            <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+			      #set($TotalDepGrossAmount = 0)
+			      #set($TotalDepCalculatedTaxAmount = 0)
+			    #end
+		    #end
+      
+        #set($depH = $iva.DepartmentHierarchy)
+        <row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">REPARTO : $iva.DepartmentHierarchy - $iva.DepartmentHierarchyDescription</text></row>		  
+      #end
+	    #set($GrossAmount = $iva.TaxableAmount + $iva.Amount)
+	    #set($CalculatedTaxAmount = ($GrossAmount / (100+$iva.Percentage)) * $iva.Percentage)
+	    <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+	    <row align="left" style="bold" size="normal"><text style="normal" size="normal">IVA: $iva.Code.PadRight(5) $iva.Description</text></row>
+	    <row align="left" style="normal" size="normal"><text style="normal" size="normal">Importo lordo : $GrossAmount.ToString('0.00').PadLeft(23)</text></row>
+	    <row align="left" style="normal" size="normal"><text style="normal" size="normal">Aliquota IVA  : $iva.Percentage.ToString('0.##').PadLeft(23)</text></row>
+	    <row align="left" style="normal" size="normal"><text style="normal" size="normal">Imposta       : $CalculatedTaxAmount.ToString('0.00').PadLeft(23)</text></row>
+	    #set($TotalGrossAmount = $TotalGrossAmount + $GrossAmount)
+	    #set($TotalCalculatedTaxAmount = $TotalCalculatedTaxAmount + $CalculatedTaxAmount)
+        
+      #set($TotalDepGrossAmount = $TotalDepGrossAmount + $GrossAmount)
+		  #set($TotalDepCalculatedTaxAmount = $TotalDepCalculatedTaxAmount + $CalculatedTaxAmount)               
+    #end
+    ## se non c'è niente da stampare, stampa dei totali reparto vuoti
+    #if($depH == "")	
+      <row align="center" style="normal" size="normal"><text style="normal" size="normal">_______________________________________</text></row>	
+      <row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">TOTALE REPARTO</text></row>		  
+	    <row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">Importo lordo : $TotalDepGrossAmount.ToString('0.00').PadLeft(23)</text></row>		  
+      <row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">Imposta       : $TotalDepCalculatedTaxAmount.ToString('0.00').PadLeft(23)</text></row>		  
+      <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+    #end
+    #set($GlobalTotalGrossAmount = $GlobalTotalGrossAmount + $TotalGrossAmount)
+    #set($GlobalTotalCalculatedTaxAmount = $GlobalTotalCalculatedTaxAmount + $TotalCalculatedTaxAmount)
+    #set($depH = "")
+  #end
+  <row align="center" style="normal" size="normal"><text style="normal" size="normal">_______________________________________</text></row>	
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+  <row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">TOTALE COMPLESSIVO</text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+  <row align="left" style="bold" size="normal"><text style="normal" size="normal">Importo lordo : $GlobalTotalGrossAmount.ToString('0.00').PadLeft(23)</text></row>
+  <row align="left" style="bold" size="normal"><text style="normal" size="normal">Imposta       : $GlobalTotalCalculatedTaxAmount.ToString('0.00').PadLeft(23)</text></row>	
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+  <row align="center" style="normal" size="normal"><text style="normal" size="normal">***************************************</text></row>	
+</report>

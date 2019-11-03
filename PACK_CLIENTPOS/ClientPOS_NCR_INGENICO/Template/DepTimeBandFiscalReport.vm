@@ -1,0 +1,267 @@
+<report>
+  <row align="center" style="normal" size="doubleheight">
+    <text style="normal" size="normal">Rapporto per Reparto e Fascia Oraria</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Catena    : $chainCode <![CDATA[$chainDescription]]></text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Negozio   : $store.Code <![CDATA[$store.Description]]></text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Data rapp.: $data.ToString('dd/MM/yyyy')</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"></text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Periodo dal : $dataDal.ToString('dd/MM/yyyy')</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">         al : $dataAl.ToString('dd/MM/yyyy')</text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">_____________________________</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"></text>
+  </row>
+  #foreach($detail in $list)
+  #if($detail.WorkstationCode && $detail.WorkstationCode != "")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Postazione : $detail.WorkstationCode.PadLeft(5) <![CDATA[$detail.WorkstationDescription.PadLeft(12)]]></text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"></text>
+  </row>
+  #elseif($detail.UserCode && $detail.UserCode != "")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Operatore  : $detail.UserCode.PadLeft(5) <![CDATA[$detail.UserDescription.PadLeft(12)]]></text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"></text>
+  </row>
+  #end
+
+  #set($depH = "")
+  #set($depDesc = "")
+  #set($NumberOfDetails=$detail.Details.Count)
+
+  #set($GranTotalFiscalAmount = 0)
+  #set($GranTotalAttendancesAmount = 0)
+  #set($GranTotalItemsCounter = 0)
+
+  #set($TotalFiscalAmount = 0)
+  #set($totalAttendancesAmount = 0)
+  #set($totalItemsCount = 0)
+  #set($totalItemAdj = 0)
+  #set($totalSubtotalAdj = 0)
+
+  #foreach($totalTimeBand in $detail.Details)
+  ## ... mi prendo i gran totali
+  #if($totalTimeBand.DepBandHierarchy=="")
+  #set($GranTotalFiscalAmount = $totalTimeBand.FiscalAdjustedAmount)
+  #set($GranTotalAttendancesAmount = $totalTimeBand.AttendancesAmount)
+  #set($GranTotalItemsCounter = $totalTimeBand.ItemsCounter)
+  #end
+  #if($totalTimeBand.DepBandHierarchy.Contains("|"))
+
+  ## a "rottura di reparto......
+  #if($depH != $totalTimeBand.DepartmentHierarchy)
+
+  ## salto "il primo giro"......
+  #if($depH != "")
+
+  ##<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+  <row align="left" style="bold" size="doubleheight">
+    <text style="normal" size="normal">TOTALE</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Ammontare Euro : $TotalFiscalAmount.ToString('0.00').PadLeft(12)</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Presenze       : $totalAttendancesAmount.ToString('0').PadLeft(12)</text>
+  </row>
+  #set($Avarage = 0)
+  #if($totalAttendancesAmount != 0)
+  #set($Avarage = $TotalFiscalAmount/$totalAttendancesAmount)
+  #end
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Scont. Med. E. : $Avarage.ToString('0.00').PadLeft(12)</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Totale Pezzi   : $totalItemsCount.ToString('0').PadLeft(12)</text>
+  </row>
+
+  #set($Avarage = 0)
+  #if($totalAttendancesAmount != 0)
+  #set($Avarage = $totalItemsCount/$totalAttendancesAmount)
+  #end
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Inc.Media Pezzi: $Avarage.ToString('0.00').PadLeft(12)</text>
+  </row>
+  #set($Avarage = 0)
+  #if($totalItemsCount != 0)
+  #set($Avarage = $TotalFiscalAmount/$totalItemsCount)
+  #end
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Amm.Med.Pz. E. : $Avarage.ToString('0.00').PadLeft(12)</text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">_____________________________</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"></text>
+  </row>
+  #end
+  ## fine primo giro......
+
+  ## azzeramento per "rottura" di reparto....
+  #set($depH = $totalTimeBand.DepartmentHierarchy)
+
+  #set($TotalFiscalAmount = 0)
+  #set($totalAttendancesAmount = 0)
+  #set($totalItemsCount = 0)
+  #set($totalItemAdj = 0)
+  #set($totalSubtotalAdj = 0)
+
+  ## apertura nuovo reparto.................
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Reparto: $totalTimeBand.DepartmentHierarchy - <![CDATA[$totalTimeBand.DepartmentDescription]]></text>
+  </row>
+  #end
+
+  #set($TotalFiscalAmount = $TotalFiscalAmount + $totalTimeBand.FiscalAdjustedAmount)
+  #set($totalAttendancesAmount = $totalAttendancesAmount + $totalTimeBand.AttendancesAmount)
+  #set($totalItemsCount = $totalItemsCount + $totalTimeBand.ItemsCounter)
+  #set($totalItemAdj = $totalItemAdj + $totalTimeBand.ItemAdjustedAmount)
+  #set($totalSubtotalAdj = $totalSubtotalAdj + $totalTimeBand.SubtotalAdjustedAmount)
+
+
+  #set($PercentageIncidence = 0)
+  #if($TotalFiscalAmount != 0)
+  #set($PercentageIncidence = (100 * $totalTimeBand.FiscalAdjustedAmount) / $TotalFiscalAmount )
+  #end
+
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">    Fascia oraria $totalTimeBand.BandHierarchyDescription.ToString()</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Presenze      : $totalTimeBand.AttendancesAmount.ToString('0.00').PadLeft(12)</text>
+  </row>
+  #set($Avarage = 0)
+  #if($totalAttendancesAmount != 0)
+  #set($Avarage = (100 * $totalTimeBand.AttendancesAmount)/$totalAttendancesAmount)
+  #end
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Incidenza %   : $Avarage.ToString('0.00').PadLeft(12) %</text>
+  </row>
+  ##<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Venduto       : $totalTimeBand.FiscalAdjustedAmount.ToString('0.00').PadLeft(12)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Incidenza %   : $PercentageIncidence.ToString('0.00').PadLeft(12) %</text>
+  </row>
+  #set($Avarage = 0)
+  #if($totalTimeBand.AttendancesAmount != 0)
+  #set($Avarage = $totalTimeBand.FiscalAdjustedAmount/$totalTimeBand.AttendancesAmount)
+  #end
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Scont. Med. E.: $Avarage.ToString('0.00').PadLeft(12)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Pezzi         : $totalTimeBand.ItemsCounter.ToString('0.00').PadLeft(12)</text>
+  </row>
+  #set($Avarage = 0)
+  #if($totalTimeBand.AttendancesAmount != 0)
+  #set($Avarage = $totalTimeBand.ItemsCounter/$totalTimeBand.AttendancesAmount)
+  #end
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Med. Pz. Doc. : $Avarage.ToString('0.00').PadLeft(12)</text>
+  </row>
+  #set($Avarage = 0)
+  #if($totalTimeBand.ItemsCounter != 0)
+  #set($Avarage = $totalTimeBand.FiscalAdjustedAmount/$totalTimeBand.ItemsCounter)
+  #end
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Amm.Med.Pz. E.: $Avarage.ToString('0.00').PadLeft(12)</text>
+  </row>
+
+  #end
+  #end
+
+
+  ## ultimo in griglia......
+  <row align="left" style="bold" size="doubleheight">
+    <text style="normal" size="normal">TOTALE</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Ammontare Euro : $TotalFiscalAmount.ToString('0.00').PadLeft(12)</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Presenze       : $totalAttendancesAmount.ToString('0').PadLeft(12)</text>
+  </row>
+  #set($Avarage = 0)
+  #if($totalAttendancesAmount != 0)
+  #set($Avarage = $TotalFiscalAmount/$totalAttendancesAmount)
+  #end
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Scont. Med. E. : $Avarage.ToString('0.00').PadLeft(12)</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Totale Pezzi   : $totalItemsCount.ToString('0').PadLeft(12)</text>
+  </row>
+ 
+  #set($Avarage = 0)
+  #if($totalAttendancesAmount != 0)
+  #set($Avarage = $totalItemsCount/$totalAttendancesAmount)
+  #end
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Inc.Media Pezzi: $Avarage.ToString('0.00').PadLeft(12)</text>
+  </row>
+  #set($Avarage = 0)
+  #if($totalItemsCount != 0)
+  #set($Avarage = $TotalFiscalAmount/$totalItemsCount)
+  #end
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Amm.Med.Pz. E. : $Avarage.ToString('0.00').PadLeft(12)</text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">_____________________________</text>
+  </row>
+
+  #end
+
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">_____________________________</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="left" style="bold" size="doubleheight">
+    <text style="normal" size="normal">TOTALE COMPLESSIVO</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Ammontare Euro : $GranTotalFiscalAmount.ToString('0.00').PadLeft(10)</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Documen. emessi: $GranTotalAttendancesAmount.ToString('0').PadLeft(10)</text>
+  </row>
+  <row align="left" style="bold" size="normal">
+    <text style="normal" size="normal">Totale pezzi   : $GranTotalItemsCounter.ToString('0').PadLeft(10)</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">_____________________________</text>
+  </row>
+
+</report>

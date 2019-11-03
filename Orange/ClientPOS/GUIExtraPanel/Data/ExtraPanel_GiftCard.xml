@@ -1,0 +1,16 @@
+<Buttons>
+	<Button>
+		<Text>Paga con Gift</Text>
+		<Commands>
+      <Command>[giftcardemvservice]</Command>
+      <Command>ClosePanelBoard('PannelloGift')[func][gui]</Command>
+    </Commands>
+	</Button>
+	<Button>
+		<Text>Verifica Saldo</Text>
+		<Commands>
+			<Command>[giftcardemvquery]</Command>
+      <Command>ClosePanelBoard('PannelloGift')[func][gui]</Command>
+    </Commands>
+	</Button>
+</Buttons>

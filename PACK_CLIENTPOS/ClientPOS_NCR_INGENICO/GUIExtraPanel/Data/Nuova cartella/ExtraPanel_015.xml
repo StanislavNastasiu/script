@@ -1,0 +1,455 @@
+<Buttons>
+  <Button>
+    <Text>CAFFE</Text>
+    <Commands>
+      <Command>140[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>CAFFE DOPPIO</Text>
+    <Commands>
+      <Command>141[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>CAFFE AMERICANO</Text>
+    <Commands>
+      <Command>142[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>CAFFE DECA</Text>
+    <Commands>
+      <Command>143[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>CAFFE CORRETTO</Text>
+    <Commands>
+      <Command>144[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>CAFFE SHAKERATO</Text>
+    <Commands>
+      <Command>145[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>BICCHIERE ACQUA</Text>
+    <ImageFile>
+    </ImageFile>
+    <Commands>
+      <Command>179[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>CAPPUCCINO</Text>
+    <Commands>
+      <Command>146[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>CAPPUCCINO DECA</Text>
+    <Commands>
+      <Command>147[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>MACCHIATONE</Text>
+    <Commands>
+      <Command>148[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>MACCHIATONE DECA</Text>
+    <Commands>
+      <Command>149[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>CAFFE ORZO GRANDE</Text>
+    <Commands>
+      <Command>150[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>CAFFE ORZO PICCOLO</Text>
+    <Commands>
+      <Command>151[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>CAPPUCCINO ORZO</Text>
+    <Commands>
+      <Command>152[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>GINSENG</Text>
+    <Commands>
+      <Command>153[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>
+    </ImageFile>
+    <ImageFile>../../GUIRes/Button/Normal/98x48/Enabled.png</ImageFile>
+  </Button>
+  <Button>
+    <Text>CAPPUCCINO GINSENG</Text>
+    <Commands>
+      <Command>154[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>CIOCCOLATA</Text>
+    <Commands>
+      <Command>155[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>CIOCCOLATA CON PANNA</Text>
+    <Commands>
+      <Command>156[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>LATTE</Text>
+    <Commands>
+      <Command>157[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>LATTE MACCHIATO</Text>
+    <Commands>
+      <Command>158[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>LATTE MACCHIATO DECA</Text>
+    <Commands>
+      <Command>159[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text>SPUMIGLIA</Text>
+    <Commands>
+      <Command>160[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <ImageFile>Grigio.png</ImageFile>
+    <Commands>
+      <Command />
+    </Commands>
+  </Button>
+  <Button>
+    <Text>TE CALDO</Text>
+    <Commands>
+      <Command>161[plu]</Command>
+    </Commands>
+    <ImageFile>
+    </ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+  <Button>
+    <Text />
+    <Commands>
+      <Command />
+    </Commands>
+    <ImageFile>Grigio.png</ImageFile>
+  </Button>
+</Buttons>

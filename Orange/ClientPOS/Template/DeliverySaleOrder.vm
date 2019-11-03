@@ -1,0 +1,137 @@
+<report>
+	<row align="center" style="normal" size="normal">
+		<text style="normal" size="normal">ORDINE</text>
+	</row>
+
+	<row align="center" style="normal" size="normal">
+		<text style="normal" size="normal"></text>
+	</row>
+	<row align="left" style="normal" size="normal">
+		#if($loanUser && $loanUser.Username!="")
+		<text style="normal" size="normal">OPERATORE: $loanUser.Username</text>
+		#else
+		<text style="normal" size="normal">OPERATORE: $user.Username</text>
+		#end
+	</row>
+  #set($salesman="")
+  #foreach($det in $document.Details)
+  #if($det.SalesmanUserCode)
+  #set($salesman=$det.SalesmanUserCode)
+  #end
+  #end
+  #if($salesman!="")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">COMMESSO: $salesman</text>
+  </row>
+  #end
+  <row align="left" style="normal" size="normal">
+  <text style="normal" size="normal">Negozio: $document.Header.StoreCode $document.Header.StoreDescription</text>
+</row>
+  <row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Cliente: <![CDATA[$document.Interlocutor.ReadedCode]]></text>
+	</row>
+  #if ($document.Destination)
+  <row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">   $document.Destination.Description</text>
+	</row>
+        #if ($document.Destination.Address1)
+        <row align="left" style="normal" size="normal">
+		      <text style="normal" size="normal">   $document.Destination.Address1</text>
+	      </row>
+        #if ($document.Destination.Address2)
+        <row align="left" style="normal" size="normal">
+		        <text style="normal" size="normal">   $document.Destination.Address2</text>
+	        </row>
+        #end
+        <row align="left" style="normal" size="normal">
+		      <text style="normal" size="normal">   $document.Destination.PostalCode $document.Destination.City ($document.Destination.Province)</text>
+	      </row>
+      #end
+	  #if ($document.Destination.PhoneNumber1)
+		<row align="left" style="normal" size="normal">
+			  <text style="normal" size="normal">   Tel: $document.Destination.PhoneNumber1</text>
+		  </row>
+	  #end
+  #end
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Numero ordine: $document.Header.Number</text>
+  </row>
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Data: $document.Header.BusinessDate</text>
+	</row>
+  #foreach($det in $document.Details)
+  #if($det.GetType().ToString() == "Orange.Core.Data.Document.ItemDocumentDetail")
+  <row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">----------------------------------------</text>
+	</row>
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Codice Articolo: $det.ItemCode</text>
+	</row>
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Descrizione: <![CDATA[$det.PosDescription]]></text>
+	</row>
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Quant.: $det.StockQuantity</text>
+	</row>
+	<row align="left" style="normal" size="normal">
+		<text style="normal" size="normal">Prezzo unitario: $det.Price.ToString('0.00')</text>
+	</row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Valore: $det.FiscalAmount.ToString('0.00')</text>
+  </row>
+  #set($Sconto = (-1) * $det.SubtotalAdjustedAmount - $det.ItemAdjustedAmount)
+    #if($Sconto > 0)
+      <row align="left" style="normal" size="normal">
+		    <text style="normal" size="normal">Sconto: $Sconto.ToString('0.00')</text>
+	    </row>
+      <row align="left" style="normal" size="normal">
+        <text style="normal" size="normal">Valore scontato: $det.FiscalAdjustedAmount.ToString('0.00')</text>
+      </row>
+    #end
+  #elseif($det.GetType().ToString() == "Orange.Core.Data.Document.NoteDocumentDetail")
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">----------------------------------------</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Nota:<![CDATA[$det.Description]]></text>
+  </row>
+  #end
+  #end
+
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">Firma ______________________________</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row align="center" style="normal" size="normal">
+    <text style="normal" size="normal">Firma ______________________________</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+  <row>
+    <barcode position="25" width="2" height="100" hri="down" hrifont="font0" codetype="CODE39">$document.Header.Barcode</barcode>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal"> </text>
+  </row>
+
+</report>
+

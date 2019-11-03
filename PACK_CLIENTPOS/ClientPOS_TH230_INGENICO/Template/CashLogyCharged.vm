@@ -1,0 +1,40 @@
+<report>
+<row align="center" style="normal" size="doubleheight"><text style="normal" size="normal">Carico di denaro CashLogy</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Data Operazione: $data.ToString().PadLeft(22)</text></row>
+  
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">Banconote:</text></row>
+  #set($Totale = 0)
+  #set($TotaleBanconote = 0)
+  #foreach($note in $charged.Banconote)
+
+  #set($cut = $note.fv / 100)
+  #set($Totale = $Totale + $cut * $note.piece)
+  #set($TotaleBanconote = $TotaleBanconote + $cut * $note.piece)
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Taglio: $cut.ToString('0.00') $note.cc - Pezzi: $note.piece - Perc: $note.percCharged.ToString('0.00')%</text></row>
+	<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+#end
+ <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Totale Banconote: $TotaleBanconote.ToString('0.00')</text>
+  </row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">Monete:</text></row>
+  #set($TotaleMonete = 0)
+  #foreach($note in $charged.Monete)
+
+  #set($cut = $note.fv / 100)
+
+  #set($Totale = $Totale + $cut * $note.piece)
+  #set($TotaleMonete = $TotaleMonete + $cut * $note.piece)
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Taglio: $cut.ToString('0.00') $note.cc - Pezzi: $note.piece  - Perc: $note.percCharged.ToString('0.00')%</text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+  #end
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Totale Monete  : $TotaleMonete.ToString('0.00')</text>
+  </row>
+  <row align="left" style="normal" size="normal">
+    <text style="normal" size="normal">Totale         : $Totale.ToString('0.00')</text>
+  </row>
+<row align="center" style="normal" size="normal"><text style="normal" size="normal">***************************************</text></row>	
+</report>

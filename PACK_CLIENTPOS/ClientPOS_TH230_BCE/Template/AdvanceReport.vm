@@ -1,0 +1,54 @@
+<report>
+<row align="center" style="normal" size="doubleheight"><text style="normal" size="normal">Rapporto gestione acconti</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Catena     : $chainCode.PadLeft(5) <![CDATA[$chainDescription.PadLeft(20)]]></text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Negozio    : $store.Code.PadLeft(5) <![CDATA[$store.Description.PadLeft(20)]]></text></row>
+#if($OnlyNotRedempted == true)
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal">Solo acconti non resi</text></row>
+#end
+<row align="left" style="normal" size="normal"><text style="normal" size="normal">Data rapp. : $data.ToString('dd/MM/yyyy').PadLeft(26)</text></row>	
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+<row align="left" style="bold" size="normal"><text style="normal" size="normal">Periodo    :    $dataDal.ToString('dd/MM/yyyy') - $dataAl.ToString('dd/MM/yyyy')</text></row>	
+<row align="center" style="normal" size="normal"><text style="normal" size="normal">_______________________________________</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+#foreach($detail in $list)
+    #if($detail.WorkstationCode && $detail.WorkstationCode != "")
+		<row align="left" style="normal" size="normal"><text style="normal" size="normal">Postazione : $detail.WorkstationCode.PadLeft(5) <![CDATA[$detail.WorkstationDescription.PadLeft(20)]]></text></row>
+		<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+    #elseif($detail.UserCode && $detail.UserCode != "")
+		<row align="left" style="normal" size="normal"><text style="normal" size="normal">Operatore  : $detail.UserCode.PadLeft(5) <![CDATA[$detail.UserDescription.PadLeft(20)]]></text></row>
+		<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+  #end
+  #set($totalQtaAdvance = 0)
+  #set($totalAmountAdvance = 0)
+  #set($totalQtaAdvanceRedempted = 0)
+  #set($totatAmountAdvanceRedempted = 0)
+  #foreach($advance in $detail.Details)
+ 
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>	
+		<row align="left" style="bold" size="normal"><text style="normal" size="normal">Item: $advance.ItemCode $advance.Description</text></row>
+		<row align="left" style="normal" size="normal"><text style="normal" size="normal">N. Acconti           :$advance.FiscalQuantity.ToString('0.00').PadLeft(17)</text></row>
+		<row align="left" style="normal" size="normal"><text style="normal" size="normal">Importo Acconti      :$advance.FiscalAmount.ToString('0.00').PadLeft(17)</text></row>
+		<row align="left" style="normal" size="normal"><text style="normal" size="normal">N. Acconti Resi      :$advance.FiscalQuantityRedempted.ToString('0.00').PadLeft(17)</text></row>
+    <row align="left" style="normal" size="normal"><text style="normal" size="normal">Importo Acconti Resi :$advance.FiscalAmountRedempted.ToString('0.00').PadLeft(17)</text>
+  </row>
+		<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+  
+  #set($totalQtaAdvance = $totalQtaAdvance + $advance.FiscalQuantity)
+  #set($totalAmountAdvance = $totalAmountAdvance + $advance.FiscalAmount)
+  #set($totalQtaAdvanceRedempted = $totalQtaAdvanceRedempted + $advance.FiscalQuantityRedempted)
+  #set($totatAmountAdvanceRedempted = $totatAmountAdvanceRedempted + $advance.FiscalAmountRedempted)
+  #end
+  <row align="center" style="normal" size="normal"><text style="normal" size="normal">_______________________________________</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="left" style="bold" size="doubleheight"><text style="normal" size="normal">TOTALI</text></row>
+<row align="left" style="normal" size="normal"><text style="normal" size="normal"></text></row>
+<row align="left" style="bold" size="normal"><text style="normal" size="normal">N. Acconti           :$totalQtaAdvance.ToString('0.00').PadLeft(17)</text></row>
+<row align="left" style="bold" size="normal"><text style="normal" size="normal">Importo Acconti      :$totalAmountAdvance.ToString('0.00').PadLeft(17)</text></row>
+<row align="left" style="bold" size="normal"><text style="normal" size="normal">N. Acconti Resi      :$totalQtaAdvanceRedempted.ToString('0.00').PadLeft(17)</text></row>
+<row align="left" style="bold" size="normal"><text style="normal" size="normal">Importo Acconti Resi :$totatAmountAdvanceRedempted.ToString('0.00').PadLeft(17)</text></row>
+  <row align="left" style="normal" size="normal"><text style="normal" size="normal"> </text></row>
+<row align="center" style="normal" size="normal"><text style="normal" size="normal">***************************************</text></row>
+#end
+</report>
