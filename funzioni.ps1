@@ -547,6 +547,7 @@ function menu(){
                         $xml = [xml](Get-Content $uncPathClientPos"\clientConfiguration.config")
 
                         $Dictionary = @{
+                            ChainCode = $Global:ChainCode
                             WorkstationCode    = $ip.code
                             WorkstationName     = 'Client '+$ip.code
                             StoreCode = $StoreCod
@@ -909,7 +910,13 @@ function menu(){
                         $ns = New-Object System.Xml.XmlNamespaceManager($device.NameTable)
                         $ns.AddNamespace("ns", $device.DocumentElement.NamespaceURI)
                         $object = $device.SelectSingleNode("//ns:object[@name='FiscalPrinterDevice']", $ns)
-                        $object.InsertAfter()
+                        $glory = $device.SelectSingleNode("//ns:object[@name='CC.Glory']", $ns)
+
+                        foreach($property in $glory){
+                            if($property.name -eq "Url"){
+                                $property.SetAttribute("value","")
+                            }
+                        }
                         foreach($name in $object.property){
                                 if($name.name -eq "SendVat"){
                                     if($name.value -eq "false"){

@@ -54,6 +54,7 @@ $Global:ProgressPreference = 'SilentlyContinue'
 $Global:LoggerLevel = $null
 $Global:StoreType = $null
 $Global:CorporateCodePrefix = $null
+$Global:ChainCode = $null
 
 #directory di esecuzione dello script
 $currentDir = split-path -parent $MyInvocation.MyCommand.Definition
@@ -77,8 +78,14 @@ function loadSettings{
 loadSettings
 
 switch ($Global:StoreType) {
-    "MARTINELLI" { $Global:CorporateCodePrefix = "009900" }
-    "VISOTTO" { $Global:CorporateCodePrefix = "046400"}
+    "MARTINELLI" { 
+        $Global:CorporateCodePrefix = "009900" 
+        $Global:ChainCode = "01"
+    }
+    "VISOTTO" { 
+        $Global:CorporateCodePrefix = "046400"
+        $Global:ChainCode = "06"
+    }
     Default {
         Write-Host "Il negozio selezionato non è compatibile con lo script" -ForegroundColor White -BackgroundColor Red
         Pause
