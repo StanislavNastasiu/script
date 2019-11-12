@@ -851,6 +851,7 @@ function menu(){
                     $currPos++
                     #rimuove l'unita' J, per poter mappare la successiva cassa
                     Get-PSDrive J | Remove-PSDrive
+		    Pause
                     Clear-Host
                 }
                 Clear-Host
