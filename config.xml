@@ -2,8 +2,8 @@
 <settings>
     <store>MARTINELLI</store> <!--MARTINELLI | VISOTTO-->
     <credentials>
-        <user>stan</user> <!-- nome utente postazione cassa-->
-        <password>xxnastasiuxx</password> <!-- password postazione cassa-->
+        <user>Orange</user> <!-- nome utente postazione cassa-->
+        <password>manager</password> <!-- password postazione cassa-->
     </credentials>
     <SQLServer>
         <instance>.\sqlexpress</instance> <!-- nome istanza SQL Server Orange-->
@@ -13,4 +13,10 @@
     <Logger>
         <lever>SilentlyContinue</lever> <!-- livello di dettaglio log-->
     </Logger>
+    <BuonoChiaro>
+        <IpAddress>https://193.85.236.92:11193/DBPosHandler</IpAddress>
+    </BuonoChiaro>
+    <RTONE>
+        <Mode>RT</Mode>
+    </RTONE>
 </settings>

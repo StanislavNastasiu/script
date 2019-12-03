@@ -55,6 +55,8 @@ $Global:LoggerLevel = $null
 $Global:StoreType = $null
 $Global:CorporateCodePrefix = $null
 $Global:ChainCode = $null
+$Global:WincorBCIP = $null
+$Global:RTMODE = $null
 
 #directory di esecuzione dello script
 $currentDir = split-path -parent $MyInvocation.MyCommand.Definition
@@ -74,12 +76,14 @@ function loadSettings{
     $Global:sqlpassword = $ConfigFile.settings.SQLServer.password
     $Global:LoggerLevel  = $ConfigFile.settings.Logger.level
     $Global:StoreType = $ConfigFile.settings.store
+    $Global:WincorBCIP = $ConfigFile.settings.BuonoChiaro.IpAddress
+    $Global:RTMODE = $ConfigFile.settings.RTONE.Mode
 }
 loadSettings
 
 switch ($Global:StoreType) {
     "MARTINELLI" { 
-        $Global:CorporateCodePrefix = "009900" 
+        $Global:CorporateCodePrefix = "048700"
         $Global:ChainCode = "01"
     }
     "VISOTTO" { 
@@ -128,7 +132,7 @@ $currStep=1
     Write-Host ""
     $StoreCod = $StoreCode_raw[0]
     #header negozio
-    $raw_header= Get-Content -Path "$currentDir\Orange\ClientPOS\Template\Header.vm" | Where-Object {$_ -match "<text>"}
+    $raw_header= Get-Content -Path "$currentDir\Orange\ClientPOS_RT\Template\Header.vm" | Where-Object {$_ -match "<text>"}
     $header= $raw_header.Replace("<text><![CDATA[","`n").Replace("]]></text>","`n").Replace("<text>","`n").Replace("</text>","`n")
     Write-Host ""
     Write-Host "CODICE NEGOZIO = $StoreCod" -ForegroundColor White -BackgroundColor DarkRed

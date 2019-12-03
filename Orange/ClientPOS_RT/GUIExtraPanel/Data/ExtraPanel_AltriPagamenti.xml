@@ -36,11 +36,10 @@
 		</Commands>
 	</Button>
 	<Button>
-		<Text></Text>
+		<Text>Utilizza Buono Reso</Text>
 		<ImageFile></ImageFile>
 		<Commands>
-			<Command></Command>
-			<Command></Command>
+			<Command>[paymentrtfiscalnumber]</Command>
 			<Command>ClosePanelBoard('PannelloEsterno_AltriPagamenti')[func][gui]</Command>
 		</Commands>
 	</Button>
@@ -49,6 +48,21 @@
 		<ImageFile>..\buttonVerde.png</ImageFile>
 		<Commands>
 			<Command>[payment][bpe]</Command>
+			<Command>[document]</Command>
+			<Command>ClosePanelBoard('PannelloEsterno_AltriPagamenti')[func][gui]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text></Text>
+		<Commands>
+			<Command>ClosePanelBoard('PannelloEsterno_AltriPagamenti')[func][gui]</Command>
+		</Commands>
+	</Button>
+	<Button>
+		<Text>Emetti Buono Reso</Text>
+		<ImageFile>..\buttonVerde.png</ImageFile>
+		<Commands>
+			<Command>[amount]REFUND[payment]</Command>
 			<Command>[document]</Command>
 			<Command>ClosePanelBoard('PannelloEsterno_AltriPagamenti')[func][gui]</Command>
 		</Commands>
